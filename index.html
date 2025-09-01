@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Appum Latinum</title>
+	<meta name="robots" content="noindex">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<style>
+		@font-face {
+			src: url("https://www.axis-praxis.org/fonts/webfonts/MetaVariableDemo-Set.woff2")
+			format("woff2");
+			font-family: "Meta";
+			font-style: normal;
+			font-weight: normal;
+		}
+
+		* {
+			box-sizing: border-box;
+			user-select: none;
+		}
+
+		label {
+			position: relative;
+  			top: -3px;
+			left: 5px;
+		}
+
+		body {
+			margin: 0;
+			background-color: #222;
+			color: #eee;
+			font-family: Tahoma, sans-serif;;
+			text-align: center;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+		}
+
+		#menu  {
+			width: 375px;
+			height: fit-content;
+			background-image: url("bg.png");
+			background-repeat: no-repeat;
+			background-position: bottom;
+			background-size: cover;
+			padding: 50px 0;
+		}
+
+		#quiz-wrap {
+			width: 375px;
+			height: fit-content;
+			background: linear-gradient(15deg, #880088, #aa2068, #cc3f47, #de6f3d, #f09f33, #de6f3d, #cc3f47, #aa2068, #880088) no-repeat;
+			display: none;
+		}
+
+		.showme {
+			display: block !important;
+		}
+
+		#quiz {
+			width: 369px;
+			height: 300px;
+			background: #222;
+			margin: 3px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+		}
+
+		#quiz:hover {
+			cursor: pointer;
+		}
+
+		#translaterino {
+			font-size: 20px;
+		}
+
+		.texterino {
+			font-size: 40px;
+			color: #880088;
+			font-weight: bold;
+			margin-bottom: 20px;
+		}
+
+		.translated {
+			color:  #cc3f47;
+		}
+
+		.row {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+		}
+
+		#lektionen {
+			margin: 40px 0;
+		}
+
+		.fancy {
+			margin: 0;
+			font-size: 40px;
+			background: linear-gradient(15deg, #880088, #aa2068, #cc3f47, #de6f3d, #f09f33, #de6f3d, #cc3f47, #aa2068, #880088) no-repeat;
+			-webkit-background-clip: text;
+			background-clip: text;
+			-webkit-text-stroke: 4px transparent;
+			font-variation-settings: "wght" 900, "ital" 1;
+			color: #222;
+			font-family: "Meta", sans-serif;
+			padding: 0 4px;
+		}
+
+		.button {
+			width: fit-content;
+			display: flex;
+			padding: 0.8em 2em;
+			cursor: pointer;
+			gap: 0.4rem;
+			font-weight: bold;
+			border-radius: 30px;
+			text-shadow: 2px 2px 3px rgb(136 0 136 / 50%);
+			background: linear-gradient(15deg, #880088, #aa2068, #cc3f47, #de6f3d, #f09f33, #de6f3d, #cc3f47, #aa2068, #880088) no-repeat;
+			background-size: 300%;
+			color: #fff;
+			border: none;
+			background-position: left center;
+			box-shadow: 0 30px 10px -20px rgba(0,0,0,.2);
+			transition: background .3s ease;
+			margin-bottom: 10px;
+		}
+
+		.button:hover {
+			background-size: 320%;
+			background-position: right center;
+		}
+
+		.kng > div {
+			padding: 0 15px;
+		}
+
+		.kng > div:not(:last-of-type) {
+			border-right: 1px solid #eee;
+		}
+		
+		.checkbox-wrapper .ikxBAC {
+			appearance: none;
+			background-color: #dfe1e4;
+			border-radius: 72px;
+			border-style: none;
+			flex-shrink: 0;
+			height: 20px;
+			margin: 0;
+			position: relative;
+			width: 30px;
+		  }
+
+		  .checkbox-wrapper .ikxBAC::before {
+			bottom: -6px;
+			content: "";
+			left: -6px;
+			position: absolute;
+			right: -6px;
+			top: -6px;
+		  }
+
+		  .checkbox-wrapper .ikxBAC,
+		  .checkbox-wrapper .ikxBAC::after {
+			transition: all 100ms ease-out;
+		  }
+
+		  .checkbox-wrapper .ikxBAC::after {
+			background-color: #fff;
+			border-radius: 50%;
+			content: "";
+			height: 14px;
+			left: 3px;
+			position: absolute;
+			top: 3px;
+			width: 14px;
+		  }
+
+		  .checkbox-wrapper input[type=checkbox] {
+			cursor: default;
+		  }
+
+		  .checkbox-wrapper .ikxBAC:hover {
+			background-color: #c9cbcd;
+			transition-duration: 0s;
+		  }
+
+		  .checkbox-wrapper .ikxBAC:checked {
+			background-color: #cc3f47;
+		  }
+
+		  .checkbox-wrapper .ikxBAC:checked::after {
+			background-color: #fff;
+			left: 13px;
+		  }
+
+		  .checkbox-wrapper :focus:not(.focus-visible) {
+			outline: 0;
+		  }
+
+		  .checkbox-wrapper .ikxBAC:checked:hover {
+			background-color: #aa2068;
+		  }
+	</style>
+</head>
+<body>
+	<div id="menu">
+		<p class="fancy">Appum Latinum</p>
+
+		<div id="lektionen"></div>
+
+		<div class="row">
+			<button class="button" onclick="start()">START</button>
+		</div>
+	</div>
+
+	<div id="quiz-wrap">
+		<div id="quiz" onclick="quiz_clicked()">
+			<div id="vokabel" class="texterino"></div>
+			<div id="translaterino" class="row"></div>
+		</div>
+	</div>
+	
+	<script>
+		var lektionen = [
+			[ // Lektion 1
+				["insula", "Insel"],
+				["esse - est", "sein - er/sie/es ist"],
+				["mercâtor", "Kaufmann"],
+				["dominus", "Herr"],
+				["servus", "Sklave, Diener"],
+				["domina", "Herrin"],
+				["medicus", "Arzt"],
+				["intrâre", "eintreten, betreten"],
+				["labôrâre", "arbeiten"],
+				["nôn", "nicht"],
+				["lûdere", "spielen"],
+				["vocâre", "rufen, nennen"],
+				["quis? - quem?", "wer? - wen?"],
+				["vidêre", "sehen"],
+				["ancilla", "Sklavin"],
+				["timêre", "fürchten"],
+				["morbus", "Krankheit"],
+				["cûrâre", "kümmern, sorgen, behandeln, pflegen"],
+				["agricola", "Bauer m."],
+				["mûrus", "Mauer"],
+				["aedificâre", "bauen"],
+				["labor", "Arbeit, Mühe"],
+				["amâre", "lieben, gern haben"],
+				["quarere", "suchen, fragen (nach)"],
+				["conquîrere", "zusammensuchen"],
+				["ubî", "wo?"],
+				["ad", "zu, bei (mit Akk.)"],
+				["in", "in, hinein, nach (mit Akk.)"],
+				["circâ", "um, herum (mit Akk.)"],
+				["per", "durch (mit Akk.)"],
+				["equus", "Pferd"],
+				["equitâre", "reiten"],
+				["eques, equitis", "Reiter"],
+				["aula", "Hof, Innenhof"],
+				["currere", "laufen"],
+			],
+			[ // Lektion 2
+				["bonus, bona", "gut"],
+				["magnus", "groß, bedeutend (Adj.)"],
+				["villa", "Haus, Landhaus"],
+				["parvus", "klein (Adj.)"],
+				["aegrôtus", "krank (Adj.)"],
+				["ôrâtor", "Redner"],
+				["laudâre", "loben"],
+				["et", "und, auch"],
+				["amîcus", "Freund"],
+				["amîcitia", "Freundschaft"],
+				["sund", "sie sind"],
+				["hodiê", "heute (Adv.)"],
+				["venîre", "kommen"],
+				["circumvenîre", "umringen, hintergehen"],
+				["etiam", "auch, sogar, noch"],
+				["amîca", "Freundin"],
+				["invîtâre", "einladen"],
+				["libenter", "gern (Adv.)"],
+				["salûtâre", "grüßen, begrüßen"],
+				["tum", "dann, darauf (Adv.)"],
+				["itaque", "daher, deswegen (Adv.)"],
+				["saepe", "oft (Adv.)"],
+				["vîsitâre", "besuchen"],
+				["imperâtor", "Feldherr, Kaiser"],
+				["multî, multae", "viele"],
+				["portâre", "tragen"],
+				["exportâre", "ausführen, fortschaffen"],
+				["trânsportâre", "hinüberbringen"],
+				["via", "Weg, Straße"],
+				["victor", "Sieger"],
+				["laetus", "froh, fröhlich (Adj.)"],
+				["laetitia", "Freude"],
+				["clâmâre", "rufen, schreien"],
+				["senâtor", "Senator"],
+				["adesse", "da sein, anwesend sein, helfen, beistehen"],
+				["adsunt", "sie sind da, sie sind anwesend"],
+				["populus", "Volk"],
+				["audîre", "hören"],
+				["Iô triumphe!", "Hurra! Triumph!"],
+			],
+		];
+
+		var quiz_pool = [];
+		var max = 0;
+		var ready = false;
+
+		function start() {
+			ready = true;
+			document.getElementById("quiz-wrap").classList.add("showme");
+
+			quiz_pool = [];
+
+			for (let i = 0; i < lektionen.length; i++) {
+				var checkbox = document.getElementById(`lektion${i+1}`);
+				if  (checkbox.checked) {
+					for (let j = 0; j < lektionen[i].length; j++) {
+						quiz_pool.push(lektionen[i][j]);
+					}
+				}
+			}
+
+			max = quiz_pool.length;
+			quiz_clicked();
+		}
+
+		var pair = 0;
+		var vokabel = document.getElementById("vokabel");
+		var translaterino = document.getElementById("translaterino");
+		var check = false;
+		
+		function quiz_clicked() {
+			if (ready) {
+				if (check) {
+					vokabel.innerHTML = quiz_pool[pair][0];
+					translaterino.innerHTML = quiz_pool[pair][1];
+				}
+				
+				else {
+					pair = Math.floor(Math.random() * max);
+					vokabel.innerHTML = quiz_pool[pair][0];
+					translaterino.innerHTML = "";
+				}
+				
+				check = !check;
+				vokabel.classList.toggle("translated");
+			}
+		}
+
+		function create_lection_toggles() {
+			var lektionen_wrapper = document.getElementById("lektionen");
+
+			for (let i = 0; i < lektionen.length; i++) {
+				let checkbox_wrapper = document.createElement("div");
+				checkbox_wrapper.classList.add("checkbox-wrapper");
+				
+				let checkbox = document.createElement("input");
+				checkbox.setAttribute("type", "checkbox");
+				checkbox.setAttribute("checked", "checked");
+				checkbox.classList.add("sc-gJwTLC");
+				checkbox.classList.add("ikxBAC");
+				checkbox.id = `lektion${i+1}`;
+
+				let label = document.createElement("label");
+				label.innerHTML = `Lektion ${i+1}`;
+				label.setAttribute("for", `lektion${i+1}`);
+
+				checkbox_wrapper.appendChild(checkbox);
+				checkbox_wrapper.appendChild(label);
+				lektionen_wrapper.appendChild(checkbox_wrapper);
+			}
+		}
+
+		window.addEventListener('load', create_lection_toggles());
+	</script>
+</body>
+</html>
