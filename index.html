@@ -38,17 +38,17 @@
 		}
 
 		#menu  {
-			width: 375px;
+			width: 450px;
 			height: fit-content;
 			background-image: url("background.png");
 			background-repeat: no-repeat;
 			background-position: bottom;
-			background-size: cover;
+			background-size: inherit;
 			padding: 50px 0;
 		}
 
 		#quiz-wrap {
-			width: 375px;
+			width: 450px;
 			height: fit-content;
 			background: linear-gradient(15deg, #880088, #aa2068, #cc3f47, #de6f3d, #f09f33, #de6f3d, #cc3f47, #aa2068, #880088) no-repeat;
 			display: none;
@@ -57,9 +57,13 @@
 		.showme {
 			display: block !important;
 		}
+		
+		.hidden {
+			display: none !important;
+		}
 
 		#quiz {
-			width: 369px;
+			width: 444px;
 			height: 300px;
 			background: #222;
 			margin: 3px;
@@ -67,10 +71,16 @@
 			justify-content: center;
 			align-items: center;
 			flex-direction: column;
+			user-select: none;
 		}
-
-		#quiz:hover {
-			cursor: pointer;
+		
+		@media screen and (max-width: 450px) {
+			#menu, #quiz-wrap {
+				width: 100%;
+			}
+			#quiz {
+				width: calc(100% - 6px);
+			}
 		}
 
 		#translaterino {
@@ -114,7 +124,6 @@
 
 		.button {
 			width: fit-content;
-			display: flex;
 			padding: 0.8em 2em;
 			cursor: pointer;
 			gap: 0.4rem;
@@ -129,6 +138,7 @@
 			box-shadow: 0 30px 10px -20px rgba(0,0,0,.2);
 			transition: background .3s ease;
 			margin-bottom: 10px;
+			text-align: center;
 		}
 
 		.button:hover {
@@ -215,7 +225,8 @@
 		<div id="lektionen"></div>
 
 		<div class="row">
-			<button class="button" onclick="start()">START</button>
+			<button class="button" onclick="start()">Nur Infinitiv & Nom. Sg.</button>
+			<button class="button" onclick="start(true)">Mit KNG</button>
 		</div>
 	</div>
 
@@ -227,15 +238,44 @@
 	</div>
 	
 	<script>
+		var a_deklination = [
+			["a", "Nom. Sg."],
+			["ae", "Nom. Pl., Gen. Sg., Dat. Sg."],
+			["arum", "Gen. Pl."],,
+			["is", "Dat. Pl."],
+			["am", "Akk. Sg."],
+			["as", "Akk. Pl."],
+		]
+
+		var o_deklination = [
+			["us", "Nom. Sg."],
+			["i", "Nom. Pl., Gen. Sg."],
+			["orum", "Gen. Pl."],
+			["o", "Dat. Sg."],
+			["is", "Dat. Pl."],
+			["um", "Akk. Sg."],
+			["os", "Akk. Pl."],
+		]
+
+		var kons_deklination = [
+			["", "Nom. Sg."],
+			["es", "Nom. Pl., Akk. Pl."],
+			["is", "Gen. Sg."],
+			["orum", "Gen. Pl."],
+			["i", "Dat. Sg."],
+			["ibus", "Dat. Pl."],
+			["em", "Akk. Sg."],
+		]
+
 		var lektionen = [
-			[ // Lektion 1
-				["insula", "Insel"],
+				[ // Lektion 1
+				["insula", "Insel", a_deklination, "insul", "F"],
 				["esse - est", "sein - er/sie/es ist"],
-				["mercâtor", "Kaufmann"],
-				["dominus", "Herr"],
-				["servus", "Sklave, Diener"],
-				["domina", "Herrin"],
-				["medicus", "Arzt"],
+				["mercâtor", "Kaufmann", kons_deklination, "mercator", "M"],
+				["dominus", "Herr", o_deklination, "domin", "M"],
+				["servus", "Sklave, Diener", o_deklination, "serv", "M"],
+				["domina", "Herrin", a_deklination, "domin", "F"],
+				["medicus", "Arzt", o_deklination, "medic", "M"],
 				["intrâre", "eintreten, betreten"],
 				["labôrâre", "arbeiten"],
 				["nôn", "nicht"],
@@ -243,14 +283,14 @@
 				["vocâre", "rufen, nennen"],
 				["quis? - quem?", "wer? - wen?"],
 				["vidêre", "sehen"],
-				["ancilla", "Sklavin"],
+				["ancilla", "Sklavin", a_deklination, "ancill", "F"],
 				["timêre", "fürchten"],
-				["morbus", "Krankheit"],
+				["morbus", "Krankheit", o_deklination, "morb", "M"],
 				["cûrâre", "kümmern, sorgen, behandeln, pflegen"],
-				["agricola", "Bauer m."],
-				["mûrus", "Mauer"],
+				["agricola", "Bauer m.", a_deklination, "agricol", "M"],
+				["mûrus", "Mauer", o_deklination, "mur", "M"],
 				["aedificâre", "bauen"],
-				["labor", "Arbeit, Mühe"],
+				["labor", "Arbeit, Mühe", kons_deklination, "labor", "M"],
 				["amâre", "lieben, gern haben"],
 				["quarere", "suchen, fragen (nach)"],
 				["conquîrere", "zusammensuchen"],
@@ -259,29 +299,29 @@
 				["in", "in, hinein, nach (mit Akk.)"],
 				["circâ", "um, herum (mit Akk.)"],
 				["per", "durch (mit Akk.)"],
-				["equus", "Pferd"],
+				["equus", "Pferd", o_deklination, "equ", "M"],
 				["equitâre", "reiten"],
 				["eques, equitis", "Reiter"],
-				["aula", "Hof, Innenhof"],
+				["aula", "Hof, Innenhof", a_deklination, "aul", "F"],
 				["currere", "laufen"],
 			],
 			[ // Lektion 2
 				["bonus, bona", "gut"],
 				["magnus", "groß, bedeutend (Adj.)"],
-				["villa", "Haus, Landhaus"],
+				["villa", "Haus, Landhaus", a_deklination, "vill", "F"],
 				["parvus", "klein (Adj.)"],
 				["aegrôtus", "krank (Adj.)"],
-				["ôrâtor", "Redner"],
+				["ôrâtor", "Redner", kons_deklination, "orator", "M"],
 				["laudâre", "loben"],
 				["et", "und, auch"],
-				["amîcus", "Freund"],
-				["amîcitia", "Freundschaft"],
+				["amîcus", "Freund", o_deklination, "amic", "M"],
+				["amîcitia", "Freundschaft", a_deklination, "amiciti", "F"],
 				["sunt", "sie sind"],
 				["hodiê", "heute (Adv.)"],
 				["venîre", "kommen"],
 				["circumvenîre", "umringen, hintergehen"],
 				["etiam", "auch, sogar, noch"],
-				["amîca", "Freundin"],
+				["amîca", "Freundin", a_deklination, "amic", "F"],
 				["invîtâre", "einladen"],
 				["libenter", "gern (Adv.)"],
 				["salûtâre", "grüßen, begrüßen"],
@@ -289,31 +329,31 @@
 				["itaque", "daher, deswegen (Adv.)"],
 				["saepe", "oft (Adv.)"],
 				["vîsitâre", "besuchen"],
-				["imperâtor", "Feldherr, Kaiser"],
+				["imperâtor", "Feldherr, Kaiser", kons_deklination, "imperator", "M"],
 				["multî, multae", "viele"],
 				["portâre", "tragen"],
 				["exportâre", "ausführen, fortschaffen"],
 				["trânsportâre", "hinüberbringen"],
-				["via", "Weg, Straße"],
-				["victor", "Sieger"],
+				["via", "Weg, Straße", a_deklination, "vi", "F"],
+				["victor", "Sieger", kons_deklination, "victor", "M"],
 				["laetus", "froh, fröhlich (Adj.)"],
-				["laetitia", "Freude"],
+				["laetitia", "Freude", a_deklination, "laetiti", "F"],
 				["clâmâre", "rufen, schreien"],
-				["senâtor", "Senator"],
+				["senâtor", "Senator", kons_deklination, "senator", "M"],
 				["adesse", "da sein, anwesend sein, helfen, beistehen"],
 				["adsunt", "sie sind da, sie sind anwesend"],
-				["populus", "Volk"],
+				["populus", "Volk", o_deklination, "popul", "M"],
 				["audîre", "hören"],
 				["Iô triumphe!", "Hurra! Triumph!"],
 			],
 			[ // Lektion 3
 				["nam", "denn"],
-				["patria", "Vaterland, Heimat"],
+				["patria", "Vaterland, Heimat", a_deklination, "patri", "M"],
 				["patrius, a, um", "väterlich"],
-				["prôvincia", "Provinz"],
+				["prôvincia", "Provinz", a_deklination, "provinci", "F"],
 				["nâvigâre", "segeln, fahren (mit dem Schiff)"],
 				["capere", "fassen, ergreifen, erobern"],
-				["captîvus", "Gefangener"],
+				["captîvus", "Gefangener", o_deklination, "captiv", "M"],
 				["dîvitiae, dîvitiârum", "Reichtum"],
 				["parâre", "bereiten, zubereiten"],
 				["comparâre", "verschaffen, erwerben, vergleichen"],
@@ -321,33 +361,85 @@
 				["alius, alia", "ein anderer, eine andere"],
 				["aliênus", "fremd"],
 				["importâre", "einführen"],
-				["incola", "Einwohner m."],
+				["incola", "Einwohner m.", a_deklination, "incol", "M"],
 				["vêndere", "verkaufen"],
 				["placêre", "gefallen"],
 				["ita", "so"],
 				["interdum", "manchmal (Adv.)"],
-				["pîrâta", "Pirat, Seeräuber"],
+				["pîrâta", "Pirat, Seeräuber", a_deklination, "pirat", "M"],
 				["sed", "aber, sondern"],
 				["bene", "gut (Adv.)"],
 				["cônsulere (m. Dat.)", "sorgen für (jmdn.)"],
 				["cônsulere (m. Akk.)", "befragen, um Rat fragen"],
 				["vigilâre", "wachen, wachsam sein"],
-				["vigilia", "Nachtwache"],
+				["vigilia", "Nachtwache", a_deklination, "vigili", "F"],
 				["opprimere", "unterdrücken, bekämpfen, überfallen"],
-				["deus, deî", "Gott"],
+				["deus", "Gott", o_deklination, "de", "M"],
 				["post", "danach, später | nach (m. Akk.)"],
 				["cêterî, cêterae", "die übrigen, die anderen"],
-				["grâtia", "Dank, Ansehen, Beliebtheit, Gnade"],
+				["grâtia", "Dank, Ansehen, Beliebtheit, Gnade", a_deklination, "insul", "F"],
 				["agere", "treiben, betreiben, handeln, verhandeln, führen, tun"],
 				["grâtia agere", "danken (tun)"],
 			],
 		];
 
+var pair = 0;
+		var choice = 0;
+		var was_kng = false;
+		var vokabel = document.getElementById("vokabel");
+		var translaterino = document.getElementById("translaterino");
+		var check = false;
+		
+		function quiz_clicked() {
+			if (ready) {
+				if (check) { // TRANSLATION
+					if (was_kng) {
+						var base = quiz_pool[pair][3];
+						const deklinationen = quiz_pool[pair][2];
+						var end = deklinationen[choice][0];
+						var kng0 = deklinationen[choice][1];
+						vokabel.innerHTML = base + end;
+
+						var gender = quiz_pool[pair][4];
+
+						var transl = quiz_pool[pair][1];
+						translaterino.innerHTML = transl + "<br>" + kng0 + " | " + gender;
+					}
+					else {
+						vokabel.innerHTML = quiz_pool[pair][0];
+						translaterino.innerHTML = quiz_pool[pair][1];
+					}
+				}
+				
+				else { // QUESTION
+					pair = Math.floor(Math.random() * max);
+					if (kng && quiz_pool[pair][3]) {
+						var base = quiz_pool[pair][3];
+						const deklinationen = quiz_pool[pair][2];
+						choice = Math.floor(Math.random() * deklinationen.length);
+						var end = deklinationen[choice][0];
+
+						vokabel.innerHTML = base + end;
+						was_kng = true;
+					}
+					else {
+						vokabel.innerHTML = quiz_pool[pair][0];
+						was_kng = false;
+					}
+					translaterino.innerHTML = "";
+				}
+				
+				check = !check;
+				vokabel.classList.toggle("translated");
+			}
+		}
+
 		var quiz_pool = [];
 		var max = 0;
 		var ready = false;
+		var kng = false;
 
-		function start() {
+		function start(kng_btn=false) {
 			ready = true;
 			document.getElementById("quiz-wrap").classList.add("showme");
 
@@ -362,31 +454,13 @@
 				}
 			}
 
+			kng = false;
+			was_kng = false;
+			choice = 0;
+			if (kng_btn) kng = true;
+
 			max = quiz_pool.length;
 			quiz_clicked();
-		}
-
-		var pair = 0;
-		var vokabel = document.getElementById("vokabel");
-		var translaterino = document.getElementById("translaterino");
-		var check = false;
-		
-		function quiz_clicked() {
-			if (ready) {
-				if (check) {
-					vokabel.innerHTML = quiz_pool[pair][0];
-					translaterino.innerHTML = quiz_pool[pair][1];
-				}
-				
-				else {
-					pair = Math.floor(Math.random() * max);
-					vokabel.innerHTML = quiz_pool[pair][0];
-					translaterino.innerHTML = "";
-				}
-				
-				check = !check;
-				vokabel.classList.toggle("translated");
-			}
 		}
 
 		function create_lection_toggles() {
@@ -418,5 +492,4 @@
 </body>
 
 </html>
-
 
