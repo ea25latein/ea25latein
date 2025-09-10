@@ -225,8 +225,9 @@
 		<div id="lektionen"></div>
 
 		<div class="row">
-			<button class="button" onclick="start()">Nur Infinitiv & Nom. Sg.</button>
-			<button class="button" onclick="start(true)">&hearts; Mit KNG &hearts;</button>
+			<button class="button" onclick="start(false, false)">Grundformen</button>
+			<button class="button" onclick="start(true, true)">Deklinationen</button>
+			<button class="button" onclick="start(true, false)">Gemischt</button>
 		</div>
 	</div>
 
@@ -439,19 +440,34 @@ var pair = 0;
 		var ready = false;
 		var kng = false;
 
-		function start(kng_btn=false) {
+		function start(kng_btn, only_kng) {
 			ready = true;
 			document.getElementById("quiz-wrap").classList.add("showme");
 
 			quiz_pool = [];
 
-			for (let i = 0; i < lektionen.length; i++) {
-				var checkbox = document.getElementById(`lektion${i+1}`);
-				if  (checkbox.checked) {
-					for (let j = 0; j < lektionen[i].length; j++) {
-						quiz_pool.push(lektionen[i][j]);
+			if (only_kng) { // NUR DEKLINATIONEN
+
+				for (let i = 0; i < lektionen.length; i++) {
+					var checkbox = document.getElementById(`lektion${i+1}`);
+					if  (checkbox.checked) {
+						for (let j = 0; j < lektionen[i].length; j++) {
+							if (lektionen[i][j][3]) quiz_pool.push(lektionen[i][j]);
+						}
 					}
 				}
+
+			} else { // ALLES
+
+				for (let i = 0; i < lektionen.length; i++) {
+					var checkbox = document.getElementById(`lektion${i+1}`);
+					if  (checkbox.checked) {
+						for (let j = 0; j < lektionen[i].length; j++) {
+							quiz_pool.push(lektionen[i][j]);
+						}
+					}
+				}
+
 			}
 
 			kng = false;
@@ -492,6 +508,4 @@ var pair = 0;
 </body>
 
 </html>
-
-
 
