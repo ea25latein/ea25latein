@@ -6,14 +6,6 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<style>
-		@font-face {
-			src: url("https://www.axis-praxis.org/fonts/webfonts/MetaVariableDemo-Set.woff2")
-			format("woff2");
-			font-family: "Meta";
-			font-style: normal;
-			font-weight: normal;
-		}
-
 		* {
 			box-sizing: border-box;
 			user-select: none;
@@ -109,19 +101,6 @@
 			margin: 40px 0;
 		}
 
-		.fancy {
-			margin: 0;
-			font-size: 40px;
-			background: linear-gradient(15deg, #880088, #aa2068, #cc3f47, #de6f3d, #f09f33, #de6f3d, #cc3f47, #aa2068, #880088) no-repeat;
-			-webkit-background-clip: text;
-			background-clip: text;
-			-webkit-text-stroke: 4px transparent;
-			font-variation-settings: "wght" 900, "ital" 1;
-			color: #222;
-			font-family: "Meta", sans-serif;
-			padding: 0 4px;
-		}
-
 		.button {
 			width: 150px;
 			padding: 0.8em 2em;
@@ -137,7 +116,7 @@
 			background-position: left center;
 			box-shadow: 0 30px 10px -20px rgba(0,0,0,.2);
 			transition: background .3s ease;
-			margin-bottom: 10px;
+			margin: 5px;
 			text-align: center;
 		}
 
@@ -220,14 +199,18 @@
 </head>
 <body>
 	<div id="menu">
-		<p class="fancy">Appum Latinum</p>
-
 		<div id="lektionen"></div>
 
 		<div class="row">
-			<button class="button" onclick="start(false, false)">Grundformen</button>
-			<button class="button" onclick="start(true, true)">Deklinationen</button>
-			<button class="button" onclick="start(true, false)">Gemischt</button>
+			<!-- kng_btn, only_kng, konj_btn, only_konj -->
+			 <div>
+				<button class="button" onclick="start(false, false, false, false)">Grundformen</button>
+				<button class="button" onclick="start(true, false, true, false)">Gemischt</button>
+			 </div>
+			 <div>
+				<button class="button" onclick="start(true, true, false, false)">Deklinationen</button>
+				<button class="button" onclick="start(false, false, true, true)">Konjugationen</button>
+			 </div>
 		</div>
 	</div>
 
@@ -239,6 +222,7 @@
 	</div>
 	
 	<script>
+		/* ---------- DEKLINATIONEN ---------- */
 		var a_deklination = [
 			["a", "Nom. Sg., Abl. Sg."],
 			["ae", "Nom. Pl., Gen. Sg., Dat. Sg."],
@@ -269,202 +253,257 @@
 			["e", "Abl. Sg."],
 		]
 
+		/* ---------- KONJUGATIONEN ---------- */
+		var a_konjugation = [
+			["o", "1. Pers. Sg. | Ich"],
+			["as", "2. Pers. Sg. | Du"],
+			["at", "3. Pers. Sg. | Er/Sie/Es"],
+			["amus", "1. Pers. Pl. | Wir"],
+			["atis", "2. Pers. Pl. | Ihr"],
+			["ant", "3. Pers. Pl. | Sie"],
+		]
+
+		var e_konjugation = [
+			["o", "1. Pers. Sg. | Ich"],
+			["s", "2. Pers. Sg. | Du"],
+			["t", "3. Pers. Sg. | Er/Sie/Es"],
+			["mus", "1. Pers. Pl. | Wir"],
+			["tis", "2. Pers. Pl. | Ihr"],
+			["nt", "3. Pers. Pl. | Sie"],
+		]
+
+		var i_konjugation = [
+			["o", "1. Pers. Sg. | Ich"],
+			["s", "2. Pers. Sg. | Du"],
+			["t", "3. Pers. Sg. | Er/Sie/Es"],
+			["mus", "1. Pers. Pl. | Wir"],
+			["tis", "2. Pers. Pl. | Ihr"],
+			["unt", "3. Pers. Pl. | Sie"],
+		]
+
+		var kons_konjugation = [
+			["o", "1. Pers. Sg. | Ich"],
+			["is", "2. Pers. Sg. | Du"],
+			["it", "3. Pers. Sg. | Er/Sie/Es"],
+			["imus", "1. Pers. Pl. | Wir"],
+			["itis", "2. Pers. Pl. | Ihr"],
+			["unt", "3. Pers. Pl. | Sie"],
+		]
+
+		var kv_konjugation = [
+			["io", "1. Pers. Sg. | Ich"],
+			["is", "2. Pers. Sg. | Du"],
+			["it", "3. Pers. Sg. | Er/Sie/Es"],
+			["imus", "1. Pers. Pl. | Wir"],
+			["itis", "2. Pers. Pl. | Ihr"],
+			["iunt", "3. Pers. Pl. | Sie"],
+		]
+
+		var esse_konjugation = [
+			["sum", "1. Pers. Sg."],
+			["es", "2. Pers. Sg."],
+			["est", "3. Pers. Sg."],
+			["sumus", "1. Pers. Pl."],
+			["estis", "2. Pers. Pl."],
+			["sunt", "3. Pers. Pl."],		
+		]
+
+		/* ---------- VOKABELN ---------- */
 		var lektionen = [
 				[ // Lektion 1
-				["insula", "Insel", a_deklination, "insul", "F"],
-				["esse - est", "sein - er/sie/es ist"],
-				["mercâtor", "Kaufmann", kons_deklination, "mercator", "M"],
-				["dominus", "Herr", o_deklination, "domin", "M"],
-				["servus", "Sklave, Diener", o_deklination, "serv", "M"],
-				["domina", "Herrin", a_deklination, "domin", "F"],
-				["medicus", "Arzt", o_deklination, "medic", "M"],
-				["intrâre", "eintreten, betreten"],
-				["labôrâre", "arbeiten"],
+				["insula", "Insel", a_deklination, "insul", "F", "IST_NOMEN"],
+				["esse - est", "sein - er/sie/es ist", "", esse_konjugation, "IST_VERB"],
+				["mercâtor", "Kaufmann", kons_deklination, "mercator", "M", "IST_NOMEN"],
+				["dominus", "Herr", o_deklination, "domin", "M", "IST_NOMEN"],
+				["servus", "Sklave, Diener", o_deklination, "serv", "M", "IST_NOMEN"],
+				["domina", "Herrin", a_deklination, "domin", "F", "IST_NOMEN"],
+				["medicus", "Arzt", o_deklination, "medic", "M", "IST_NOMEN"],
+				["intrâre", "eintreten, betreten", "intr", a_konjugation, "IST_VERB"],
+				["labôrâre", "arbeiten", "labôr", a_konjugation, "IST_VERB"],
 				["nôn", "nicht"],
-				["lûdere", "spielen"],
-				["vocâre", "rufen, nennen"],
+				["lûdere", "spielen", "lûd", kons_konjugation, "IST_VERB"],
+				["vocâre", "rufen, nennen", "voc", a_konjugation, "IST_VERB"],
 				["quis? - quem?", "wer? - wen?"],
-				["vidêre", "sehen"],
-				["ancilla", "Sklavin", a_deklination, "ancill", "F"],
-				["timêre", "fürchten"],
-				["morbus", "Krankheit", o_deklination, "morb", "M"],
-				["cûrâre", "kümmern, sorgen, behandeln, pflegen"],
-				["agricola", "Bauer m.", a_deklination, "agricol", "M"],
-				["mûrus", "Mauer", o_deklination, "mur", "M"],
-				["aedificâre", "bauen"],
-				["labor", "Arbeit, Mühe", kons_deklination, "labor", "M"],
-				["amâre", "lieben, gern haben"],
-				["quarere", "suchen, fragen (nach)"],
-				["conquîrere", "zusammensuchen"],
+				["vidêre", "sehen", "vidê", e_konjugation, "IST_VERB"],
+				["ancilla", "Sklavin", a_deklination, "ancill", "F", "IST_NOMEN"],
+				["timêre", "fürchten", "timê", e_konjugation, "IST_VERB"],
+				["morbus", "Krankheit", o_deklination, "morb", "M", "IST_NOMEN"],
+				["cûrâre", "kümmern, sorgen, behandeln, pflegen", "cûr", a_konjugation, "IST_VERB"],
+				["agricola", "Bauer m.", a_deklination, "agricol", "M", "IST_NOMEN"],
+				["mûrus", "Mauer", o_deklination, "mur", "M", "IST_NOMEN"],
+				["aedificâre", "bauen", "aedific", a_konjugation, "IST_VERB"],
+				["labor", "Arbeit, Mühe", kons_deklination, "labor", "M", "IST_NOMEN"],
+				["amâre", "lieben, gern haben", "am", a_konjugation, "IST_VERB"],
+				["quaerere", "suchen, fragen (nach)", "quaer", kons_konjugation, "IST_VERB"],
+				["conquîrere", "zusammensuchen", "conquîr", kons_konjugation, "IST_VERB"],
 				["ubî", "wo?"],
 				["ad (mit Akk.)", "zu, bei"],
 				["in (mit Akk.)", "in, hinein, nach"],
 				["circâ (mit Akk.)", "um, herum"],
 				["per (mit Akk.)", "durch"],
-				["equus", "Pferd", o_deklination, "equ", "M"],
-				["equitâre", "reiten"],
+				["equus", "Pferd", o_deklination, "equ", "M", "IST_NOMEN"],
+				["equitâre", "reiten", "equit", a_konjugation, "IST_VERB"],
 				["eques, equitis", "Reiter"],
-				["aula", "Hof, Innenhof", a_deklination, "aul", "F"],
-				["currere", "laufen"],
+				["aula", "Hof, Innenhof", a_deklination, "aul", "F", "IST_NOMEN"],
+				["currere", "laufen", "curr", kons_konjugation, "IST_VERB"],
 			],
 			[ // Lektion 2
 				["bonus, bona", "gut"],
 				["magnus", "groß, bedeutend (Adj.)"],
-				["villa", "Haus, Landhaus", a_deklination, "vill", "F"],
+				["villa", "Haus, Landhaus", a_deklination, "vill", "F", "IST_NOMEN"],
 				["parvus", "klein (Adj.)"],
 				["aegrôtus", "krank (Adj.)"],
-				["ôrâtor", "Redner", kons_deklination, "orator", "M"],
-				["laudâre", "loben"],
+				["ôrâtor", "Redner", kons_deklination, "orator", "M", "IST_NOMEN"],
+				["laudâre", "loben", "laud", a_konjugation, "IST_VERB"],
 				["et", "und, auch"],
-				["amîcus", "Freund", o_deklination, "amic", "M"],
-				["amîcitia", "Freundschaft", a_deklination, "amiciti", "F"],
-				["sunt", "sie sind"],
+				["amîcus", "Freund", o_deklination, "amic", "M", "IST_NOMEN"],
+				["amîcitia", "Freundschaft", a_deklination, "amiciti", "F", "IST_NOMEN"],
 				["hodiê", "heute (Adv.)"],
-				["venîre", "kommen"],
-				["circumvenîre", "umringen, hintergehen"],
+				["venîre", "kommen", "venî", i_konjugation, "IST_VERB"],
+				["circumvenîre", "umringen, hintergehen", "circumvenî", i_konjugation, "IST_VERB"],
 				["etiam", "auch, sogar, noch"],
-				["amîca", "Freundin", a_deklination, "amic", "F"],
-				["invîtâre", "einladen"],
+				["amîca", "Freundin", a_deklination, "amic", "F", "IST_NOMEN"],
+				["invîtâre", "einladen", "invît", a_konjugation, "IST_VERB"],
 				["libenter", "gern (Adv.)"],
-				["salûtâre", "grüßen, begrüßen"],
+				["salûtâre", "grüßen, begrüßen", "salût", a_konjugation, "IST_VERB"],
 				["tum", "dann, darauf (Adv.)"],
 				["itaque", "daher, deswegen (Adv.)"],
 				["saepe", "oft (Adv.)"],
-				["vîsitâre", "besuchen"],
-				["imperâtor", "Feldherr, Kaiser", kons_deklination, "imperator", "M"],
+				["vîsitâre", "besuchen", "vîsit", a_konjugation, "IST_VERB"],
+				["imperâtor", "Feldherr, Kaiser", kons_deklination, "imperator", "M", "IST_NOMEN"],
 				["multî, multae", "viele"],
-				["portâre", "tragen"],
-				["exportâre", "ausführen, fortschaffen"],
-				["trânsportâre", "hinüberbringen"],
-				["via", "Weg, Straße", a_deklination, "vi", "F"],
-				["victor", "Sieger", kons_deklination, "victor", "M"],
+				["portâre", "tragen", "port", a_konjugation, "IST_VERB"],
+				["exportâre", "ausführen, fortschaffen", "export", a_konjugation, "IST_VERB"],
+				["trânsportâre", "hinüberbringen", "trânsport", a_konjugation, "IST_VERB"],
+				["via", "Weg, Straße", a_deklination, "vi", "F", "IST_NOMEN"],
+				["victor", "Sieger", kons_deklination, "victor", "M", "IST_NOMEN"],
 				["laetus", "froh, fröhlich (Adj.)"],
-				["laetitia", "Freude", a_deklination, "laetiti", "F"],
-				["clâmâre", "rufen, schreien"],
-				["senâtor", "Senator", kons_deklination, "senator", "M"],
+				["laetitia", "Freude", a_deklination, "laetiti", "F", "IST_NOMEN"],
+				["clâmâre", "rufen, schreien", "clâm", a_konjugation, "IST_VERB"],
+				["senâtor", "Senator", kons_deklination, "senator", "M", "IST_NOMEN"],
 				["adesse", "da sein, anwesend sein, helfen, beistehen"],
 				["adsunt", "sie sind da, sie sind anwesend"],
-				["populus", "Volk", o_deklination, "popul", "M"],
-				["audîre", "hören"],
+				["populus", "Volk", o_deklination, "popul", "M", "IST_NOMEN"],
+				["audîre", "hören", "audî", i_konjugation, "IST_VERB"],
 				["Iô triumphe!", "Hurra! Triumph!"],
 			],
 			[ // Lektion 3
 				["nam", "denn"],
-				["patria", "Vaterland, Heimat", a_deklination, "patri", "M"],
+				["patria", "Vaterland, Heimat", a_deklination, "patri", "M", "IST_NOMEN"],
 				["patrius, a, um", "väterlich"],
-				["prôvincia", "Provinz", a_deklination, "provinci", "F"],
-				["nâvigâre", "segeln, fahren (mit dem Schiff)"],
-				["capere", "fassen, ergreifen, erobern"],
-				["captîvus", "Gefangener", o_deklination, "captiv", "M"],
+				["prôvincia", "Provinz", a_deklination, "provinci", "F", "IST_NOMEN"],
+				["nâvigâre", "segeln, fahren (mit dem Schiff)", "nâvig", a_konjugation, "IST_VERB"],
+				["capere", "fassen, ergreifen, erobern", "cap", kv_konjugation, "IST_VERB"],
+				["captîvus", "Gefangener", o_deklination, "captiv", "M", "IST_NOMEN"],
 				["dîvitiae, dîvitiârum", "Reichtum"],
-				["parâre", "bereiten, zubereiten"],
-				["comparâre", "verschaffen, erwerben, vergleichen"],
-				["appropinquâre", "sich nähern"],
+				["parâre", "bereiten, zubereiten", "par", a_konjugation, "IST_VERB"],
+				["comparâre", "verschaffen, erwerben, vergleichen", "compar", a_konjugation, "IST_VERB"],
+				["appropinquâre", "sich nähern", "appropinqu", a_konjugation, "IST_VERB"],
 				["alius, alia", "ein anderer, eine andere"],
 				["aliênus", "fremd"],
-				["importâre", "einführen"],
-				["incola", "Einwohner m/f", a_deklination, "incol", "M/F"],
-				["vêndere", "verkaufen"],
-				["placêre", "gefallen"],
+				["importâre", "einführen", "import", a_konjugation, "IST_VERB"],
+				["incola", "Einwohner m/f", a_deklination, "incol", "M/F", "IST_NOMEN"],
+				["vêndere", "verkaufen", "vênd", kons_deklination, "IST_VERB"],
+				["placêre", "gefallen", "placê", e_konjugation, "IST_VERB"],
 				["ita", "so"],
 				["interdum", "manchmal (Adv.)"],
-				["pîrâta", "Pirat, Seeräuber m.", a_deklination, "pirat", "M"],
+				["pîrâta", "Pirat, Seeräuber m.", a_deklination, "pirat", "M", "IST_NOMEN"],
 				["sed", "aber, sondern"],
 				["bene", "gut (Adv.)"],
-				["cônsulere (m. Dat.)", "sorgen für (jmdn.)"],
-				["cônsulere (m. Akk.)", "befragen, um Rat fragen"],
-				["vigilâre", "wachen, wachsam sein"],
-				["vigilia", "Nachtwache", a_deklination, "vigili", "F"],
-				["opprimere", "unterdrücken, bekämpfen, überfallen"],
-				["deus", "Gott", o_deklination, "de", "M"],
+				["cônsulere (m. Dat.)", "sorgen für (jmdn.)", "cônsul", kons_konjugation, "IST_VERB"],
+				["cônsulere (m. Akk.)", "befragen, um Rat fragen", "cônsul", kons_konjugation, "IST_VERB"],
+				["vigilâre", "wachen, wachsam sein", "vigil", a_konjugation, "IST_VERB"],
+				["vigilia", "Nachtwache", a_deklination, "vigili", "F", "IST_NOMEN"],
+				["opprimere", "unterdrücken, bekämpfen, überfallen", "opprim", kons_konjugation, "IST_VERB"],
+				["deus", "Gott", o_deklination, "de", "M", "IST_NOMEN"],
 				["post", "danach, später | nach (m. Akk.)"],
 				["cêterî, cêterae", "die übrigen, die anderen"],
-				["grâtia", "Dank, Ansehen, Beliebtheit, Gnade", a_deklination, "grati", "F"],
-				["agere", "treiben, betreiben, handeln, verhandeln, führen, tun"],
+				["grâtia", "Dank, Ansehen, Beliebtheit, Gnade", a_deklination, "grati", "F", "IST_NOMEN"],
+				["agere", "treiben, betreiben, handeln, verhandeln, führen, tun", "ag", kons_konjugation, "IST_VERB"],
 				["grâtia agere", "danken (tun)"],
 			],
 			[ // Lektion 4
-				["vita", "Leben", a_deklination, "vit", "F"],
+				["vita", "Leben", a_deklination, "vit", "F", "IST_NOMEN"],
 				["cum (m. Abl.)", "mit"],
 				["iam", "schon, jetzt gleich"],
 				["mâne (Adv.)", "früh am Morgen"],
 				["ê/ex (m. Abl.)", "aus"],
-				["lectus", "Bett, Liege", o_deklination, "lect", "M"],
-				["surgere", "aufstehen"],
+				["lectus", "Bett, Liege", o_deklination, "lect", "M", "IST_NOMEN"],
+				["surgere", "aufstehen", "surg", kons_konjugation, "IST_VERB"],
 				["-que", "und"],
-				["properâre", "schnell gehen, sich beeilen"],
+				["properâre", "schnell gehen, sich beeilen", "proper", a_konjugation, "IST_VERB"],
 				["in (m. Abl.)", "in (wo?), an, auf"],
-				["pônere", "setzen, stellen, legen"],
-				["expônere", "aussetzen, ausstellen, darlegen, erklären"],
-				["compônere", "zusammenstellen, verfassen"],
-				["colligere", "sammeln"],
+				["pônere", "setzen, stellen, legen", "pôn", kons_konjugation, "IST_VERB"],
+				["expônere", "aussetzen, ausstellen, darlegen, erklären", "expôn", kons_konjugation, "IST_VERB"],
+				["compônere", "zusammenstellen, verfassen", "compôn", kons_konjugation, "IST_VERB"],
+				["colligere", "sammeln", "collig", kons_konjugation, "IST_VERB"],
 				["tertius, tertia", "der/die dritte"],
-				["hôra", "Stunde", a_deklination, "hor", "F"],
-				["silva", "Wald", a_deklination, "silv", "F"],
-				["arbor", "Baum", kons_deklination, "arbor", "M"],
-				["caedere", "fällen, töten"],
+				["hôra", "Stunde", a_deklination, "hor", "F", "IST_NOMEN"],
+				["silva", "Wald", a_deklination, "silv", "F", "IST_NOMEN"],
+				["arbor", "Baum", kons_deklination, "arbor", "M", "IST_NOMEN"],
+				["caedere", "fällen, töten", "caed", kons_konjugation, "IST_VERB"],
 				["sub (m. Abl.)", "unter (wo?)"],
-				["cônsîdere", "sich setzen"],
-				["cibus", "Speise, Futter", o_deklination, "cib", "M"],
+				["cônsîdere", "sich setzen", "cônsîd", kons_konjugation, "IST_VERB"],
+				["cibus", "Speise, Futter", o_deklination, "cib", "M", "IST_NOMEN"],
 				["nonus, nona", "der/die neunte"],
 				["cûnctî, cûnctae", "alle"],
-				["trahere", "ziehen, schleppen"],
-				["contrahere", "zusammenziehen, versammeln"],
-				["locus", "Ort, Stelle, Platz", o_deklination, "loc", "M"],
-				["collocâre", "(zusammen)stellen, einrichten"],
-				["dare", "geben"],
-				["circumdare", "umgeben"],
-				["abdere", "verbergen"],
+				["trahere", "ziehen, schleppen", "trah", kons_konjugation, "IST_VERB"],
+				["contrahere", "zusammenziehen, versammeln", "contrah", kons_konjugation, "IST_VERB"],
+				["locus", "Ort, Stelle, Platz", o_deklination, "loc", "M", "IST_NOMEN"],
+				["collocâre", "(zusammen)stellen, einrichten", "colloc", a_konjugation, "IST_VERB"],
+				["dare", "geben", "d", a_konjugation, "IST_VERB"],
+				["circumdare", "umgeben", "circumd", a_konjugation, "IST_VERB"],
+				["abdere", "verbergen", "abd", kons_konjugation, "IST_VERB"],
 				["tandem (Adv.)", "endlich"],
-				["familia", "Familie, Hausgemeinschaft", a_deklination, "famili", "F"],
-				["lîberâre (m. Abl.)", "befreien (von)"],
+				["familia", "Familie, Hausgemeinschaft", a_deklination, "famili", "F", "IST_NOMEN"],
+				["lîberâre (m. Abl.)", "befreien (von)", "lîber", a_konjugation, "IST_VERB"],
 				["convenîre", "zusammenkommen, sich versammeln, (mit Akk.) (jmdn.) treffen"],
-				["cêna", "Essen, Mahlzeit (idr. Abendessen)", a_deklination, "cen", "F"],
-				["cênâre", "speisen"],
+				["cêna", "Essen, Mahlzeit (idr. Abendessen)", a_deklination, "cen", "F", "IST_NOMEN"],
+				["cênâre", "speisen", "cên", a_konjugation, "IST_VERB"],
 				["vîtam agere", "sein Leben führen, leben"],
 				["aliô locô", "an einer anderen Stelle"],
 				["tertiâ hôrâ", "zur dritten Stunde"],
 			],
 			[ // Lektion 5
 				["prîmus, prîma", "der/die erste"],
-				["vîcus", "Dorf", o_deklination, "vîc", "M"],
+				["vîcus", "Dorf", o_deklination, "vîc", "M", "IST_NOMEN"],
 				["Rômam", "nach Rom"],
-				["interrogâre", "fragen"],
-				["rogâre", "bitten, fragen"],
-				["salvêre", "gesund sein"],
+				["interrogâre", "fragen", "interrog", a_konjugation, "IST_VERB"],
+				["rogâre", "bitten, fragen", "rog", a_konjugation, "IST_VERB"],
+				["salvêre", "gesund sein", "salvê", e_konjugation, "IST_VERB"],
 				["salvê, salvête", "sei(d) gegrüßt, Guten Tag"],
 				["salvus, salva", "gesund, wohlbehalten"],
 				["cûr?", "warum?"],
-				["facere, faciô", "machen, tun (kurzvokalische)"],
+				["facere, faciô", "machen, tun (kurzvokalische)", "fac", kv_konjugation, "IST_VERB"],
 				["-ne", "entspricht dem Fragezeichen, immer an erstem Wort"],
-				["campus", "Feld, freier Platz", o_deklination, "camp", "M"],
+				["campus", "Feld, freier Platz", o_deklination, "camp", "M", "IST_NOMEN"],
 				["Campus Mârtius", "das Marsfeld (Platz in Rom)"],
 				["ita (Adv.)", "so, ja/richtig (in einer Antwort)"],
-				["cônsul,", "Konsul", kons_deklination, "konsul", "M"],
+				["cônsul,", "Konsul", kons_deklination, "konsul", "M", "IST_NOMEN"],
 				["novus, nova", "neu"],
 				["creâre", "wählen, erschaffen"],
 				["domî", "zu Hause"],
-				["manêre", "bleiben"],
-				["remanêre", "zurückbleiben, ausharren"],
+				["manêre", "bleiben", "manê", e_konjugation, "IST_VERB"],
+				["remanêre", "zurückbleiben, ausharren", "remanê", e_konjugation, "IST_VERB"],
 				["quid (Nom. und Akk.)", "was?"],
-				["putâre", "glauben, meinen, halten für"],
-				["computâre", "zusammenrechnen"],
+				["putâre", "glauben, meinen, halten für", "put", a_konjugation, "IST_VERB"],
+				["computâre", "zusammenrechnen", "comput", a_konjugation, "IST_VERB"],
 				["num (Fragepartikel)", "etwa... (man erwartet die Antwort nein)"],
-				["îgnôrâre", "nicht wissen, nicht kennen"],
-				["vîcînus", "Nachbar, benachbart", o_deklination, "vîcîn", "M"],
-				["candidâtus", "Kandidat, Wahlbewerber", o_deklination, "candidât", "M"],
+				["îgnôrâre", "nicht wissen, nicht kennen", "îgnôr", a_konjugation, "IST_VERB"],
+				["vîcînus", "Nachbar, benachbart", o_deklination, "vîcîn", "M", "IST_NOMEN"],
+				["candidâtus", "Kandidat, Wahlbewerber", o_deklination, "candidât", "M", "IST_NOMEN"],
 				["aut", "oder"],
 				["autem", "jedoch, aber"],
 				["minimê (Adv.)", "keineswegs, gar nicht"],
-				["dîcere", "sagen"],
+				["dîcere", "sagen", "dîc", kons_konjugation, "IST_VERB"],
 				["dîc!", "sag!"],
 				["optimus, optima", "der/die beste, ein sehr guter"],
-				["respondêre", "antworten"],
+				["respondêre", "antworten", "respondê", e_konjugation, "IST_VERB"],
 				["respônsum", "Antwort"],
 				["quidem", "jedenfalls, wenigstens"],
 				["equidem", "ich jedenfalls"],
 				["malus, mala", "schlecht, übel"],
-				["ôrâre", "reden, bitten"],
+				["ôrâre", "reden, bitten", "ôr", a_konjugation, "IST_VERB"],
 				["Mârcum cônsulem creâre", "Marcus zum Konsul wählen"],
 				["Mârcum amîcum bonum putâre", "Marcus für einen guten Freund halten"],
 			],
@@ -473,13 +512,17 @@
 var pair = 0;
 		var choice = 0;
 		var was_kng = false;
+		var was_konj = false;
 		var vokabel = document.getElementById("vokabel");
 		var translaterino = document.getElementById("translaterino");
 		var check = false;
 		
 		function quiz_clicked() {
 			if (ready) {
-				if (check) { // TRANSLATION
+
+				/* +----------+ Translation +----------+ */
+
+				if (check) {
 					if (was_kng) {
 						var base = quiz_pool[pair][3];
 						const deklinationen = quiz_pool[pair][2];
@@ -492,15 +535,31 @@ var pair = 0;
 						var transl = quiz_pool[pair][1];
 						translaterino.innerHTML = transl + "<br>" + kng0 + " | " + gender;
 					}
+
+					else if (was_konj) {
+						var base = quiz_pool[pair][2];
+						const konjugationen = quiz_pool[pair][3];
+						var end = konjugationen[choice][0];
+						var konj0 = konjugationen[choice][1];
+						vokabel.innerHTML = base + end;
+
+						var infinitiv = quiz_pool[pair][0];
+						var transl = quiz_pool[pair][1];
+						translaterino.innerHTML = infinitiv + "<br>" + transl + "<br>" + konj0;
+					}
+
 					else {
 						vokabel.innerHTML = quiz_pool[pair][0];
 						translaterino.innerHTML = quiz_pool[pair][1];
 					}
 				}
 				
-				else { // QUESTION
+				/* +----------+ Question +----------+ */
+
+				else {
 					pair = Math.floor(Math.random() * max);
-					if (kng && quiz_pool[pair][3]) {
+
+					if (kng && quiz_pool[pair][5] && quiz_pool[pair][5] == "IST_NOMEN") {
 						var base = quiz_pool[pair][3];
 						const deklinationen = quiz_pool[pair][2];
 						choice = Math.floor(Math.random() * deklinationen.length);
@@ -509,10 +568,23 @@ var pair = 0;
 						vokabel.innerHTML = base + end;
 						was_kng = true;
 					}
+
+					else if (konj && quiz_pool[pair][4] && quiz_pool[pair][4] == "IST_VERB") {
+						var base = quiz_pool[pair][2];
+						const konjugationen = quiz_pool[pair][3];
+						choice = Math.floor(Math.random() * konjugationen.length);
+						var end = konjugationen[choice][0];
+
+						vokabel.innerHTML = base + end;
+						was_konj = true;
+					}
+
 					else {
 						vokabel.innerHTML = quiz_pool[pair][0];
 						was_kng = false;
+						was_konj = false;
 					}
+
 					translaterino.innerHTML = "";
 				}
 				
@@ -525,8 +597,9 @@ var pair = 0;
 		var max = 0;
 		var ready = false;
 		var kng = false;
+		var konj = false;
 
-		function start(kng_btn, only_kng) {
+		function start(kng_btn, only_kng, konj_btn, only_konj) {
 			ready = true;
 			document.getElementById("quiz-wrap").classList.add("showme");
 
@@ -537,13 +610,31 @@ var pair = 0;
 				for (let i = 0; i < lektionen.length; i++) {
 					var checkbox = document.getElementById(`lektion${i+1}`);
 					if  (checkbox.checked) {
-						for (let j = 0; j < lektionen[i].length; j++) {
-							if (lektionen[i][j][3]) quiz_pool.push(lektionen[i][j]);
+						for (let j = 0; j < lektionen[i].length; j++) {;
+							if (lektionen[i][j][5] && lektionen[i][j][5] == "IST_NOMEN") {
+								quiz_pool.push(lektionen[i][j]);
+							}
 						}
 					}
 				}
 
-			} else { // ALLES
+			}
+			
+			else if (only_konj) { // NUR KONJUGATIONEN
+
+				for (let i = 0; i < lektionen.length; i++) {
+					var checkbox = document.getElementById(`lektion${i+1}`);
+					if  (checkbox.checked) {
+						for (let j = 0; j < lektionen[i].length; j++) {
+							if (lektionen[i][j][4] && lektionen[i][j][4] == "IST_VERB") {
+								quiz_pool.push(lektionen[i][j]);
+							}
+						}
+					}
+				}
+			}
+			
+			else { // ALLES
 
 				for (let i = 0; i < lektionen.length; i++) {
 					var checkbox = document.getElementById(`lektion${i+1}`);
@@ -558,8 +649,11 @@ var pair = 0;
 
 			kng = false;
 			was_kng = false;
+			konj = false;
+			was_konj = false;
 			choice = 0;
 			if (kng_btn) kng = true;
+			if (konj_btn) konj = true;
 
 			max = quiz_pool.length;
 			quiz_clicked();
@@ -594,4 +688,3 @@ var pair = 0;
 </body>
 
 </html>
-
