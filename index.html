@@ -60,10 +60,16 @@
 			background: #222;
 			margin: 3px;
 			display: flex;
-			justify-content: center;
 			align-items: center;
 			flex-direction: column;
 			user-select: none;
+			position: relative;
+		}
+
+		#counter {
+			position: absolute;
+			top: 5px;
+			right: 5px;
 		}
 		
 		@media screen and (max-width: 450px) {
@@ -83,7 +89,7 @@
 			font-size: 40px;
 			color: #880088;
 			font-weight: bold;
-			margin-bottom: 20px;
+			margin: 50px 0;
 		}
 
 		.translated {
@@ -216,6 +222,7 @@
 
 	<div id="quiz-wrap">
 		<div id="quiz" onclick="quiz_clicked()">
+			<div id="counter"></div>
 			<div id="vokabel" class="texterino"></div>
 			<div id="translaterino" class="row"></div>
 		</div>
@@ -507,14 +514,18 @@
 				["Mârcum cônsulem creâre", "Marcus zum Konsul wählen"],
 				["Mârcum amîcum bonum putâre", "Marcus für einen guten Freund halten"],
 			],
+			[
+				["luvure", "lieben, aber auf süß", "luvi", i_konjugation, "IST_VERB"],
+			]
 		];
 
-var pair = 0;
+		var pair = 0;
 		var choice = 0;
 		var was_kng = false;
 		var was_konj = false;
 		var vokabel = document.getElementById("vokabel");
 		var translaterino = document.getElementById("translaterino");
+		var counter = document.getElementById("counter");
 		var check = false;
 		
 		function quiz_clicked() {
@@ -533,7 +544,7 @@ var pair = 0;
 						var gender = quiz_pool[pair][4];
 
 						var transl = quiz_pool[pair][1];
-						translaterino.innerHTML = transl + "<br>" + kng0 + " | " + gender;
+						translaterino.innerHTML = quiz_pool[pair][0] + "<br>" + transl + "<br>" + kng0 + " | " + gender;
 					}
 
 					else if (was_konj) {
@@ -552,6 +563,16 @@ var pair = 0;
 						vokabel.innerHTML = quiz_pool[pair][0];
 						translaterino.innerHTML = quiz_pool[pair][1];
 					}
+
+					off_pool.push(quiz_pool[pair])
+					quiz_pool.splice(pair, 1);
+					max = quiz_pool.length;
+					counter.innerHTML = off_pool.length + "/" + initial_max;
+
+					if (quiz_pool.length == 0) {
+						quiz_pool = off_pool.slice();
+						off_pool = [];
+					}
 				}
 				
 				/* +----------+ Question +----------+ */
@@ -559,7 +580,7 @@ var pair = 0;
 				else {
 					pair = Math.floor(Math.random() * max);
 
-					if (kng && quiz_pool[pair][5] && quiz_pool[pair][5] == "IST_NOMEN") {
+					if (kng && quiz_pool[pair].length >= 5 && quiz_pool[pair][5] == "IST_NOMEN") {
 						var base = quiz_pool[pair][3];
 						const deklinationen = quiz_pool[pair][2];
 						choice = Math.floor(Math.random() * deklinationen.length);
@@ -569,7 +590,7 @@ var pair = 0;
 						was_kng = true;
 					}
 
-					else if (konj && quiz_pool[pair][4] && quiz_pool[pair][4] == "IST_VERB") {
+					else if (konj && quiz_pool[pair].length >= 4 && quiz_pool[pair][4] == "IST_VERB") {
 						var base = quiz_pool[pair][2];
 						const konjugationen = quiz_pool[pair][3];
 						choice = Math.floor(Math.random() * konjugationen.length);
@@ -594,10 +615,12 @@ var pair = 0;
 		}
 
 		var quiz_pool = [];
+		var off_pool = [];
 		var max = 0;
 		var ready = false;
 		var kng = false;
 		var konj = false;
+		var initial_max = 0;
 
 		function start(kng_btn, only_kng, konj_btn, only_konj) {
 			ready = true;
@@ -656,6 +679,8 @@ var pair = 0;
 			if (konj_btn) konj = true;
 
 			max = quiz_pool.length;
+			initial_max = quiz_pool.length;
+			counter.innerHTML = off_pool.length + "/" + initial_max;
 			quiz_clicked();
 		}
 
@@ -686,5 +711,4 @@ var pair = 0;
 		window.addEventListener('load', create_lection_toggles());
 	</script>
 </body>
-
 </html>
