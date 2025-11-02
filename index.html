@@ -260,6 +260,15 @@
 			["e", "Abl. Sg."],
 		]
 
+		var e_deklination = [
+			["es", "Nom. Sg., Nom. Pl., Akk. Pl."],
+			["ei", "Gen. Sg., Dat. Sg."],
+			["erum", "Gen. Pl."],
+			["ebus", "Dat. Pl., Abl. Pl."],
+			["em", "Akk. Sg."],
+			["e", "Abl. Sg."],
+		]
+
 		/* ---------- KONJUGATIONEN ---------- */
 		var a_konjugation = [
 			["o", "1. Pers. Sg. | Ich"],
@@ -314,6 +323,8 @@
 			["estis", "2. Pers. Pl."],
 			["sunt", "3. Pers. Pl."],		
 		]
+
+		/* FÜR ALLE UNREGELMÄßIGEN KONS. DEKL EIGENE ARRAYS HIER? */
 
 		/* ---------- VOKABELN ---------- */
 		var lektionen = [
@@ -514,8 +525,47 @@
 				["Mârcum cônsulem creâre", "Marcus zum Konsul wählen"],
 				["Mârcum amîcum bonum putâre", "Marcus für einen guten Freund halten"],
 			],
-			[
-				["luvure", "lieben, aber auf süß", "luvi", i_konjugation, "IST_VERB"],
+			[ // Lektion 6
+				["rês, reî", "Sache", e_deklination, "r", "F", "IST_NOMEN"],
+				["pûblicus, pûblica", "öffentlich"],
+				["rês pûblica", "Staat, Republik"],
+				["rêx, rêgis", "König"], /* DEKLINIERUNG FUNZT NICHT MEHR, STAMM UNREGELMÄßIG ----> TODO */
+				["enim (Adv.)", "nähmlich, denn"],
+				["invâdere", "eindringen, einfallen", "invâd", kons_konjugation, "IST_VERB"],
+				["socius", "Bundesgenosse, Verbündeter", o_deklination, "soci", "M", "IST_NOMEN"],
+				["societâs, tâtis", "Bündnis"],
+				["diês", "Tag", e_deklination, "di", "M", "IST_NOMEN"],
+				["meridiês, meridiêî", "Mittag", e_deklination, "meridi", "F", "IST_NOMEN"],
+				["cûria", "die Kurie (Gebäude für Senatsversammlungen)", a_deklination, "cûri", "F", "IST_NOMEN"],
+				["salûs, salûtis", "Rettung, Wohlergehen"],
+				["dêbêre", "müssen, schulden", "dêbê", e_konjugation, "IST_VERB"],
+				["spês", "Hoffnung, Erwartung", e_deklination, "sp", "F", "IST_NOMEN"],
+				["ante (mit Akk.)", "vor"],
+				["ante (Adv.)", "vorher"],
+				["â (nur vor Kons.) / ab (mit Abl.)", "von"],
+				["diû (Adv.)", "lange"],
+				["diûturnus, diûturna", "lange dauernd"],
+				["homô, hominis", "Mensch"], /* DEKLINIERUNG FUNZT NICHT MEHR, STAMM UNREGELMÄßIG ----> TODO */
+				["stâre", "sehen", "stâ", a_konjugation, "IST_VERB"],
+				["statua", "Standbild"],
+				["timor, timôris", "Furcht", kons_deklination, "timor", "M", "IST_NOMEN"],
+				["timidus, timida", "ängstlich"],
+				["scîre", "wissen", "scî", i_konjugation, "IST_VERB"],
+				["nescîre", "nicht wissen"],
+				["fidês", "Vertrauen, Treue, Glaube (christlich)", e_deklination, "r", "F", "IST_NOMEN"],
+				["rês, reî", "Sache", e_deklination, "r", "F", "IST_NOMEN"],
+				["rês, reî", "Sache", e_deklination, "r", "F", "IST_NOMEN"],
+				["rês, reî", "Sache", e_deklination, "r", "F", "IST_NOMEN"],
+				["rês, reî", "Sache", e_deklination, "r", "F", "IST_NOMEN"],
+				["rês, reî", "Sache", e_deklination, "r", "F", "IST_NOMEN"],
+				["rês, reî", "Sache", e_deklination, "r", "F", "IST_NOMEN"],
+				["rês, reî", "Sache", e_deklination, "r", "F", "IST_NOMEN"],
+				["rês, reî", "Sache", e_deklination, "r", "F", "IST_NOMEN"],
+				["rês, reî", "Sache", e_deklination, "r", "F", "IST_NOMEN"],
+				["rês, reî", "Sache", e_deklination, "r", "F", "IST_NOMEN"],
+				["rês, reî", "Sache", e_deklination, "r", "F", "IST_NOMEN"],
+				["rês, reî", "Sache", e_deklination, "r", "F", "IST_NOMEN"],
+				["rês, reî", "Sache", e_deklination, "r", "F", "IST_NOMEN"],
 			]
 		];
 
@@ -712,3 +762,4 @@
 	</script>
 </body>
 </html>
+
