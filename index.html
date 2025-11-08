@@ -21,7 +21,7 @@
 			margin: 0;
 			background-color: #222;
 			color: #eee;
-			font-family: Tahoma, sans-serif;;
+			font-family: Tahoma, sans-serif;
 			text-align: center;
 			display: flex;
 			justify-content: center;
@@ -29,26 +29,24 @@
 			flex-direction: column;
 		}
 
-		#menu  {
-			width: 450px;
-			height: fit-content;
-			padding: 10px 0;
+		.showme {
+			display: block !important;
+		}
+
+		#menu {
+			display: none;
 		}
 
 		#quiz-wrap {
-			width: 450px;
+			width: 400px;
 			height: fit-content;
 			background: linear-gradient(15deg, #880088, #aa2068, #cc3f47, #de6f3d, #f09f33, #de6f3d, #cc3f47, #aa2068, #880088) no-repeat;
 			display: none;
 		}
 
-		.showme {
-			display: block !important;
-		}
-
 		#quiz {
-			width: 444px;
-			height: 300px;
+			width: 394px;
+			height: fit-content;
 			background: #222;
 			margin: 3px;
 			display: flex;
@@ -63,47 +61,42 @@
 			top: 5px;
 			right: 5px;
 		}
-		
-		@media screen and (max-width: 450px) {
-			#menu, #quiz-wrap {
-				width: 100%;
-			}
-			#quiz {
-				width: calc(100% - 6px);
-			}
-		}
 
-		#translaterino {
-			font-size: 20px;
-			padding: 0 10px;
-		}
-
-		.texterino {
-			font-size: 30px;
+		#vokabel {
+			font-size: 25px;
 			color: #880088;
 			font-weight: bold;
-			margin: 50px 0;
-			padding: 0 10px;
+			margin: 25px 0;
+			padding: 0 20px;
 		}
 
-		.translated {
-			color:  #cc3f47;
+		#translation {
+			font-size: 16px;
+			padding: 0 20px;
+			min-height: 45px;
+		}
+		
+		i {
+			color: #aa2068;
 		}
 
-		.row {
+		i:before {
+			content: "« "
+		}
+
+		i:after {
+			content: " »"
+		}
+
+		#options {
+			width: 100%;
 			display: flex;
 			justify-content: center;
-			align-items: center;
-			flex-direction: column;
-		}
-
-		#lektionen {
-			margin: 10px 0;
 		}
 
 		.button {
 			width: 150px;
-			padding: 0.8em 2em;
+			padding: 10px 25px;
 			cursor: pointer;
 			gap: 0.4rem;
 			font-weight: bold;
@@ -116,436 +109,385 @@
 			background-position: left center;
 			box-shadow: 0 30px 10px -20px rgba(0,0,0,.2);
 			transition: background .3s ease;
-			margin: 5px;
+			margin: 15px 5px;
 			text-align: center;
 		}
 
 		.button:hover {
-			background-size: 320%;
 			background-position: right center;
 		}
 
-		.kng > div {
-			padding: 0 15px;
-		}
-
-		.kng > div:not(:last-of-type) {
-			border-right: 1px solid #eee;
+		.button:disabled {
+			background: #888;
+  			text-shadow: none;
 		}
 		
-		.checkbox-wrapper .ikxBAC {
-			appearance: none;
-			background-color: #dfe1e4;
-			border-radius: 72px;
-			border-style: none;
-			flex-shrink: 0;
-			height: 20px;
-			margin: 0;
-			position: relative;
-			width: 30px;
-		  }
-
-		  .checkbox-wrapper .ikxBAC::before {
-			bottom: -6px;
-			content: "";
-			left: -6px;
-			position: absolute;
-			right: -6px;
-			top: -6px;
-		  }
-
-		  .checkbox-wrapper .ikxBAC,
-		  .checkbox-wrapper .ikxBAC::after {
-			transition: all 100ms ease-out;
-		  }
-
-		  .checkbox-wrapper .ikxBAC::after {
-			background-color: #fff;
-			border-radius: 50%;
-			content: "";
-			height: 14px;
-			left: 3px;
-			position: absolute;
-			top: 3px;
-			width: 14px;
-		  }
-
-		  .checkbox-wrapper input[type=checkbox] {
-			cursor: default;
-		  }
-
-		  .checkbox-wrapper .ikxBAC:hover {
-			background-color: #c9cbcd;
-			transition-duration: 0s;
-		  }
-
-		  .checkbox-wrapper .ikxBAC:checked {
-			background-color: #cc3f47;
-		  }
-
-		  .checkbox-wrapper .ikxBAC:checked::after {
-			background-color: #fff;
-			left: 13px;
-		  }
-
-		  .checkbox-wrapper :focus:not(.focus-visible) {
-			outline: 0;
-		  }
-
-		  .checkbox-wrapper .ikxBAC:checked:hover {
-			background-color: #aa2068;
-		  }
+		.checkbox-wrapper .ikxBAC{appearance:none;background-color:#dfe1e4;border-radius:72px;border-style:none;flex-shrink:0;height:20px;margin:0;position:relative;width:30px}.checkbox-wrapper .ikxBAC::before{bottom:-6px;content:"";left:-6px;position:absolute;right:-6px;top:-6px}.checkbox-wrapper .ikxBAC,.checkbox-wrapper .ikxBAC::after{transition:.1s ease-out}.checkbox-wrapper .ikxBAC::after{background-color:#fff;border-radius:50%;content:"";height:14px;left:3px;position:absolute;top:3px;width:14px}.checkbox-wrapper input[type=checkbox]{cursor:default}.checkbox-wrapper .ikxBAC:hover{background-color:#c9cbcd;transition-duration:0s;cursor:pointer}.checkbox-wrapper .ikxBAC:checked{background-color:#cc3f47}.checkbox-wrapper .ikxBAC:checked::after{background-color:#fff;left:13px}.checkbox-wrapper :focus:not(.focus-visible){outline:0}.checkbox-wrapper .ikxBAC:checked:hover{background-color:#aa2068;cursor:pointer}
 	</style>
 </head>
 <body>
 	<div id="quiz-wrap">
-		<div id="quiz" onclick="quiz_clicked()">
+		<div id="quiz">
 			<div id="counter"></div>
-			<div id="vokabel" class="texterino"></div>
-			<div id="translaterino" class="row"></div>
+			<div id="vokabel"></div>
+			<div id="translation"></div>
+
+			<div id="options">
+				<button class="button" onclick="quiz(true)" id="repeat" disabled>Wiederholen</button>
+				<button class="button" onclick="quiz()" id="next">Weiter</button>
+			</div>
 		</div>
 	</div>
 
-	<div id="menu">
-		<div class="row">
-			<button class="button" onclick="start(false)">Grundformen</button>
-			<button class="button" onclick="start(true)">Nur Kurze</button>
-		</div>
-
+	<div id="menu" class="showme">
+		<button class="button" onclick="start()">Start &hearts;</button>
 		<div id="lektionen"></div>
 	</div>
 	
 	<script>
 		var lektionen = [
-				[ // Lektion 1
-				["insula", "Insel", false],
-				["esse - est", "sein - er/sie/es ist", false],
-				["mercâtor", "Kaufmann", false],
-				["dominus", "Herr", false],
-				["servus", "Sklave, Diener", false],
-				["domina", "Herrin", false],
-				["medicus", "Arzt", false],
-				["intrâre", "eintreten, betreten", false],
-				["labôrâre", "arbeiten", false],
-				["nôn", "nicht", true],
-				["lûdere", "spielen", false],
-				["vocâre", "rufen, nennen", false],
-				["quis? - quem?", "wer? - wen?", true],
-				["vidêre", "sehen", "vidê", false],
-				["ancilla", "Sklavin", false],
-				["timêre", "fürchten", false],
-				["morbus", "Krankheit", false],
-				["cûrâre", "kümmern, sorgen, behandeln, pflegen", false],
-				["agricola", "Bauer m.", false],
-				["mûrus", "Mauer", false],
-				["aedificâre", "bauen", false],
-				["labor", "Arbeit, Mühe", false],
-				["amâre", "lieben, gern haben", false],
-				["quaerere", "suchen, fragen (nach)", false],
-				["conquîrere", "zusammensuchen", false],
-				["ubî", "wo?", true],
-				["ad (mit Akk.)", "zu, bei", true],
-				["in (mit Akk.)", "in, hinein, nach", true],
-				["circâ (mit Akk.)", "um, herum", true],
-				["per (mit Akk.)", "durch", true],
-				["equus", "Pferd", false],
-				["equitâre", "reiten", false],
-				["eques", "Reiter", false],
-				["aula", "Hof, Innenhof", false],
-				["currere", "laufen", false],
+			[ // Lektion 1
+				["insula", "Insel"],
+				["esse", "sein"],
+				["mercator", "Kaufmann"],
+				["dominus", "Herr"],
+				["servus", "Sklave, Diener"],
+				["domina", "Herrin"],
+				["medicus", "Arzt"],
+				["intrare", "eintreten, betreten"],
+				["laborare", "arbeiten"],
+				["non", "nicht"],
+				["ludere", "spielen<br><i>Mit dem Luder spielen 👀</i>"],
+				["vocare", "rufen, nennen"],
+				["quis? - quem?", "wer? - wen?"],
+				["videre", "sehen", "vide"],
+				["ancilla", "Sklavin"],
+				["timere", "fürchten"],
+				["morbus", "Krankheit"],
+				["curare", "kümmern, sorgen, behandeln, pflegen"],
+				["agricola", "Bauer m."],
+				["murus", "Mauer"],
+				["aedificare", "bauen"],
+				["labor", "Arbeit, Mühe"],
+				["amare", "lieben, gern haben"],
+				["quaerere", "suchen, fragen (nach)"],
+				["conquirere", "zusammensuchen"],
+				["ubi", "wo?<br><i>Wo ist mein Geld hin, Ubisoft?</i>"],
+				["ad", "zu, bei (mit Akk.)"],
+				["in", "in, hinein, nach (mit Akk.)"],
+				["circa", "um, herum (mit Akk.)"],
+				["per", "durch (mit Akk.)"],
+				["equus", "Pferd"],
+				["equitare", "reiten"],
+				["eques", "Reiter"],
+				["aula", "Hof, Innenhof"],
+				["currere", "laufen"],
 			],
 			[ // Lektion 2
-				["bonus, bona", "gut", false],
-				["magnus", "groß, bedeutend (Adj.)", false],
-				["villa", "Haus, Landhaus", false],
-				["parvus", "klein (Adj.)", false],
-				["aegrôtus", "krank (Adj.)", false],
-				["ôrâtor", "Redner", false],
-				["laudâre", "loben", false],
-				["et", "und, auch", false],
-				["amîcus", "Freund", false],
-				["amîcitia", "Freundschaft", false],
-				["hodiê", "heute (Adv.)", false],
-				["venîre", "kommen", false],
-				["circumvenîre", "umringen, hintergehen", false],
-				["etiam", "auch, sogar, noch", true],
-				["amîca", "Freundin", false],
-				["invîtâre", "einladen", false],
-				["libenter", "gern (Adv.)", false],
-				["salûtâre", "grüßen, begrüßen", false],
-				["tum", "dann, darauf (Adv.)", true],
-				["itaque", "daher, deswegen (Adv.)", true],
-				["saepe", "oft (Adv.)", true],
-				["vîsitâre", "besuchen", false],
-				["imperâtor", "Feldherr, Kaiser", false],
-				["multî, multae", "viele", false],
-				["portâre", "tragen", false],
-				["exportâre", "ausführen, fortschaffen", false],
-				["trânsportâre", "hinüberbringen", false],
-				["via", "Weg, Straße", false],
-				["victor", "Sieger", false],
-				["laetus", "froh, fröhlich (Adj.)", false],
-				["laetitia", "Freude", false],
-				["clâmâre", "rufen, schreien", false],
-				["senâtor", "Senator", false],
-				["adesse", "da sein, anwesend sein, helfen, beistehen", true],
-				["adsunt", "sie sind da, sie sind anwesend", true],
-				["populus", "Volk", false],
-				["audîre", "hören", false],
-				["Iô triumphe!", "Hurra! Triumph!", false],
+				["bonus, bona", "gut"],
+				["magnus", "groß, bedeutend (Adj.)"],
+				["villa", "Haus, Landhaus"],
+				["parvus", "klein (Adj.)"],
+				["aegrotus", "krank (Adj.)"],
+				["orator", "Redner"],
+				["laudare", "loben"],
+				["et", "und, auch"],
+				["amicus", "Freund"],
+				["amicitia", "Freundschaft"],
+				["hodie", "heute (Adv.)"],
+				["venire", "kommen"],
+				["circumvenire", "umringen, hintergehen"],
+				["etiam", "auch, sogar, noch"],
+				["amica", "Freundin"],
+				["invitare", "einladen"],
+				["libenter", "gern (Adv.)<br><i>libenter/liebend<u>gern</u></i>"],
+				["salutare", "grüßen, begrüßen"],
+				["tum", "dann, darauf (Adv.)"],
+				["itaque", "daher, deswegen (Adv.)"],
+				["saepe", "oft (Adv.)"],
+				["visitare", "besuchen"],
+				["imperator", "Feldherr, Kaiser"],
+				["multi, multae", "viele"],
+				["portare", "tragen"],
+				["exportare", "ausführen, fortschaffen"],
+				["transportare", "hinüberbringen"],
+				["via", "Weg, Straße"],
+				["victor", "Sieger"],
+				["laetus", "froh, fröhlich (Adj.)"],
+				["laetitia", "Freude"],
+				["clamare", "rufen, schreien"],
+				["senator", "Senator"],
+				["adesse", "da sein, anwesend sein, helfen, beistehen"],
+				["adsunt", "sie sind da, sie sind anwesend"],
+				["populus", "Volk"],
+				["audire", "hören"],
+				["Io triumphe!", "Hurra! Triumph!"],
 			],
 			[ // Lektion 3
-				["nam", "denn", true],
-				["patria", "Vaterland, Heimat", false],
-				["patrius, a, um", "väterlich", false],
-				["prôvincia", "Provinz", false],
-				["nâvigâre", "segeln, fahren (mit dem Schiff)", false],
-				["capere", "fassen, ergreifen, erobern", false],
-				["captîvus", "Gefangener", false],
-				["dîvitiae, dîvitiârum", "Reichtum", false],
-				["parâre", "bereiten, zubereiten", false],
-				["comparâre", "verschaffen, erwerben, vergleichen", false],
-				["appropinquâre", "sich nähern", false],
-				["alius, alia", "ein anderer, eine andere", false],
-				["aliênus", "fremd", false],
-				["importâre", "einführen", "import", false],
-				["incola", "Einwohner m/f", false],
-				["vêndere", "verkaufen", false],
-				["placêre", "gefallen", false],
-				["ita", "so", true],
-				["interdum", "manchmal (Adv.)", false],
-				["pîrâta", "Pirat, Seeräuber m.", false],
-				["sed", "aber, sondern", true],
-				["bene", "gut (Adv.)", true],
-				["cônsulere (m. Dat.)", "sorgen für (jmdn.)", false],
-				["cônsulere (m. Akk.)", "befragen, um Rat fragen", false],
-				["vigilâre", "wachen, wachsam sein", false],
-				["vigilia", "Nachtwache", false],
-				["opprimere", "unterdrücken, bekämpfen, überfallen", false],
-				["deus", "Gott", false],
-				["post", "danach, später | nach (m. Akk.)", true],
-				["cêterî, cêterae", "die übrigen, die anderen", false],
-				["grâtia", "Dank, Ansehen, Beliebtheit, Gnade", false],
-				["agere", "treiben, betreiben, handeln, verhandeln, führen, tun", false],
-				["grâtia agere", "danken (tun)", false],
+				["nam", "denn"],
+				["patria", "Vaterland, Heimat"],
+				["patrius, a, um", "väterlich"],
+				["provincia", "Provinz"],
+				["navigare", "segeln, fahren (mit dem Schiff)"],
+				["capere", "fassen, ergreifen, erobern"],
+				["captivus", "Gefangener"],
+				["divitiae, divitiarum", "Reichtum"],
+				["parare", "bereiten, zubereiten"],
+				["comparare", "verschaffen, erwerben, vergleichen"],
+				["appropinquare", "sich nähern"],
+				["alius, alia", "ein anderer, eine andere"],
+				["alienus", "fremd"],
+				["importare", "einführen", "import"],
+				["incola", "Einwohner m/f"],
+				["vendere", "verkaufen"],
+				["placere", "gefallen"],
+				["ita", "so"],
+				["interdum", "manchmal (Adv.)"],
+				["pirata", "Pirat, Seeräuber m."],
+				["sed", "aber, sondern"],
+				["bene", "gut (Adv.)"],
+				["consulere ", "sorgen für (jmdn.) (mit Dat.)<br>befragen, um Rat fragen (mit Akk.)"],
+				["vigilare", "wachen, wachsam sein"],
+				["vigilia", "Nachtwache"],
+				["opprimere", "unterdrücken, bekämpfen, überfallen"],
+				["deus", "Gott"],
+				["post", "danach, später | nach (mit Akk.)"],
+				["ceteri, ceterae", "die übrigen, die anderen"],
+				["gratia", "Dank, Ansehen, Beliebtheit, Gnade"],
+				["agere", "treiben, betreiben, handeln, verhandeln, führen, tun"],
+				["gratia agere", "danken (tun)"],
 			],
 			[ // Lektion 4
-				["vita", "Leben", false],
-				["cum (m. Abl.)", "mit", true],
-				["iam", "schon, jetzt gleich", true],
-				["mâne (Adv.)", "früh am Morgen", true],
-				["ê/ex (m. Abl.)", "aus", false],
-				["lectus", "Bett, Liege", false],
-				["surgere", "aufstehen", false],
-				["-que", "und", false],
-				["properâre", "schnell gehen, sich beeilen", "proper", false],
-				["in (m. Abl.)", "in (wo?), an, auf", false],
-				["pônere", "setzen, stellen, legen", "pôn", false],
-				["expônere", "aussetzen, ausstellen, darlegen, erklären", false],
-				["compônere", "zusammenstellen, verfassen", false],
-				["colligere", "sammeln", false],
-				["tertius, tertia", "der/die dritte", false],
-				["hôra", "Stunde", true],
-				["silva", "Wald", false],
-				["arbor", "Baum", false],
-				["caedere", "fällen, töten", false],
-				["sub (m. Abl.)", "unter (wo?)", true],
-				["cônsîdere", "sich setzen", false],
-				["cibus", "Speise, Futter", false],
-				["nonus, nona", "der/die neunte", false],
-				["cûnctî, cûnctae", "alle", false],
-				["trahere", "ziehen, schleppen", false],
-				["contrahere", "zusammenziehen, versammeln", false],
-				["locus", "Ort, Stelle, Platz", false],
-				["collocâre", "(zusammen)stellen, einrichten", false],
-				["dare", "geben", true],
-				["circumdare", "umgeben", false],
-				["abdere", "verbergen", false],
-				["tandem (Adv.)", "endlich", false],
-				["familia", "Familie, Hausgemeinschaft", false],
-				["lîberâre (m. Abl.)", "befreien (von)", false],
-				["convenîre", "zusammenkommen, sich versammeln, (mit Akk.) (jmdn.) treffen", false],
-				["cêna", "Essen, Mahlzeit (idr. Abendessen)", true],
-				["cênâre", "speisen", false],
-				["vîtam agere", "sein Leben führen, leben", false],
-				["aliô locô", "an einer anderen Stelle", false],
-				["tertiâ hôrâ", "zur dritten Stunde", false],
+				["vita", "Leben"],
+				["cum", "mit (mit Abl.)"],
+				["iam", "schon, jetzt gleich<br><i>iam iam, ich habe <u>schon</u> gegessen</i>"],
+				["mane", "früh am Morgen (Adv.)"],
+				["e/ex", "aus (mit Abl.)<br><i><u>e</u> nur vor Konsonanten</i>"],
+				["lectus", "Bett, Liege"],
+				["surgere", "aufstehen"],
+				["-que", "und"],
+				["properare", "schnell gehen, sich beeilen", "proper"],
+				["in", "in (wo?), an, auf (mit Abl.)"],
+				["ponere", "setzen, stellen, legen", "pon"],
+				["exponere", "aussetzen, ausstellen, darlegen, erklären"],
+				["componere", "zusammenstellen, verfassen"],
+				["colligere", "sammeln"],
+				["tertius, tertia", "der/die dritte"],
+				["hora", "Stunde"],
+				["silva", "Wald"],
+				["arbor", "Baum"],
+				["caedere", "fällen, töten"],
+				["sub", "unter (wo?) (mit Abl.)"],
+				["considere", "sich setzen"],
+				["cibus", "Speise, Futter"],
+				["nonus, nona", "der/die neunte"],
+				["cuncti, cunctae", "alle"],
+				["trahere", "ziehen, schleppen"],
+				["contrahere", "zusammenziehen, versammeln"],
+				["locus", "Ort, Stelle, Platz"],
+				["collocare", "(zusammen)stellen, einrichten"],
+				["dare", "geben"],
+				["circumdare", "umgeben"],
+				["abdere", "verbergen"],
+				["tandem", "endlich (Adv.)"],
+				["familia", "Familie, Hausgemeinschaft"],
+				["liberare", "befreien (von) (mit Abl.)"],
+				["convenire", "zusammenkommen, sich versammeln, (mit Akk.) (jmdn.) treffen"],
+				["cena", "Essen, Mahlzeit (idr. Abendessen)"],
+				["cenare", "speisen"],
+				["vitam agere", "sein Leben führen, leben"],
+				["alio loco", "an einer anderen Stelle"],
+				["tertia hora", "zur dritten Stunde"],
 			],
 			[ // Lektion 5
-				["prîmus, prîma", "der/die erste", false],
-				["vîcus", "Dorf", false],
-				["Rômam", "nach Rom", false],
-				["interrogâre", "fragen", false],
-				["rogâre", "bitten, fragen", false],
-				["salvêre", "gesund sein", false],
-				["salvê, salvête", "sei(d) gegrüßt, Guten Tag", false],
-				["salvus, salva", "gesund, wohlbehalten", false],
-				["cûr?", "warum?", true],
-				["facere, faciô", "machen, tun (kurzvokalische)", false],
-				["-ne", "entspricht dem Fragezeichen, immer an erstem Wort", false],
-				["campus", "Feld, freier Platz", false],
-				["Campus Mârtius", "das Marsfeld (Platz in Rom)", false],
-				["ita (Adv.)", "so, ja/richtig (in einer Antwort)", true],
-				["cônsul", "Konsul", false],
-				["novus, nova", "neu", false],
-				["creâre", "wählen, erschaffen", false],
-				["domî", "zu Hause", true],
-				["manêre", "bleiben", false],
-				["remanêre", "zurückbleiben, ausharren", false],
-				["quid (Nom. und Akk.)", "was?", true],
-				["putâre", "glauben, meinen, halten für", false],
-				["computâre", "zusammenrechnen", false],
-				["num (Fragepartikel)", "etwa... (man erwartet die Antwort nein)", false],
-				["îgnôrâre", "nicht wissen, nicht kennen", false],
-				["vîcînus", "Nachbar, benachbart", false],
-				["candidâtus", "Kandidat, Wahlbewerber", false],
-				["aut", "oder", true],
-				["autem", "jedoch, aber", true],
-				["minimê (Adv.)", "keineswegs, gar nicht", false],
-				["dîcere", "sagen", false],
-				["dîc!", "sag!", false],
-				["optimus, optima", "der/die beste, ein sehr guter", false],
-				["respondêre", "antworten", false],
-				["respônsum", "Antwort", false],
-				["quidem", "jedenfalls, wenigstens", true],
-				["equidem", "ich jedenfalls", true],
-				["malus, mala", "schlecht, übel", false],
-				["ôrâre", "reden, bitten", false],
-				["Mârcum cônsulem creâre", "Marcus zum Konsul wählen", false],
-				["Mârcum amîcum bonum putâre", "Marcus für einen guten Freund halten", false],
+				["primus, prima", "der/die erste"],
+				["vicus", "Dorf"],
+				["Romam", "nach Rom"],
+				["interrogare", "fragen"],
+				["rogare", "bitten, fragen"],
+				["salvere", "gesund sein"],
+				["salve, salvete", "sei(d) gegrüßt, Guten Tag"],
+				["salvus, salva", "gesund, wohlbehalten"],
+				["cur?", "warum?"],
+				["facere, facio", "machen, tun (kurzvokalische)"],
+				["-ne", "entspricht dem Fragezeichen, immer an erstem Wort"],
+				["campus", "Feld, freier Platz"],
+				["Campus Martius", "das Marsfeld (Platz in Rom)"],
+				["ita", "so, ja/richtig (in einer Antwort) (Adv.)"],
+				["consul", "Konsul"],
+				["novus, nova", "neu"],
+				["creare", "wählen, erschaffen"],
+				["domi", "zu Hause"],
+				["manere", "bleiben"],
+				["remanere", "zurückbleiben, ausharren"],
+				["quid", "was? (Nom. und Akk.)"],
+				["putare", "glauben, meinen, halten für<br><i>Russland glaubt (an) Putin</i>"],
+				["computare", "zusammenrechnen"],
+				["num", "etwa... (man erwartet die Antwort nein, Fragepartikel)"],
+				["ignorare", "nicht wissen, nicht kennen"],
+				["vicinus", "Nachbar, benachbart"],
+				["candidatus", "Kandidat, Wahlbewerber"],
+				["aut", "oder"],
+				["autem", "jedoch, aber"],
+				["minime", "keineswegs, gar nicht (Adv.)"],
+				["dicere", "sagen"],
+				["dic!", "sag!"],
+				["optimus, optima", "der/die beste, ein sehr guter"],
+				["respondere", "antworten"],
+				["responsum", "Antwort"],
+				["quidem", "jedenfalls, wenigstens"],
+				["equidem", "ich jedenfalls"],
+				["malus, mala", "schlecht, übel"],
+				["orare", "reden, bitten"],
+				["Marcum consulem creare", "Marcus zum Konsul wählen"],
+				["Marcum amicum bonum putare", "Marcus für einen guten Freund halten"],
 			],
 			[ // Lektion 6
-				["rês, reî", "Sache", true],
-				["pûblicus, pûblica", "öffentlich", false],
-				["rês pûblica", "Staat, Republik", false],
-				["rêx, rêgis", "König", false],
-				["enim (Adv.)", "nähmlich, denn", true],
-				["invâdere", "eindringen, einfallen", false],
-				["socius", "Bundesgenosse, Verbündeter", false],
-				["societâs, tâtis", "Bündnis", false],
-				["diês", "Tag", true],
-				["meridiês, meridiêî", "Mittag", false],
-				["cûria", "die Kurie (Gebäude für Senatsversammlungen)", false],
-				["salûs, salûtis", "Rettung, Wohlergehen", false],
-				["dêbêre", "müssen, schulden", false],
-				["spês", "Hoffnung, Erwartung", true],
-				["ante (mit Akk.)", "vor", true],
-				["ante (Adv.)", "vorher", true],
-				["â (nur vor Kons.) / ab (mit Abl.)", "von", false],
-				["diû (Adv.)", "lange", true],
-				["diûturnus, diûturna", "lange dauernd", false],
-				["homô, hominis", "Mensch", false],
-				["stâre", "sehen", false],
-				["statua", "Standbild", false],
-				["timor, timôris", "Furcht", false],
-				["timidus, timida", "ängstlich", false],
-				["scîre", "wissen", false],
-				["nescîre", "nicht wissen", false],
-				["fidês", "Vertrauen, Treue, Glaube (christlich)", false],
-				["fîdus, fida", "treu", false],
-				["habêre", "haben", false],
-				["semper (Adv.)", "immer", false],
-				["pûgnâre", "kämpfen", false],
-				["oppûgnâre", "bestürmen", false],
-				["iubêre (mit Akk.)", "(jmdm.) befehlen", false],
-				["cônstat (nur 3 Pers. Sg.)", "es steht fest", false],
-				["abesse, absum", "abwesend sein, fehlen", true],
-				["nunc (Adv.)", "nun, jetzt", true],
-				["causa", "Grund, Ursache, Gerichtsverfahren", false],
-				["nôn iam", "nicht mehr", true],
-				["gaudêre", "sich freuen", false],
-				["aliquis, Akk. aliquem", true],
-				["aliquid", "etwas, irgendwas", true],
-				["aliquî, aliquae", "irgendwelche, einige", true],
-				["neque", "und nicht, aber nicht, auch nicht", true],
-				["neque ... neque", "weder ... noch", true],
-				["pecûnia", "Geld", false],
-				["accipere", "annehmen, empfangen", false],
-				["incipere", "beginnen, anfangen", false],
-				["fidem habêre (m. Dat.)", "(jmdm.) glauben, (jmdm.) vertrauen", false],
-			]
+				["res, rei", "Sache"],
+				["publicus, publica", "öffentlich"],
+				["res publica", "Staat, Republik"],
+				["rex, regis", "König"],
+				["enim", "nähmlich, denn (Adv.)"],
+				["invadere", "eindringen, einfallen"],
+				["socius", "Bundesgenosse, Verbündeter"],
+				["societas, tatis", "Bündnis"],
+				["dies", "Tag"],
+				["meridies, meridiei", "Mittag"],
+				["curia", "die Kurie (Gebäude für Senatsversammlungen)"],
+				["salus, salutis", "Rettung, Wohlergehen"],
+				["debere", "müssen, schulden"],
+				["spes", "Hoffnung, Erwartung"],
+				["ante", "vor (mit Akk.)"],
+				["ante", "vorher (Adv.)"],
+				["a, ab", "von (mit Abl.)<br><i><u>a</u> nur vor Konsonanten</i>"],
+				["diu", "lange (Adv.)"],
+				["diuturnus, diuturna", "lange dauernd"],
+				["homo, hominis", "Mensch"],
+				["stare", "sehen"],
+				["statua", "Standbild"],
+				["timor, timoris", "Furcht"],
+				["timidus, timida", "ängstlich"],
+				["scire", "wissen"],
+				["nescire", "nicht wissen"],
+				["fides", "Vertrauen, Treue, Glaube (christlich)"],
+				["fidus, fida", "treu"],
+				["habere", "haben"],
+				["semper", "immer (Adv.)"],
+				["pugnare", "kämpfen"],
+				["oppugnare", "bestürmen"],
+				["iubere", "(jmdm.) befehlen (mit Akk.)"],
+				["constat", "es steht fest (nur 3. Sg.)"],
+				["abesse, absum", "abwesend sein, fehlen"],
+				["nunc", "nun, jetzt (Adv.)"],
+				["causa", "Grund, Ursache, Gerichtsverfahren"],
+				["non iam", "nicht mehr"],
+				["gaudere", "sich freuen"],
+				["aliquis, aliquem", "jemand, irgendeiner"],
+				["aliquid", "etwas, irgendwas"],
+				["aliqui, aliquae", "irgendwelche, einige"],
+				["neque", "und nicht, aber nicht, auch nicht"],
+				["neque ... neque", "weder ... noch"],
+				["pecunia", "Geld"],
+				["accipere", "annehmen, empfangen"],
+				["incipere", "beginnen, anfangen"],
+				["fidem habere", "(jmdm.) glauben, (jmdm.) vertrauen (mit Dat.)"],
+			],
 		];
 
-		var pair = 0;
-		var vokabel = document.getElementById("vokabel");
-		var translaterino = document.getElementById("translaterino");
-		var counter = document.getElementById("counter");
-		var check = false;
-		
-		function quiz_clicked() {
-			if (ready) {
+		var id = (n) => document.getElementById(n);
 
-				/* +----------+ Translation +----------+ */
-
-				if (check) {
-					translaterino.innerHTML = quiz_pool[pair][1];
-
-					off_pool.push(quiz_pool[pair])
-					quiz_pool.splice(pair, 1);
-					max = quiz_pool.length;
-					counter.innerHTML = off_pool.length + "/" + initial_max;
-
-					if (quiz_pool.length == 0) {
-						quiz_pool = off_pool.slice();
-						off_pool = [];
-					}
-				}
-				
-				/* +----------+ Question +----------+ */
-
-				else {
-					pair = Math.floor(Math.random() * max);
-					vokabel.innerHTML = quiz_pool[pair][0];
-					translaterino.innerHTML = "";
-				}
-				
-				check = !check;
-				vokabel.classList.toggle("translated");
-			}
-		}
+		var vokabel = id("vokabel");
+		var translation = id("translation");
+		var counter = id("counter");
+		var repeat = id("repeat");
+		var next = id("next");
 
 		var quiz_pool = [];
-		var off_pool = [];
+		var repeat_pool = [];
+		var check = false;
+		var pair = 0;
 		var max = 0;
-		var ready = false;
+		var count = 0;
 		var initial_max = 0;
+		var first_run = true;
+		var done = false;
 
-		function start(only_short) {
-			ready = true;
-			document.getElementById("quiz-wrap").classList.add("showme");
+		function quiz(push_to_repeat=false) {
+			// LÖSUNG + BUTTONS ANZEIGEN
+			if (check) {
+				translation.innerHTML = quiz_pool[pair][1];
+				repeat.disabled = false;
+			}
 
-			quiz_pool = [];
+			 // NEUE VOKABEL ANZEIGEN
+			else {
+				if (push_to_repeat) repeat_pool.push(quiz_pool[pair]);
 
-			if (only_short) { // NUR KURZE
+				if (first_run) first_run = false;
+				else quiz_pool.splice(pair, 1);
 
-				for (let i = 0; i < lektionen.length; i++) {
-					var checkbox = document.getElementById(`lektion${i+1}`);
-					if  (checkbox.checked) {
-						for (let j = 0; j < lektionen[i].length; j++) {;
-							if (lektionen[i][j][2] == true) {
-								quiz_pool.push(lektionen[i][j]);
-							}
-						}
+				// VOKABELN DURCHLAUFEN
+				if (quiz_pool.length == 0) {
+
+					// WIEDERHOLUNGEN VERFÜGBAR
+					if (repeat_pool.length > 0) {
+						quiz_pool = repeat_pool.slice();
+						repeat_pool = [];
+
+						initial_max = quiz_pool.length;
+						count = 0;
 					}
+
+					// WIEDERHOLUNGEN DURCHLAUFEN
+					else done = true;
+
 				}
 
+				if (done) {
+					counter.innerHTML = "";
+					vokabel.innerHTML = "";
+					translation.innerHTML = "Fertig &hearts;";
+
+					repeat.disabled = true;
+					next.disabled = true;
+				}
+
+				else {
+					count++;
+					counter.innerHTML = count + "/" + initial_max;
+
+					max = quiz_pool.length;
+					pair = Math.floor(Math.random() * max);
+
+					vokabel.innerHTML = quiz_pool[pair][0];
+					translation.innerHTML = "";
+
+					repeat.disabled = true;
+				}
 			}
 			
-			else { // ALLES
-				for (let i = 0; i < lektionen.length; i++) {
-					var checkbox = document.getElementById(`lektion${i+1}`);
-					if  (checkbox.checked) {
-						for (let j = 0; j < lektionen[i].length; j++) {
-							quiz_pool.push(lektionen[i][j]);
-						}
+			check = !check;
+		}
+
+		function start() {
+			document.getElementById("quiz-wrap").classList.add("showme");
+			document.getElementById("menu").classList.remove("showme");
+
+			quiz_pool = [];
+			for (let i = 0; i < lektionen.length; i++) {
+				var checkbox = document.getElementById(`lektion${i+1}`);
+				if  (checkbox.checked) {
+					for (let j = 0; j < lektionen[i].length; j++) {
+						quiz_pool.push(lektionen[i][j]);
 					}
 				}
 			}
 
 			max = quiz_pool.length;
 			initial_max = quiz_pool.length;
-			counter.innerHTML = off_pool.length + "/" + initial_max;
-			quiz_clicked();
+			counter.innerHTML = count + "/" + initial_max;
+
+			quiz();
 		}
 
 		function create_lection_toggles() {
@@ -576,6 +518,3 @@
 	</script>
 </body>
 </html>
-
-
-
