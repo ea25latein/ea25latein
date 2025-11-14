@@ -33,19 +33,23 @@
 			display: block !important;
 		}
 
+		.hidden {
+			display: none !important;
+		}
+
 		#menu {
 			display: none;
 		}
 
 		#quiz-wrap {
-			width: 400px;
+			width: 350px;
 			height: fit-content;
 			background: linear-gradient(15deg, #880088, #aa2068, #cc3f47, #de6f3d, #f09f33, #de6f3d, #cc3f47, #aa2068, #880088) no-repeat;
 			display: none;
 		}
 
 		#quiz {
-			width: 394px;
+			width: 344px;
 			height: fit-content;
 			background: #222;
 			margin: 3px;
@@ -90,12 +94,13 @@
 
 		#options {
 			width: 100%;
+			min-height: 25px;
 			display: flex;
 			justify-content: center;
 		}
 
 		.button {
-			width: 150px;
+			width: 140px;
 			padding: 10px 25px;
 			cursor: pointer;
 			gap: 0.4rem;
@@ -140,7 +145,7 @@
 	</div>
 
 	<div id="menu" class="showme">
-		<button class="button" onclick="start()">Start &hearts;</button>
+		<button class="button" onclick="start()">Start</button>
 		<div id="lektionen"></div>
 	</div>
 	
@@ -165,7 +170,7 @@
 				["timere", "fürchten"],
 				["morbus", "Krankheit"],
 				["curare", "kümmern, sorgen, behandeln, pflegen"],
-				["agricola", "Bauer m."],
+				["agricola", "Bauer<br><i>Natürlichesr Genus M</i>"],
 				["murus", "Mauer"],
 				["aedificare", "bauen"],
 				["labor", "Arbeit, Mühe"],
@@ -238,12 +243,12 @@
 				["alius, alia", "ein anderer, eine andere"],
 				["alienus", "fremd"],
 				["importare", "einführen", "import"],
-				["incola", "Einwohner m/f"],
+				["incola", "Einwohner<br><i>Genus M oder F</i>"],
 				["vendere", "verkaufen"],
 				["placere", "gefallen"],
 				["ita", "so"],
 				["interdum", "manchmal (Adv.)"],
-				["pirata", "Pirat, Seeräuber m."],
+				["pirata", "Pirat, Seeräuber<br><i>Natürlichesr Genus M</i>"],
 				["sed", "aber, sondern"],
 				["bene", "gut (Adv.)"],
 				["consulere ", "sorgen für (jmdn.) (mit Dat.)<br>befragen, um Rat fragen (mit Akk.)"],
@@ -392,6 +397,54 @@
 				["incipere", "beginnen, anfangen"],
 				["fidem habere", "(jmdm.) glauben, (jmdm.) vertrauen (mit Dat.)"],
 			],
+			[
+				["oppidum", "Stadt, Kleinstadt n."],
+				["forum", "Marktplatz, Forum n."],
+				["ignotus, ignota", "unbekannt"],
+				["cupere", "wünschen, wollen<br><i>Eine Tasse wünschen</i>"],
+				["aedificium", "Gebäude n."],
+				["clarus, clara", "hell, berühmt"],
+				["ire", "gehen<br><i>Stamm <u>i</u> vor Konsonanten,<br><u>e</u> vor Vokalen</i>"],
+				["templum", "Tempel n."],
+				["vel", "oder, sogar"],
+				["monstrare", "zeigen<br><i>Etwas de<u>monstrieren</u></i>"],
+				["gaudium", "Freude n.<br><i>Söder hat <u>Freude</u> 🥨🍻</i>"],
+				["adire", "herangehen, besuchen, bitten"],
+				["de", "von, von...herab, über (mit Abl.)"],
+				["spectrare", "betrachten"],
+				["nomen", "Name<br><i>Stamm: nomin-</i>"],
+				["nominare", "(be)nennen"],
+				["opus", "Werk, Arbeit, Mühe<br><i>Stamm: oper-</i>"],
+				["exire", "herausgehen"],
+				["exitus", "Ausgang"],
+				["inire", "betreten, hineingehen, beginnen"],
+				["initium", "Anfang, Eingang"],
+				["theatrum", "Theater"],
+				["tempus", "Zeit<br><i>Stamm: tempor-</i>"],
+				["ecce", "sieh! da!"],
+				["tabula", "Tafel"],
+				["memoria", "Gedächtnis, Andenken"],
+				["servare", "bewahren, retten"],
+				["conservare", "bewahren"],
+				["fabula", "Geschichte, Theaterstück"],
+				["poeta", "Dichter<br><i>Natürlichesr Genus M</i>"],
+				["antiquus", "alt, antik"],
+				["solum", "allein, nur<br><i><u>Nur</u> Gollum ist <u>allein</u></i>"],
+				["delectare", "erfreuen, Freude machen"],
+				["licere", "erlaubt sein<br><i>Nur im Inf. und 3. Pers. Sg.</i>"],
+				["licentia", "Willkür, Zügellosigkeit<br><i>Autofahr-Lizenzen werden willkürlich verschenkt</i>"],
+				["deesse", "fehlen"],
+				["domum", "nach Hause, heim"],
+				["abire", "fortgehen"],
+				["ecce tabula", "da (ist) die Tafel"],
+				["multa", "viel, vieles<br><i>Nom. und Akk. Pl. bei Genus N</i>"],
+				["cuncta", "alles"],
+				["Forum Romanum", "das Forum Romanum (Stadtzentrum von Rom)"],
+				["non ignorare", "gut kennen, genau wissen<br><i>doppelte verneinung \"ich weiß x nicht nicht\"</i>"],
+				["mihi gaudio est", "es macht mir Freude"],
+				["non solum...sed etiam", "nicht nur...sondern auch"],
+				["fabulam agere", "ein Theaterstück aufführen"],
+			]
 		];
 
 		var id = (n) => document.getElementById(n);
@@ -411,6 +464,7 @@
 		var initial_max = 0;
 		var first_run = true;
 		var done = false;
+		var is_repetition = false;
 
 		function quiz(push_to_repeat=false) {
 			// LÖSUNG + BUTTONS ANZEIGEN
@@ -436,6 +490,8 @@
 
 						initial_max = quiz_pool.length;
 						count = 0;
+
+						is_repetition = true;
 					}
 
 					// WIEDERHOLUNGEN DURCHLAUFEN
@@ -450,11 +506,14 @@
 
 					repeat.disabled = true;
 					next.disabled = true;
+					repeat.classList.add("hidden");
+					next.classList.add("hidden");
 				}
 
 				else {
 					count++;
-					counter.innerHTML = count + "/" + initial_max;
+					if (is_repetition) counter.innerHTML = "WDH " + count + "/" + initial_max;
+					else counter.innerHTML = count + "/" + initial_max;
 
 					max = quiz_pool.length;
 					pair = Math.floor(Math.random() * max);
