@@ -1,154 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Appum Latinum</title>
-	<meta name="robots" content="noindex">
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<style>
-		* {
-			box-sizing: border-box;
-			user-select: none;
-		}
-
-		label {
-			position: relative;
-  			top: -3px;
-			left: 5px;
-		}
-
-		body {
-			margin: 0;
-			background-color: #222;
-			color: #eee;
-			font-family: Tahoma, sans-serif;
-			text-align: center;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			flex-direction: column;
-		}
-
-		.showme {
-			display: block !important;
-		}
-
-		.hidden {
-			display: none !important;
-		}
-
-		#menu {
-			display: none;
-		}
-
-		#quiz-wrap {
-			width: 350px;
-			height: fit-content;
-			background: linear-gradient(15deg, #880088, #aa2068, #cc3f47, #de6f3d, #f09f33, #de6f3d, #cc3f47, #aa2068, #880088) no-repeat;
-			display: none;
-		}
-
-		#quiz {
-			width: 344px;
-			height: fit-content;
-			background: #222;
-			margin: 3px;
-			display: flex;
-			align-items: center;
-			flex-direction: column;
-			user-select: none;
-			position: relative;
-		}
-
-		#counter {
-			position: absolute;
-			top: 5px;
-			right: 5px;
-		}
-
-		#vokabel {
-			font-size: 25px;
-			color: #880088;
-			font-weight: bold;
-			margin: 25px 0;
-			padding: 0 20px;
-		}
-
-		#translation {
-			font-size: 16px;
-			padding: 0 20px;
-			min-height: 45px;
-		}
-		
-		i {
-			color: #aa2068;
-		}
-
-		i:before {
-			content: "« "
-		}
-
-		i:after {
-			content: " »"
-		}
-
-		#options {
-			width: 100%;
-			min-height: 25px;
-			display: flex;
-			justify-content: center;
-		}
-
-		.button {
-			width: 140px;
-			padding: 10px 25px;
-			cursor: pointer;
-			gap: 0.4rem;
-			font-weight: bold;
-			border-radius: 30px;
-			text-shadow: 2px 2px 3px rgb(136 0 136 / 50%);
-			background: linear-gradient(15deg, #880088, #aa2068, #cc3f47, #de6f3d, #f09f33, #de6f3d, #cc3f47, #aa2068, #880088) no-repeat;
-			background-size: 300%;
-			color: #fff;
-			border: none;
-			background-position: left center;
-			box-shadow: 0 30px 10px -20px rgba(0,0,0,.2);
-			transition: background .3s ease;
-			margin: 15px 5px;
-			text-align: center;
-		}
-
-		.button:hover {
-			background-position: right center;
-		}
-
-		.button:disabled {
-			background: #888;
-  			text-shadow: none;
-		}
-		
-		.checkbox-wrapper .ikxBAC{appearance:none;background-color:#dfe1e4;border-radius:72px;border-style:none;flex-shrink:0;height:20px;margin:0;position:relative;width:30px}.checkbox-wrapper .ikxBAC::before{bottom:-6px;content:"";left:-6px;position:absolute;right:-6px;top:-6px}.checkbox-wrapper .ikxBAC,.checkbox-wrapper .ikxBAC::after{transition:.1s ease-out}.checkbox-wrapper .ikxBAC::after{background-color:#fff;border-radius:50%;content:"";height:14px;left:3px;position:absolute;top:3px;width:14px}.checkbox-wrapper input[type=checkbox]{cursor:default}.checkbox-wrapper .ikxBAC:hover{background-color:#c9cbcd;transition-duration:0s;cursor:pointer}.checkbox-wrapper .ikxBAC:checked{background-color:#cc3f47}.checkbox-wrapper .ikxBAC:checked::after{background-color:#fff;left:13px}.checkbox-wrapper :focus:not(.focus-visible){outline:0}.checkbox-wrapper .ikxBAC:checked:hover{background-color:#aa2068;cursor:pointer}
-	</style>
-</head>
-<body>
-	<div id="quiz-wrap">
-		<div id="quiz">
-			<div id="counter"></div>
-			<div id="vokabel"></div>
-			<div id="translation"></div>
-
-			<div id="options">
-				<button class="button" onclick="quiz(true)" id="repeat" disabled>Wiederholen</button>
-				<button class="button" onclick="quiz()" id="next">Weiter</button>
-			</div>
-		</div>
-	</div>
-
-	<div id="menu" class="showme">
-		<button class="button" onclick="start()">Start</button>
-		<div id="lektionen"></div>
-	</div>
-	
 	<script>
 		var lektionen = [
 			[ // Lektion 1
@@ -397,13 +249,13 @@
 				["incipere", "beginnen, anfangen"],
 				["fidem habere", "(jmdm.) glauben, (jmdm.) vertrauen (mit Dat.)"],
 			],
-			[
+			[ // LEKTION 7
 				["oppidum", "Stadt, Kleinstadt n."],
 				["forum", "Marktplatz, Forum n."],
 				["ignotus, ignota", "unbekannt"],
-				["cupere", "wünschen, wollen<br><i>Eine Tasse wünschen</i>"],
+				["cupere", "wünschen, wollen<br><i>Ich wünsche mir eine Tasse</i>"],
 				["aedificium", "Gebäude n."],
-				["clarus, clara", "hell, berühmt"],
+				["clarus, clara", "hell, berühmt<br><i>Clara ist berühmt und leuchtet</i>"],
 				["ire", "gehen<br><i>Stamm <u>i</u> vor Konsonanten,<br><u>e</u> vor Vokalen</i>"],
 				["templum", "Tempel n."],
 				["vel", "oder, sogar"],
@@ -427,10 +279,10 @@
 				["servare", "bewahren, retten"],
 				["conservare", "bewahren"],
 				["fabula", "Geschichte, Theaterstück"],
-				["poeta", "Dichter<br><i>Natürlichesr Genus M</i>"],
+				["poeta", "Dichter<br><i>Natürlicher Genus M</i>"],
 				["antiquus", "alt, antik"],
 				["solum", "allein, nur<br><i><u>Nur</u> Gollum ist <u>allein</u></i>"],
-				["delectare", "erfreuen, Freude machen"],
+				["delectare", "erfreuen, Freude machen<br><i>Dialekte erfreuen niemanden</i>"],
 				["licere", "erlaubt sein<br><i>Nur im Inf. und 3. Pers. Sg.</i>"],
 				["licentia", "Willkür, Zügellosigkeit<br><i>Autofahr-Lizenzen werden willkürlich verschenkt</i>"],
 				["deesse", "fehlen"],
@@ -439,14 +291,77 @@
 				["ecce tabula", "da (ist) die Tafel"],
 				["multa", "viel, vieles<br><i>Nom. und Akk. Pl. bei Genus N</i>"],
 				["cuncta", "alles"],
-				["Forum Romanum", "das Forum Romanum (Stadtzentrum von Rom)"],
-				["non ignorare", "gut kennen, genau wissen<br><i>doppelte verneinung \"ich weiß x nicht nicht\"</i>"],
+				["Forum Romanum", "das Forum Romanum<br>(Stadtzentrum von Rom)"],
+				["non ignorare", "gut kennen, genau wissen<br><i>doppelte Verneinung \"ich weiß x nicht nicht\"</i>"],
 				["mihi gaudio est", "es macht mir Freude"],
 				["non solum...sed etiam", "nicht nur...sondern auch"],
 				["fabulam agere", "ein Theaterstück aufführen"],
 			]
 		];
+	</script>
+	<title>Appum Latinum</title>
+	<meta name="robots" content="noindex">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<style>
+		#menu,#quiz-wrap{display:none}#quiz,#quiz-wrap{height:fit-content}#quiz,*{user-select:none}#quiz,label{position:relative}#options,#quiz,body{display:flex}#quiz-wrap,.button{background:linear-gradient(15deg,#808,#aa2068,#cc3f47,#de6f3d,#f09f33,#de6f3d,#cc3f47,#aa2068,#808) no-repeat}.button,body{text-align:center}*{box-sizing:border-box}label{top:-3px;left:5px}body{margin:0;background-color:#222;color:#eee;font-family:Tahoma,sans-serif;justify-content:center;align-items:center;flex-direction:column}.showme{display:block!important}.hidden{display:none!important}#quiz-wrap{width:350px}#quiz{width:344px;background:#222;margin:3px;align-items:center;flex-direction:column}#counter{position:absolute;top:5px;right:5px}#vokabel{font-size:25px;color:#808;font-weight:700;margin:25px 0;padding:0 20px}#translation{font-size:16px;padding:0 20px;min-height:45px}i{color:#aa2068}i:before{content:"« "}i:after{content:" »"}#options{width:100%;min-height:25px;justify-content:center}.button{width:140px;padding:10px 25px;cursor:pointer;gap:.4rem;font-weight:700;border-radius:30px;text-shadow:2px 2px 3px rgb(136 0 136 / 50%);background-size:300%;color:#fff;border:none;background-position:left center;box-shadow:0 30px 10px -20px rgba(0,0,0,.2);transition:background .3s;margin:15px 5px}.button:hover{background-position:right center}.button:disabled{background:#888;text-shadow:none}
+		b {
+			color: #cc3f47;
+		}
+		#search input {
+			background-color: #222;
+			width: 140px;
+			height: 30px;
+			margin: 15px 0;
+			padding: 0 10px;
+			border-radius: 30px;
+			outline: none;
+			font-weight: bold;
+			border: 3px solid #cc3f47;
+			color: #cc3f47;
+			transition: all .5s;
+		}
+		#search {
+			width: 350px;
+		}
+		#search input:focus {
+			border: 3px solid #aa2068;
+			color: #aa2068;
+		}
+		#search input:hover {
+			cursor: pointer;
+		}
+		#search div {
+			text-align: left;
+		}
+		.checkbox-wrapper .ikxBAC{appearance:none;background-color:#dfe1e4;border-radius:72px;border-style:none;flex-shrink:0;height:20px;margin:0;position:relative;width:30px}.checkbox-wrapper .ikxBAC::before{bottom:-6px;content:"";left:-6px;position:absolute;right:-6px;top:-6px}.checkbox-wrapper .ikxBAC,.checkbox-wrapper .ikxBAC::after{transition:.1s ease-out}.checkbox-wrapper .ikxBAC::after{background-color:#fff;border-radius:50%;content:"";height:14px;left:3px;position:absolute;top:3px;width:14px}.checkbox-wrapper input[type=checkbox]{cursor:default}.checkbox-wrapper .ikxBAC:hover{background-color:#c9cbcd;transition-duration:0s;cursor:pointer}.checkbox-wrapper .ikxBAC:checked{background-color:#cc3f47}.checkbox-wrapper .ikxBAC:checked::after{background-color:#fff;left:13px}.checkbox-wrapper :focus:not(.focus-visible){outline:0}.checkbox-wrapper .ikxBAC:checked:hover{background-color:#aa2068;cursor:pointer}
+	</style>
+</head>
+<body>
+	<div id="quiz-wrap">
+		<div id="quiz">
+			<div id="counter"></div>
+			<div id="vokabel"></div>
+			<div id="translation"></div>
 
+			<div id="options">
+				<button class="button" onclick="quiz(true)" id="repeat" disabled>Wiederholen</button>
+				<button class="button" onclick="quiz()" id="next">Weiter</button>
+			</div>
+		</div>
+	</div>
+
+	<div id="menu" class="showme">
+		<button class="button" onclick="start()">Start</button>
+		<div id="lektionen"></div>
+	</div>
+
+	<div id="search">
+		<input type="text" placeholder="Vokabel suchen" onkeyup="search(this.value)">
+		<div id="results"></div>
+	</div>
+	
+	<script>
 		var id = (n) => document.getElementById(n);
 
 		var vokabel = id("vokabel");
@@ -454,9 +369,11 @@
 		var counter = id("counter");
 		var repeat = id("repeat");
 		var next = id("next");
+		var results = id("results");
 
 		var quiz_pool = [];
 		var repeat_pool = [];
+		var search_pool = [];
 		var check = false;
 		var pair = 0;
 		var max = 0;
@@ -473,14 +390,13 @@
 				repeat.disabled = false;
 			}
 
-			 // NEUE VOKABEL ANZEIGEN
+			 // NEUE VOKABELABFRAGE ANZEIGEN
 			else {
 				if (push_to_repeat) repeat_pool.push(quiz_pool[pair]);
-
 				if (first_run) first_run = false;
 				else quiz_pool.splice(pair, 1);
 
-				// VOKABELN DURCHLAUFEN
+				// ALLE VOKABELN ABGESCHLOSSEN
 				if (quiz_pool.length == 0) {
 
 					// WIEDERHOLUNGEN VERFÜGBAR
@@ -494,7 +410,7 @@
 						is_repetition = true;
 					}
 
-					// WIEDERHOLUNGEN DURCHLAUFEN
+					// ALLE WIEDERHOLUNGEN ABGESCHLOSSEN
 					else done = true;
 
 				}
@@ -533,8 +449,10 @@
 			document.getElementById("menu").classList.remove("showme");
 
 			quiz_pool = [];
+
 			for (let i = 0; i < lektionen.length; i++) {
 				var checkbox = document.getElementById(`lektion${i+1}`);
+
 				if  (checkbox.checked) {
 					for (let j = 0; j < lektionen[i].length; j++) {
 						quiz_pool.push(lektionen[i][j]);
@@ -549,7 +467,26 @@
 			quiz();
 		}
 
+		function search(s) {
+			var queries = "";
+
+			if (s != "") {
+				for (let i = 0; i < search_pool.length; i++) {
+					if (search_pool[i][0].includes(s) || search_pool[i][1].includes(s))
+						queries += "<b>" + search_pool[i][0] + "</b> " + search_pool[i][1] + "<hr><br>";
+				}
+			}
+
+			results.innerHTML = queries;
+		}
+
 		function create_lection_toggles() {
+			for (let i = 0; i < lektionen.length; i++) {
+				for (let j = 0; j < lektionen[i].length; j++) {
+					search_pool.push(lektionen[i][j]);
+				}
+			}
+
 			var lektionen_wrapper = document.getElementById("lektionen");
 
 			for (let i = 0; i < lektionen.length; i++) {
