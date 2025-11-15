@@ -472,7 +472,8 @@
 
 			if (s != "") {
 				for (let i = 0; i < search_pool.length; i++) {
-					if (search_pool[i][0].includes(s) || search_pool[i][1].includes(s))
+					if (search_pool[i][0].includes(String(s).toLowerCase()) ||
+						search_pool[i][1].includes(String(s).toLowerCase()))
 						queries += "<b>" + search_pool[i][0] + "</b> " + search_pool[i][1] + "<hr><br>";
 				}
 			}
