@@ -3,9 +3,6 @@
 <head>
 	<script>
 		var lektionen = [
-			[
-				["TEST", false],
-			],
 			[ // Lektion 1
 				["insula", "Insel"],
 				["esse", "sein"],
@@ -25,7 +22,7 @@
 				["timere", "fürchten"],
 				["morbus", "Krankheit"],
 				["curare (4)", "kümmern, sorgen, behandeln, pflegen"],
-				["agricola", "Bauer<br><i>Natürlichesr Genus M</i>"],
+				["agricola", "Bauer<br><i>Natürlicher Genus M</i>"],
 				["murus", "Mauer"],
 				["aedificare", "bauen"],
 				["labor", "Arbeit, Mühe"],
@@ -44,7 +41,7 @@
 				["currere", "laufen"],
 			],
 			[ // Lektion 2
-				["bonus, bona", "gut"],
+				["bonus, a, um", "gut"],
 				["magnus (2)", "groß, bedeutend (Adj.)"],
 				["villa (2)", "Haus, Landhaus"],
 				["parvus", "klein (Adj.)"],
@@ -103,7 +100,7 @@
 				["placere", "gefallen"],
 				["ita", "so"],
 				["interdum", "manchmal (Adv.)"],
-				["pirata (2)", "Pirat, Seeräuber<br><i>Natürlichesr Genus M</i>"],
+				["pirata (2)", "Pirat, Seeräuber<br><i>Natürlicher Genus M</i>"],
 				["sed (2)", "aber, sondern"],
 				["bene", "gut (Adv.)"],
 				["consulere (2)", "sorgen für (jmdn.) (mit Dat.)<br>befragen, um Rat fragen (mit Akk.)"],
@@ -127,7 +124,7 @@
 				["surgere", "aufstehen"],
 				["-que", "und"],
 				["properare (2)", "schnell gehen, sich beeilen", "proper"],
-				["in (2)", "in (wo?), an, auf (mit Abl.)"],
+				["in (3)", "in (wo?), an, auf (mit Abl.)"],
 				["ponere (3)", "setzen, stellen, legen"],
 				["exponere (4)", "aussetzen, ausstellen, darlegen, erklären"],
 				["componere (2)", "zusammenstellen, verfassen"],
@@ -287,7 +284,7 @@
 				["solum (2)", "allein, nur<br><i><u>Nur</u> Gollum ist <u>allein</u></i>"],
 				["delectare (2)", "erfreuen, Freude machen<br><i>Dialekte erfreuen niemanden</i>"],
 				["licere", "erlaubt sein<br><i>Nur im Inf. und 3. Pers. Sg.</i>"],
-				["licentia (2)", "Willkür, Zügellosigkeit<br><i>Autofahr-Lizenzen werden willkürlich verschenkt</i>"],
+				["licentia (2)", "Willkür, Zügellosigkeit<br><i>Führerschein-Lizenzen werden willkürlich verschenkt</i>"],
 				["deesse", "fehlen"],
 				["domum (2)", "nach Hause, heim"],
 				["abire", "fortgehen"],
@@ -299,6 +296,48 @@
 				["mihi gaudio est", "es macht mir Freude"],
 				["non solum...sed etiam", "nicht nur...sondern auch"],
 				["fabulam agere", "ein Theaterstück aufführen"],
+			],
+			[ // Lektion 8
+				true,
+				["ludus (3)", "Spiel, Pferderennen, Gladiatorenkampf"],
+				["valde", "sehr"],
+				["amphitheatrum", "Amphitheater"],
+				["bestia (2)", "(wildes) Tier"],
+				["leo", "Löwe"],
+				["gladiator", "Gladiator"],
+				["spectator", "Zuschauer"],
+				["vir", "Mann"],
+				["pulcher, pulchra, pulchrum", "schön"],
+				["pulchritudo", "Schönheit"],
+				["arena (2)", "Arena, Kampfplatz"],
+				["clamor (2)", "Geschrei, Lärm"],
+				["signum (2)", "Zeichen, Feldzeichen (des römischen Heeres)"],
+				["pugna", "Kampf"],
+				["duo, duae, duo", "zwei"],
+				["dubius, a, um (2)", "zweifelhaft, bedenklich"],
+				["dubitare (2)", "zweifeln, Bedenken tragen"],
+				["arma", "Waffen (nur Pl.)"],
+				["armare", "bewaffnen"],
+				["gladius", "Schwert"],
+				["numerus", "Zahl"],
+				["numerare (3)", "zählen, rechnen, bezahlen"],
+				["incitare", "antreiben"],
+				["sollicitare (3)", "erregen, reizen, beunruhigen"],
+				["miser, misera, miserum (3)", "elend, arm, unglücklich"],
+				["clementia (2)", "Milde, Gnade"],
+				["implorare", "anflehen"],
+				["mittere (3)", "schicken, lassen, freilassen"],
+				["virtus (2)", "Tapferkeit, Tüchtigkeit"],
+				["porta (2)", "Tor, Tür"],
+				["carcer (2)", "Gefängnis, Käfig"],
+				["vincere (2)", "siegen, besiegen"],
+				["vulnus", "Wunde"],
+				["vulnerare", "verwunden"],
+				["spectaculum", "Schauspiel"],
+				["humanus, a, um", "menschlich"],
+				["inhumanus, a, um", "unmenschlich"],
+				["gloria", "Ruhm"],
+				["petere (3)", "streben nach, erbitten, darauf zugehen"]
 			]
 		];
 	</script>
@@ -307,7 +346,122 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<style>
-		#menu,#quiz-wrap{display:none}#quiz,#quiz-wrap{height:fit-content}#quiz,*{user-select:none}#quiz,label{position:relative}#options,#quiz,body{display:flex}#quiz-wrap,.button{background:linear-gradient(15deg,#808,#aa2068,#cc3f47,#de6f3d,#f09f33,#de6f3d,#cc3f47,#aa2068,#808) no-repeat}.button,body{text-align:center}*{box-sizing:border-box}label{top:-3px;left:5px}body{margin:0;background-color:#222;color:#eee;font-family:Tahoma,sans-serif;justify-content:center;align-items:center;flex-direction:column}.showme{display:block!important}.hidden{display:none!important}#quiz-wrap{width:350px}#quiz{width:344px;background:#222;margin:3px;align-items:center;flex-direction:column}#counter{position:absolute;top:5px;right:5px}#vokabel{font-size:25px;color:#808;font-weight:700;margin:25px 0;padding:0 20px}#translation{font-size:16px;padding:0 20px;min-height:45px}i{color:#aa2068}i:before{content:"« "}i:after{content:" »"}#options{width:100%;min-height:25px;justify-content:center}.button{width:140px;padding:10px 25px;cursor:pointer;gap:.4rem;font-weight:700;border-radius:30px;text-shadow:2px 2px 3px rgb(136 0 136 / 50%);background-size:300%;color:#fff;border:none;background-position:left center;box-shadow:0 30px 10px -20px rgba(0,0,0,.2);transition:background .3s;margin:15px 5px}.button:hover{background-position:right center}.button:disabled{background:#888;text-shadow:none}
+		#menu,
+		#quiz-wrap {
+			display: none;
+		}
+		#quiz,
+		#quiz-wrap {
+			height: fit-content;
+		}
+		#quiz,
+		* {
+			user-select: none;
+		}
+		#quiz,
+		label {
+			position: relative;
+		}
+		#options,
+		#quiz,
+		body {
+			display: flex;
+		}
+		#quiz-wrap,
+		.button {
+			background: linear-gradient(15deg, #808, #aa2068, #cc3f47, #de6f3d, #f09f33, #de6f3d, #cc3f47, #aa2068, #808)
+				no-repeat;
+		}
+		.button,
+		body {
+			text-align: center;
+		}
+		* {
+			box-sizing: border-box;
+		}
+		label {
+			top: -3px;
+			left: 5px;
+		}
+		body {
+			margin: 0;
+			background-color: #222;
+			color: #eee;
+			font-family: Tahoma, sans-serif;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+		}
+		.showme {
+			display: block !important;
+		}
+		.hidden {
+			display: none !important;
+		}
+		#quiz-wrap {
+			width: 350px;
+		}
+		#quiz {
+			width: 344px;
+			background: #222;
+			margin: 3px;
+			align-items: center;
+			flex-direction: column;
+		}
+		#counter {
+			position: absolute;
+			top: 5px;
+			right: 5px;
+		}
+		#vokabel {
+			font-size: 25px;
+			color: #808;
+			font-weight: 700;
+			margin: 25px 0;
+			padding: 0 20px;
+		}
+		#translation {
+			font-size: 16px;
+			padding: 0 20px;
+			min-height: 45px;
+		}
+		i {
+			color: #aa2068;
+		}
+		i:before {
+			content: "« ";
+		}
+		i:after {
+			content: " »";
+		}
+		#options {
+			width: 100%;
+			min-height: 25px;
+			justify-content: center;
+		}
+		.button {
+			width: 140px;
+			padding: 10px 25px;
+			cursor: pointer;
+			gap: 0.4rem;
+			font-weight: 700;
+			border-radius: 30px;
+			text-shadow: 2px 2px 3px rgb(136 0 136 / 50%);
+			background-size: 300%;
+			color: #fff;
+			border: none;
+			background-position: left center;
+			box-shadow: 0 30px 10px -20px rgba(0, 0, 0, 0.2);
+			transition: background 0.3s;
+			margin: 15px 5px;
+		}
+		.button:hover {
+			background-position: right center;
+		}
+		.button:disabled {
+			background: #888;
+			text-shadow: none;
+		}
 		b {
 			color: #cc3f47;
 		}
@@ -322,7 +476,7 @@
 			font-weight: bold;
 			border: 3px solid #cc3f47;
 			color: #cc3f47;
-			transition: all .5s;
+			transition: all 0.5s;
 		}
 		#search {
 			width: 350px;
@@ -337,7 +491,67 @@
 		#search div {
 			text-align: left;
 		}
-		.checkbox-wrapper .ikxBAC{appearance:none;background-color:#dfe1e4;border-radius:72px;border-style:none;flex-shrink:0;height:20px;margin:0;position:relative;width:30px}.checkbox-wrapper .ikxBAC::before{bottom:-6px;content:"";left:-6px;position:absolute;right:-6px;top:-6px}.checkbox-wrapper .ikxBAC,.checkbox-wrapper .ikxBAC::after{transition:.1s ease-out}.checkbox-wrapper .ikxBAC::after{background-color:#fff;border-radius:50%;content:"";height:14px;left:3px;position:absolute;top:3px;width:14px}.checkbox-wrapper input[type=checkbox]{cursor:default}.checkbox-wrapper .ikxBAC:hover{background-color:#c9cbcd;transition-duration:0s;cursor:pointer}.checkbox-wrapper .ikxBAC:checked{background-color:#cc3f47}.checkbox-wrapper .ikxBAC:checked::after{background-color:#fff;left:13px}.checkbox-wrapper :focus:not(.focus-visible){outline:0}.checkbox-wrapper .ikxBAC:checked:hover{background-color:#aa2068;cursor:pointer}
+		#lektionen {
+			padding-left: 20px;
+		}
+		.checkbox-wrapper {
+			text-align: left;
+		}
+		.checkbox-wrapper .ikxBAC {
+			appearance: none;
+			background-color: #dfe1e4;
+			border-radius: 72px;
+			border-style: none;
+			flex-shrink: 0;
+			height: 20px;
+			margin: 0;
+			position: relative;
+			width: 30px;
+		}
+		.checkbox-wrapper .ikxBAC::before {
+			bottom: -6px;
+			content: "";
+			left: -6px;
+			position: absolute;
+			right: -6px;
+			top: -6px;
+		}
+		.checkbox-wrapper .ikxBAC,
+		.checkbox-wrapper .ikxBAC::after {
+			transition: 0.1s ease-out;
+		}
+		.checkbox-wrapper .ikxBAC::after {
+			background-color: #fff;
+			border-radius: 50%;
+			content: "";
+			height: 14px;
+			left: 3px;
+			position: absolute;
+			top: 3px;
+			width: 14px;
+		}
+		.checkbox-wrapper input[type="checkbox"] {
+			cursor: default;
+		}
+		.checkbox-wrapper .ikxBAC:hover {
+			background-color: #c9cbcd;
+			transition-duration: 0s;
+			cursor: pointer;
+		}
+		.checkbox-wrapper .ikxBAC:checked {
+			background-color: #cc3f47;
+		}
+		.checkbox-wrapper .ikxBAC:checked::after {
+			background-color: #fff;
+			left: 13px;
+		}
+		.checkbox-wrapper :focus:not(.focus-visible) {
+			outline: 0;
+		}
+		.checkbox-wrapper .ikxBAC:checked:hover {
+			background-color: #aa2068;
+			cursor: pointer;
+		}
 	</style>
 </head>
 <body>
@@ -472,12 +686,45 @@
 
 		function search(s) {
 			var queries = "";
+			const q = String(s).toLowerCase();
 
-			if (s != "") {
+			if (q !== "") {
+				let matches = [];
+
 				for (let i = 0; i < search_pool.length; i++) {
-					if (search_pool[i][0].includes(String(s).toLowerCase()) ||
-						search_pool[i][1].includes(String(s).toLowerCase()))
-						queries += "<b>" + search_pool[i][0] + "</b> " + search_pool[i][1] + "<hr><br>";
+					const latin = search_pool[i][0];
+					const english = search_pool[i][1];
+
+					const latinLower = latin.toLowerCase();
+					const englishLower = english.toLowerCase();
+
+					if (latinLower.includes(q) || englishLower.includes(q)) {
+						matches.push(search_pool[i]);
+					}
+				}
+
+				matches.sort((a, b) => {
+					const aLatin = a[0].toLowerCase();
+					const bLatin = b[0].toLowerCase();
+					const aEng   = a[1].toLowerCase();
+					const bEng   = b[1].toLowerCase();
+
+					const posA = Math.min(
+						aLatin.indexOf(q) === -1 ? Infinity : aLatin.indexOf(q),
+						aEng.indexOf(q) === -1 ? Infinity : aEng.indexOf(q)
+					);
+
+					const posB = Math.min(
+						bLatin.indexOf(q) === -1 ? Infinity : bLatin.indexOf(q),
+						bEng.indexOf(q) === -1 ? Infinity : bEng.indexOf(q)
+					);
+
+					if (posA !== posB) return posA - posB;
+					return aLatin.length - bLatin.length;
+				});
+
+				for (let i = 0; i < matches.length; i++) {
+					queries += "<b>" + matches[i][0] + "</b> " + matches[i][1] + "<hr><br>";
 				}
 			}
 
@@ -487,9 +734,12 @@
 		function create_lection_toggles() {
 			for (let i = 0; i < lektionen.length; i++) {
 				for (let j = 0; j < lektionen[i].length; j++) {
-					search_pool.push(lektionen[i][j]);
+					if (typeof lektionen[i][j] != "boolean")
+						search_pool.push(lektionen[i][j]);
 				}
 			}
+
+			
 
 			var lektionen_wrapper = document.getElementById("lektionen");
 
@@ -499,7 +749,8 @@
 				
 				let checkbox = document.createElement("input");
 				checkbox.setAttribute("type", "checkbox");
-				checkbox.setAttribute("checked", "checked");
+				if (typeof lektionen[i][0] != "boolean" && lektionen[i][0] != false)
+					checkbox.setAttribute("checked", "checked");
 				checkbox.classList.add("sc-gJwTLC");
 				checkbox.classList.add("ikxBAC");
 				checkbox.id = `lektion${i+1}`;
