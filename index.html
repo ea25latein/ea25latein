@@ -419,7 +419,7 @@
 		.hidden {
 			display: none !important;
 		}
-		#quiz-wrap, #search, #notes {
+		#quiz-wrap, #search {
 			width: 350px;
 		}
 		#quiz {
@@ -508,7 +508,10 @@
 			text-align: left;
 		}
 		#notes {
-			font-size: 12px;
+			width: 450px;
+			max-width: 100%;
+			font-size: 15px;
+			padding: 0 8px;
 		}
 		details {
 			margin-top: 10px;
@@ -528,7 +531,7 @@
 			border-collapse: collapse;
 		}
 		th, td {
-			padding: 3px;
+			padding: 5px;
 		}
 		th {
 			font-weight: bold;
@@ -640,9 +643,9 @@
 					<th colspan="3">Plural</th>
 				</tr>
 				<tr>
-					<th>a-Konj: -are</th>
+					<th>A (-are)</th>
 					<td>intra | re</td>
-					<td>o (-a)</td>
+					<td>o (❗-a)</td>
 					<td>s</td>
 					<td>t</td>
 					<td>mus</td>
@@ -650,7 +653,7 @@
 					<td>nt</td>
 				</tr>
 				<tr>
-					<th>e-Konj: -êre</th>
+					<th>E (-êre)</th>
 					<td>vidê | re</td>
 					<td>o</td>
 					<td>s</td>
@@ -660,7 +663,7 @@
 					<td>nt</td>
 				</tr>
 				<tr>
-					<th>k-Konj: -ere/-o</th>
+					<th>K (-ere/-o)</th>
 					<td>lud | ere</td>
 					<td>o</td>
 					<td>is</td>
@@ -670,7 +673,7 @@
 					<td>unt</td>
 				</tr>
 				<tr>
-					<th>i-Konj: -ire</th>
+					<th>I (-ire)</th>
 					<td>audi | re</td>
 					<td>o</td>
 					<td>s</td>
@@ -680,7 +683,7 @@
 					<td>unt</td>
 				</tr>
 				<tr>
-					<th>g-Konj: -ere/-io</th>
+					<th>G (-ere/-io)</th>
 					<td>cap | ere</td>
 					<td>io</td>
 					<td>is</td>
@@ -697,65 +700,108 @@
 			<table>
 				<tr>
 					<th></th>
-					<th colspan="2">A</th>
-					<th colspan="2">O</th>
-					<th colspan="2">K</th>
-					<th colspan="2">E</th>
+					<th colspan="2">Nominativ</th>
+					<th colspan="2">Genitiv</th>
+					<th colspan="2">Dativ</th>
+					<th colspan="2">Akkusativ</th>
+					<th colspan="2">Ablativ</th>
 				</tr>
 				<tr>
-					<th>Nominativ</th>
+					<th>A</th>
 					<td>a</td>
 					<td>ae</td>
-					<td>us</td>
-					<td>i</td>
-					<td>-</td>
-					<td>es</td>
-					<td>es</td>
-					<td>es</td>
-				</tr>
-				<tr>
-					<th>Genitiv</th>
-					<td class="genitiv">ae</td>
+					<td>ae</td>
 					<td>arum</td>
-					<td class="genitiv">i</td>
-					<td>orum</td>
-					<td class="genitiv">is</td>
-					<td>um</td>
-					<td class="genitiv">ei</td>
-					<td>erum</td>
-				</tr>
-				<tr>
-					<th>Dativ</th>
 					<td>ae</td>
 					<td>is</td>
-					<td>o</td>
-					<td>is</td>
-					<td>i</td>
-					<td>ibus</td>
-					<td>ei</td>
-					<td>ebus</td>
-				</tr>
-				<tr>
-					<th>Akkusativ</th>
 					<td>am</td>
 					<td>as</td>
-					<td>us</td>
-					<td>os</td>
-					<td>em</td>
-					<td>es</td>
-					<td>em</td>
-					<td>es</td>
-				</tr>
-				<tr>
-					<th>Ablativ</th>
 					<td>a</td>
 					<td>is</td>
+				</tr>
+				<tr>
+					<th>O</th>
+					<td>us</td>
+					<td>i</td>
+					<td>i</td>
+					<td>orum</td>
 					<td>o</td>
 					<td>is</td>
+					<td>um</td>
+					<td>os</td>
+					<td>o</td>
+					<td>is</td>
+				</tr>
+				<tr>
+					<th>K</th>
+					<td>-</td>
+					<td>es</td>
+					<td>is</td>
+					<td>um</td>
+					<td>i</td>
+					<td>ibus</td>
+					<td>em</td>
+					<td>es</td>
 					<td>e</td>
 					<td>ibus</td>
+				</tr>
+				<tr>
+					<th>E</th>
+					<td>es</td>
+					<td>es</td>
+					<td>ei</td>
+					<td>erum</td>
+					<td>ei</td>
+					<td>ebus</td>
+					<td>em</td>
+					<td>es</td>
 					<td>e</td>
 					<td>ebus</td>
+				</tr>
+				<tr>
+					<th>U</th>
+					<td>us</td>
+					<td>us</td>
+					<td>us</td>
+					<td>uum</td>
+					<td>ui</td>
+					<td>ibus</td>
+					<td>um</td>
+					<td>us</td>
+					<td>u</td>
+					<td>ibus</td>
+				</tr>
+				<tr>
+					<th>Ich</th>
+					<td colspan="2">ego</td>
+					<td colspan="2">-</td>
+					<td colspan="2">mihi</td>
+					<td colspan="2">me</td>
+					<td colspan="2">me</td>
+				</tr>
+				<tr>
+					<th>Du</th>
+					<td colspan="2">tu</td>
+					<td colspan="2">-</td>
+					<td colspan="2">tibi</td>
+					<td colspan="2">te</td>
+					<td colspan="2">te</td>
+				</tr>
+				<tr>
+					<th>Wir</th>
+					<td colspan="2">nos</td>
+					<td colspan="2">-</td>
+					<td colspan="2">nobis</td>
+					<td colspan="2">nos</td>
+					<td colspan="2">nobis</td>
+				</tr>
+				<tr>
+					<th>Ihr</th>
+					<td colspan="2">vos</td>
+					<td colspan="2">-</td>
+					<td colspan="2">vobis</td>
+					<td colspan="2">vos</td>
+					<td colspan="2">vobis</td>
 				</tr>
 			</table>
 		</details>
