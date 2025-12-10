@@ -123,7 +123,7 @@
 				["e/ex", "aus (mit Abl.)<br><i><u>e</u> nur vor Konsonanten</i>"],
 				["lectus, i (2)", "Bett, Liege"],
 				["surgere", "aufstehen"],
-				["-que", "und"],
+				["-que", "und<br><i>Gleichwertig mit \"et\"</i>"],
 				["properare (2)", "schnell gehen, sich beeilen", "proper"],
 				["in (3)", "in (wo?), an, auf (mit Abl.)"],
 				["ponere (3)", "setzen, stellen, legen"],
@@ -168,7 +168,7 @@
 				["salvus, salva (2)", "gesund, wohlbehalten"],
 				["cur?", "warum?"],
 				["facere, facio (2)", "machen, tun<br><i>kurzvokalische Konj.</i>"],
-				["-ne", "entspricht dem Fragezeichen, immer an erstem Wort"],
+				["-ne", "entspricht dem Fragezeichen<br><i>Immer an erstem Wort</i>"],
 				["campus, i (2)", "Feld, freier Platz"],
 				["Campus Martius", "das Marsfeld (Platz in Rom)"],
 				["ita (2)", "so, ja/richtig (in einer Antwort) (Adv.)"],
@@ -508,9 +508,9 @@
 			text-align: left;
 		}
 		#notes {
-			width: 450px;
+			width: 650px;
 			max-width: 100%;
-			font-size: 15px;
+			font-size: 14px;
 			padding: 0 8px;
 		}
 		details {
@@ -541,9 +541,17 @@
 		td {
 			border: 1px solid #fff;
 		}
+		.genitiv, .highlighted, .neutrum {
+			font-weight: bold;			
+		}
 		.genitiv {
+			color: #aa2068;
+		}
+		.highlighted {
 			color: #de6f3d;
-			font-weight: bold;
+		}
+		.neutrum {
+			color: #f09f33;
 		}
 		#lektionen {
 			margin-top: 20px;
@@ -634,11 +642,13 @@
 	</div>
 
 	<div id="notes">
+		<!-- Konjugationen -->
 		<details>
-			<summary>Konjugationen</summary>
+			<summary>Konjugationen (Verben)</summary>
 			<table>
 				<tr>
-					<th colspan="2"></th>
+					<th></th>
+					<th>Infinitiv</th>
 					<th colspan="3">Singular</th>
 					<th colspan="3">Plural</th>
 				</tr>
@@ -663,7 +673,7 @@
 					<td>nt</td>
 				</tr>
 				<tr>
-					<th>K (-ere/-o)</th>
+					<th>Kons. (-ere)</th>
 					<td>lud | ere</td>
 					<td>o</td>
 					<td>is</td>
@@ -683,7 +693,7 @@
 					<td>unt</td>
 				</tr>
 				<tr>
-					<th>G (-ere/-io)</th>
+					<th>KV (-ere & -io)</th>
 					<td>cap | ere</td>
 					<td>io</td>
 					<td>is</td>
@@ -692,11 +702,16 @@
 					<td>itis</td>
 					<td>iunt</td>
 				</tr>
+				<tr>
+					<th>Kurzvokalische<br>Verben bisher</th>
+					<td colspan="7">capere, facere, cupere</td>
+				</tr>
 			</table>
 		</details>
 
+		<!-- Deklinationen -->
 		<details>
-			<summary>Deklinationen</summary>
+			<summary>Deklinationen (Nomen, Pronomen, Adjektive)</summary>
 			<table>
 				<tr>
 					<th></th>
@@ -710,7 +725,7 @@
 					<th>A</th>
 					<td>a</td>
 					<td>ae</td>
-					<td>ae</td>
+					<td class="genitiv">ae</td>
 					<td>arum</td>
 					<td>ae</td>
 					<td>is</td>
@@ -721,27 +736,27 @@
 				</tr>
 				<tr>
 					<th>O</th>
-					<td>us</td>
-					<td>i</td>
-					<td>i</td>
+					<td>us <b class="neutrum">/um</b></td>
+					<td>i <b class="neutrum">/a</b></td>
+					<td class="genitiv">i</td>
 					<td>orum</td>
 					<td>o</td>
 					<td>is</td>
-					<td>um</td>
-					<td>os</td>
+					<td>um <b class="neutrum">/um</b></td>
+					<td>os <b class="neutrum">/a</b></td>
 					<td>o</td>
 					<td>is</td>
 				</tr>
 				<tr>
 					<th>K</th>
-					<td>-</td>
-					<td>es</td>
-					<td>is</td>
+					<td>- <b class="neutrum">/us, en</b></td>
+					<td>es <b class="neutrum">/a</b></td>
+					<td class="genitiv">is</td>
 					<td>um</td>
 					<td>i</td>
 					<td>ibus</td>
-					<td>em</td>
-					<td>es</td>
+					<td>em <b class="neutrum">/us, en</b></td>
+					<td>es <b class="neutrum">/a</b></td>
 					<td>e</td>
 					<td>ibus</td>
 				</tr>
@@ -749,7 +764,7 @@
 					<th>E</th>
 					<td>es</td>
 					<td>es</td>
-					<td>ei</td>
+					<td class="genitiv">ei</td>
 					<td>erum</td>
 					<td>ei</td>
 					<td>ebus</td>
@@ -762,7 +777,7 @@
 					<th>U</th>
 					<td>us</td>
 					<td>us</td>
-					<td>us</td>
+					<td class="genitiv">us</td>
 					<td>uum</td>
 					<td>ui</td>
 					<td>ibus</td>
@@ -770,6 +785,53 @@
 					<td>us</td>
 					<td>u</td>
 					<td>ibus</td>
+				</tr>
+				<tr>
+					<th></th>
+					<td colspan="10" class="highlighted">Relativpronomen</td>
+				</tr>
+				<tr>
+					<th>M.</th>
+					<td>qui</td>
+					<td>qui</td>
+					<td>cuius</td>
+					<td>quorum</td>
+					<td>cui</td>
+					<td>quibus</td>
+					<td>quem</td>
+					<td>quos</td>
+					<td>quo</td>
+					<td>quibus</td>
+				</tr>
+				<tr>
+					<th>F.</th>
+					<td>quae</td>
+					<td>quae</td>
+					<td>cuius</td>
+					<td>quae</td>
+					<td>cui</td>
+					<td>quibus</td>
+					<td>quam</td>
+					<td>quas</td>
+					<td>qua</td>
+					<td>quibus</td>
+				</tr>
+				<tr>
+					<th>N.</th>
+					<td>quod</td>
+					<td>quae</td>
+					<td>cuius</td>
+					<td>quorum</td>
+					<td>cui</td>
+					<td>quibus</td>
+					<td>quod</td>
+					<td>quae</td>
+					<td>quo</td>
+					<td>quibus</td>
+				</tr>
+				<tr>
+					<th></th>
+					<td colspan="10" class="highlighted">Personalpronomen</td>
 				</tr>
 				<tr>
 					<th>Ich</th>
@@ -802,6 +864,120 @@
 					<td colspan="2">vobis</td>
 					<td colspan="2">vos</td>
 					<td colspan="2">vobis</td>
+				</tr>
+				<tr>
+					<th></th>
+					<td colspan="10" class="highlighted">Ablative</td>
+				</tr>
+				<tr>
+					<th></th>
+					<td colspan="4">
+						instrumenti<br>
+						temporis<br>
+						loci<br>
+						separativus<br>
+						modi<br>
+						sociativus<br>
+						causae
+					</td>
+					<td colspan="6">
+						Womit? Wodurch?<br>
+						Wann?<br>
+						Wo? Wohin?<br>
+						Woher? Wovon?<br>
+						Auf welche Weise?<br>
+						Mit wem?<br>
+						Warum? Weshalb?
+					</td>
+				</tr>
+			</table>
+		</details>
+
+		<!-- Imperativ -->
+		<details>
+			<summary>Imperativ (Befehlsform)</summary>
+			<table>
+				<tr>
+					<th></th>
+					<th>Stamm</th>
+					<th>Singular (= Stamm)</th>
+					<th>Plural (Stamm + te)</th>
+				</tr>
+				<tr>
+					<th>A</th>
+					<td>intra | re</td>
+					<td>intra! <i>Tritt ein!</i></td>
+					<td>intrate! <i>Tretet ein!</i></td>
+				</tr>
+				<tr>
+					<th>E</th>
+					<td>vidê | re</td>
+					<td>vide! <i>Sieh!</i></td>
+					<td>videte! <i>Seht!</i></td>
+				</tr>
+				<tr>
+					<th>Kons.</th>
+					<td>lud | ere</td>
+					<td>lude! <i>Spiel!</i> &rarr; Stamm + e</td>
+					<td>lud<u>ite</u>! <i>Spielt!</i> &rarr; Stamm + ite (statt ete)</td>
+				</tr>
+				<tr>
+					<th>I</th>
+					<td>audi | re</td>
+					<td>audi! <i>Hör (zu)!</i></td>
+					<td>audite! <i>Hört (zu)!</i></td>
+				</tr>
+				<tr>
+					<th>KV</th>
+					<td>fac | ere</td>
+					<td>face! <i>Mach!</i> &rarr; Stamm + e</td>
+					<td>fac<u>ite</u>! <i>Macht!</i> &rarr; Stamm + ite (statt ete)</td>
+				</tr>
+			</table>
+		</details>
+
+		<!-- Vocativ -->
+		<details>
+			<summary>Vocativ (Anredeform o-Dekl.)</summary>
+			<ul>
+				<li><b class="highlighted">us &rarr; e:</b><br>Marc | us &rarr; Marce<br>Tit | us &rarr; Tite</li>
+				<li><b class="highlighted">ius &rarr; i:</b><br>Luc | ius &rarr; Luci<br>Fil | ius &rarr; Fili<br>Jul | ius &rarr; Juli</li>
+			</ul>
+			<i>Oro te, Juli, veni mecum! &rarr; Ich bitte dich, Marcus, komm mit mir!</i>
+		</details>
+
+		<!-- Grammatik -->
+		<details>
+			<summary>Grammatik</summary>
+			<table>
+				<tr>
+					<th>Dativus possessivus</th>
+					<td>Dativ&nbsp;+&nbsp;esse:<br>"hat" statt "ist"</td>
+					<td>
+						<b class="highlighted">Lucio villa magna est:</b><br>
+						<s>Das große Landhaus ist dem Lucius</s><br>
+						Lucius hat ein großes Landhaus
+					</td>
+				</tr>
+				<tr>
+					<th>Akk. von Städten ohne "in"</th>
+					<td colspan="2">Romam &rarr; nach Rom (kein "in" Romam für "nach" notwendig)</td>
+				</tr>
+				<tr>
+					<th>Ablativus Loci bei a&zwj;-&zwj;Dekl.</th>
+					<td colspan="2">Langer Vokal, idr. mit Präposition: (in) aul<b class="highlighted">â</b> / vi<b class="highlighted">â</b> &rarr; Ablativ!</td>
+				</tr>
+				<tr>
+					<th rowspan="3">AcI</th>
+					<td colspan="2">
+						<b class="neutrum">Hauptsatz:</b> <b class="highlighted">Nebensatz</b><br>
+						<b class="neutrum">Julia dicit:</b> <b class="highlighted">Marcus mercatorem bonum est</b><br>
+						Julia sagt: Marcus ist ein guter Kaufmann<br>
+						<i>Nebensatz Subjekt (Marcus) &rarr; Akkusativ (Marcum)<br>
+						Nebensatz Prädikat (est) &rarr; Infinitiv (esse)</i><br>
+						<b class="neutrum">Julia dicit</b> <b class="highlighted">Marcum mercatorem bonum esse</b><br>
+						Julia sagt, dass Marcus ein guter Kaufmann ist
+					</td>
 				</tr>
 			</table>
 		</details>
