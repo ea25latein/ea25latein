@@ -297,6 +297,7 @@
 				["fabulam agere", "ein Theaterstück aufführen"],
 			],
 			[ // Lektion 8
+				// HIER NOCH GENITIV EINFÜGEN!!!
 				["ludus, i (3)", "Spiel, Pferderennen, Gladiatorenkampf"],
 				["valde", "sehr (Adv.)"],
 				["amphitheatrum, i", "Amphitheater"],
@@ -309,8 +310,8 @@
 				["pulchritudo, pulchritudinis", "Schönheit"],
 				["arena, ae (2)", "Arena, Kampfplatz"],
 				["clamor, clamoris (2)", "Geschrei, Lärm"],
-				/*["signum (2)", "Zeichen, Feldzeichen (des römischen Heeres)"],
-				["pugna", "Kampf"],
+				["signum (2)", "Zeichen, Feldzeichen (des römischen Heeres)"],
+				["pugna, ae", "Kampf"],
 				["duo, duae, duo", "zwei"],
 				["dubius, a, um (2)", "zweifelhaft, bedenklich"],
 				["dubitare (2)", "zweifeln, Bedenken tragen"],
@@ -335,32 +336,9 @@
 				["humanus, a, um", "menschlich"],
 				["inhumanus, a, um", "unmenschlich"],
 				["gloria", "Ruhm"],
-				["petere (3)", "streben nach, erbitten, darauf zugehen"]*/
+				["petere (3)", "streben nach, erbitten, darauf zugehen"]
 			]
 		];
-
-		/* DEKLINATIONEN
-
-		bonum tempus
-		timidus konsul
-		parva arbor
-		aegrotus incola
-		laetus senator
-		magnum oppidum
-		alienus pirata
-		optima amica
-		primus victor
-		nova fabula
-		fidus equus
-		clara res
-		bona spes
-
-		- Farben als Variablen
-		- e = ē -> erstmal ê dann replace-all
-		- Füllwörter etiam aut autem quid quis qui quem etc. Liste
-
-		- make code prettier - sure sis, as if that would ever happen
-		*/
 	</script>
 	<title>5 Pecuniaaa</title>
 	<meta name="robots" content="noindex">
@@ -541,17 +519,23 @@
 		td {
 			border: 1px solid #fff;
 		}
-		.genitiv, .highlighted, .neutrum {
-			font-weight: bold;			
+		.purple,
+		.orange,
+		.gold,
+		.green {
+			font-weight: bold;
 		}
-		.genitiv {
+		.purple {
 			color: #aa2068;
 		}
-		.highlighted {
+		.orange {
 			color: #de6f3d;
 		}
-		.neutrum {
+		.gold {
 			color: #f09f33;
+		}
+		.green {
+			color: #50a613;
 		}
 		#lektionen {
 			margin-top: 20px;
@@ -703,8 +687,40 @@
 					<td>iunt</td>
 				</tr>
 				<tr>
-					<th>Kurzvokalische<br>Verben bisher</th>
+					<th></th>
+					<td colspan="10"><b class="orange">Kurzvokalische</td>
+				</tr>
+				<tr>
+					<th></th>
 					<td colspan="7">capere, facere, cupere</td>
+				</tr>
+				<tr>
+					<th></th>
+					<td colspan="10" class="orange">Unregelmäßige</td>
+				</tr>
+				<tr>
+					<th></th>
+					<td>esse</td>
+					<td>sum</td>
+					<td>es</td>
+					<td>est</td>
+					<td>sumus</td>
+					<td>estis</td>
+					<td>sunt</td>
+				</tr>
+				<tr>
+					<th></th>
+					<td>ire</td>
+					<td>eo</td>
+					<td>is</td>
+					<td>it</td>
+					<td>imus</td>
+					<td>itis</td>
+					<td>eunt</td>
+				</tr>
+				<tr>
+					<th></th>
+					<td colspan="7">posse, velle, nolle, malle, ferre, fieri, edere</td>
 				</tr>
 			</table>
 		</details>
@@ -715,17 +731,31 @@
 			<table>
 				<tr>
 					<th></th>
-					<th colspan="2">Nominativ</th>
-					<th colspan="2">Genitiv</th>
-					<th colspan="2">Dativ</th>
-					<th colspan="2">Akkusativ</th>
-					<th colspan="2">Ablativ</th>
+					<th colspan="2">
+						Nominativ<br>
+						<b class="purple">Wer/Was?</b>
+					</th>
+					<th colspan="2">
+						Genitiv<br>
+						<b class="purple">Wessen?</b>
+					</th>
+					<th colspan="2">
+						Dativ<br>
+						<b class="purple">Wem?</b>
+					</th>
+					<th colspan="2">
+						Akkusativ<br>
+						<b class="purple">Wen/Was?</b>
+					</th>
+					<th colspan="2">
+						Ablativ
+					</th>
 				</tr>
 				<tr>
 					<th>A</th>
 					<td>a</td>
 					<td>ae</td>
-					<td class="genitiv">ae</td>
+					<td class="green">ae</td>
 					<td>arum</td>
 					<td>ae</td>
 					<td>is</td>
@@ -736,27 +766,27 @@
 				</tr>
 				<tr>
 					<th>O</th>
-					<td>us <b class="neutrum">/um</b></td>
-					<td>i <b class="neutrum">/a</b></td>
-					<td class="genitiv">i</td>
+					<td>us <b class="gold">/um</b></td>
+					<td>i <b class="gold">/a</b></td>
+					<td class="green">i</td>
 					<td>orum</td>
 					<td>o</td>
 					<td>is</td>
-					<td>um <b class="neutrum">/um</b></td>
-					<td>os <b class="neutrum">/a</b></td>
+					<td>um <b class="gold">/um</b></td>
+					<td>os <b class="gold">/a</b></td>
 					<td>o</td>
 					<td>is</td>
 				</tr>
 				<tr>
 					<th>K</th>
-					<td>- <b class="neutrum">/us, en</b></td>
-					<td>es <b class="neutrum">/a</b></td>
-					<td class="genitiv">is</td>
+					<td>- <b class="gold">/us, en</b></td>
+					<td>es <b class="gold">/a</b></td>
+					<td class="green">is</td>
 					<td>um</td>
 					<td>i</td>
 					<td>ibus</td>
-					<td>em <b class="neutrum">/us, en</b></td>
-					<td>es <b class="neutrum">/a</b></td>
+					<td>em <b class="gold">/us, en</b></td>
+					<td>es <b class="gold">/a</b></td>
 					<td>e</td>
 					<td>ibus</td>
 				</tr>
@@ -764,7 +794,7 @@
 					<th>E</th>
 					<td>es</td>
 					<td>es</td>
-					<td class="genitiv">ei</td>
+					<td class="green">ei</td>
 					<td>erum</td>
 					<td>ei</td>
 					<td>ebus</td>
@@ -777,7 +807,7 @@
 					<th>U</th>
 					<td>us</td>
 					<td>us</td>
-					<td class="genitiv">us</td>
+					<td class="green">us</td>
 					<td>uum</td>
 					<td>ui</td>
 					<td>ibus</td>
@@ -788,90 +818,307 @@
 				</tr>
 				<tr>
 					<th></th>
-					<td colspan="10" class="highlighted">Relativpronomen</td>
+					<td colspan="10" class="orange">Personalpronomen</td>
 				</tr>
 				<tr>
-					<th>M.</th>
-					<td>qui</td>
-					<td>qui</td>
-					<td>cuius</td>
-					<td>quorum</td>
-					<td>cui</td>
-					<td>quibus</td>
-					<td>quem</td>
-					<td>quos</td>
+					<th></th>
+					<td colspan="2">
+						ego<br>
+						<b class="purple">ich</b>
+					</td>
+					<td colspan="2">
+						mei<br>
+						<b class="purple">meiner</b>
+					</td>
+					<td colspan="2">
+						mihi<br>
+						<b class="purple">mir</b>
+					</td>
+					<td colspan="2">
+						me<br>
+						<b class="purple">mich</b>
+					</td>
+					<td colspan="2">mecum / a me</td>
+				</tr>
+				<tr>
+					<th></th>
+					<td colspan="2">
+						tu<br>
+						<b class="purple">du</b>
+					</td>
+					<td colspan="2">
+						tui<br>
+						<b class="purple">deiner</b>
+					</td>
+					<td colspan="2">
+						tibi<br>
+						<b class="purple">dir</b>
+					</td>
+					<td colspan="2">
+						te<br>
+						<b class="purple">dich</b>
+					</td>
+					<td colspan="2">tecum / a te</td>
+				</tr>
+				<tr>
+					<th></th>
+					<td colspan="2">
+						nos<br>
+						<b class="purple">wir</b>
+					</td>
+					<td colspan="2">
+						nostri<br>
+						<b class="purple">unser</b>
+					</td>
+					<td colspan="2">
+						nobis<br>
+						<b class="purple">uns</b>
+					</td>
+					<td colspan="2">
+						nos<br>
+						<b class="purple">uns</b>
+					</td>
+					<td colspan="2">nobiscum / a nobis</td>
+				</tr>
+				<tr>
+					<th></th>
+					<td colspan="2">
+						vos<br>
+						<b class="purple">ihr</b>
+					</td>
+					<td colspan="2">
+						vestri<br>
+						<b class="purple">euer</b>
+					</td>
+					<td colspan="2">
+						vobis<br>
+						<b class="purple">euch</b>
+					</td>
+					<td colspan="2">
+						vos<br>
+						<b class="purple">euch</b>
+					</td>
+					<td colspan="2">vobiscum / a vobis</td>
+				</tr>
+				<tr>
+					<th></th>
+					<td colspan="10" class="orange">Relativpronomen</td>
+				</tr>
+				<tr>
+					<th>M</th>
+					<td>qui<br><b class="purple">der</b></td>
+					<td>qui<br><b class="purple">die</b></td>
+					<td>cuius<br><b class="purple">des</b></td>
+					<td>quorum<br><b class="purple">der</b></td>
+					<td>cui<br><b class="purple">dem</b></td>
+					<td>quibus<br><b class="purple">denen</b></td>
+					<td>quem<br><b class="purple">den</b></td>
+					<td>quos<br><b class="purple">die</b></td>
 					<td>quo</td>
 					<td>quibus</td>
 				</tr>
 				<tr>
-					<th>F.</th>
-					<td>quae</td>
-					<td>quae</td>
-					<td>cuius</td>
-					<td>quae</td>
-					<td>cui</td>
-					<td>quibus</td>
-					<td>quam</td>
-					<td>quas</td>
+					<th>F</th>
+					<td>quae<br><b class="purple">die</b></td>
+					<td>quae<br><b class="purple">die</b></td>
+					<td>cuius<br><b class="purple">der</b></td>
+					<td>quarum<br><b class="purple">der</b></td>
+					<td>cui<br><b class="purple">der</b></td>
+					<td>quibus<br><b class="purple">den</b></td>
+					<td>quam<br><b class="purple">die</b></td>
+					<td><br><b class="purple">die</b></td>
 					<td>qua</td>
 					<td>quibus</td>
 				</tr>
 				<tr>
-					<th>N.</th>
-					<td>quod</td>
-					<td>quae</td>
-					<td>cuius</td>
-					<td>quorum</td>
-					<td>cui</td>
-					<td>quibus</td>
-					<td>quod</td>
-					<td>quae</td>
+					<th>N</th>
+					<td>quod<br><b class="purple">das</b></td>
+					<td>quae<br><b class="purple">die</b></td>
+					<td>cuius<br><b class="purple">des</b></td>
+					<td>quorum<br><b class="purple">der</b></td>
+					<td>cui<br><b class="purple">dem</b></td>
+					<td>quibus<br><b class="purple">den</b></td>
+					<td>quod<br><b class="purple">das</b></td>
+					<td>quae<br><b class="purple">die</b></td>
 					<td>quo</td>
 					<td>quibus</td>
 				</tr>
 				<tr>
 					<th></th>
-					<td colspan="10" class="highlighted">Personalpronomen</td>
+					<td colspan="10" class="orange">Interrogativpronomen</td>
 				</tr>
 				<tr>
-					<th>Ich</th>
-					<td colspan="2">ego</td>
-					<td colspan="2">-</td>
-					<td colspan="2">mihi</td>
-					<td colspan="2">me</td>
-					<td colspan="2">me</td>
-				</tr>
+					<th>M/F</th>
+					<td colspan="2">
+						quis?<br>
+						<b class="purple">wer?</b>
+					</td>
+					<td colspan="2">
+						cuius?<br>
+						<b class="purple">wessen?</b>
+					</td>
+					<td colspan="2">
+						cui?<br>
+						<b class="purple">wem?</b>
+					</td>
+					<td colspan="2">
+						quem?<br>
+						<b class="purple">wen?</b>
+					</td>
+					<td colspan="2">
+						a quo/quocum?<br>
+						<b class="purple">von wem/mit wem?</b>
+					</td>
 				<tr>
-					<th>Du</th>
-					<td colspan="2">tu</td>
-					<td colspan="2">-</td>
-					<td colspan="2">tibi</td>
-					<td colspan="2">te</td>
-					<td colspan="2">te</td>
-				</tr>
-				<tr>
-					<th>Wir</th>
-					<td colspan="2">nos</td>
-					<td colspan="2">-</td>
-					<td colspan="2">nobis</td>
-					<td colspan="2">nos</td>
-					<td colspan="2">nobis</td>
-				</tr>
-				<tr>
-					<th>Ihr</th>
-					<td colspan="2">vos</td>
-					<td colspan="2">-</td>
-					<td colspan="2">vobis</td>
-					<td colspan="2">vos</td>
-					<td colspan="2">vobis</td>
+					<th>N</th>
+					<td colspan="2">
+						quid?<br>
+						<b class="purple">was?</b>
+					</td>
+					<td colspan="2">
+						cuius?<br>
+						<b class="purple">wessen?</b>
+					</td>
+					<td colspan="2">
+						cui?<br>
+						<b class="purple">wem?</b>
+					</td>
+					<td colspan="2">
+						quid?<br>
+						<b class="purple">was?</b>
+					</td>
+					<td colspan="2">
+						quo?<br>
+						<b class="purple">wodurch?</b>
+					</td>
 				</tr>
 				<tr>
 					<th></th>
-					<td colspan="10" class="highlighted">Ablative</td>
+					<td colspan="10" class="orange">Possessivpronomen</td>
+				</tr>
+				<tr>
+					<th>1.&nbsp;Sg</th>
+					<td colspan="5">meus, mea, meum</td>
+					<td colspan="5">mein, meine</td>
+				</tr>
+				<tr>
+					<th>2.&nbsp;Sg</th>
+					<td colspan="5">tuus, tua, tuum</td>
+					<td colspan="5">dein, deine</td>
+				</tr>
+				<tr>
+					<th>1.&nbsp;Pl</th>
+					<td colspan="5">noster, nostra, nostrum</td>
+					<td colspan="5">unser, unsere</td>
+				</tr>
+				<tr>
+					<th>2.&nbsp;Pl</th>
+					<td colspan="5">vester, vestra, vestrum</td>
+					<td colspan="5">euer, eure</td>
+				</tr>
+				<tr>
+					<th>3. R</th>
+					<td colspan="5">suus, sua, suum</td>
+					<td colspan="5">sein, ihr</td>
 				</tr>
 				<tr>
 					<th></th>
-					<td colspan="4">
+					<th colspan="10">Indefinitpronomen <b class="green">substantivisch</b></th>
+				</tr>
+				<tr>
+					<th></th>
+					<td colspan="5">aliquis, aliquid</td>
+					<td colspan="5">jemand, irgendeiner, etwas</td>
+				</tr>
+				<tr>
+					<th></th>
+					<td colspan="5">quisquam, quicquam</td>
+					<td colspan="5">jemand, irgendeiner, etwas</td>
+				</tr>
+				<tr>
+					<th></th>
+					<td colspan="5">quisque, quidque</td>
+					<td colspan="5">jeder (einzelne)</td>
+				</tr>
+				<tr>
+					<th></th>
+					<td colspan="5">quivis, quaevis, quidvis<br>/quilibet, quaelibet, quidlibet</td>
+					<td colspan="5">jeder (beliebige)</td>
+				</tr>
+				<tr>
+					<th></th>
+					<td colspan="5">quidam, quaedam, quiddam</td>
+					<td colspan="5">ein gewisser / ein bestimmer</td>
+				</tr>
+				<tr>
+					<th></th>
+					<td colspan="5">nemo, nihil</td>
+					<td colspan="5">niemand, nichts</td>
+				</tr>
+				<tr>
+					<th></th>
+					<th colspan="10">Indefinitpronomen <b class="green">adjektivisch</b></th>
+				</tr>
+				<tr>
+					<th></th>
+					<td colspan="5">aliqui, aliaquae, aliquod</td>
+					<td colspan="5">irgendein, irgendetwas</td>
+				</tr>
+				<tr>
+					<th></th>
+					<td colspan="5">ullus, a, um</td>
+					<td colspan="5">irgendein, irgendetwas</td>
+				</tr>
+				<tr>
+					<th></th>
+					<td colspan="5">quisque, quaeque, quodque</td>
+					<td colspan="5">jeder (einzelne)</td>
+				</tr>
+				<tr>
+					<th></th>
+					<td colspan="5">quivis, quaevis, quodvis<br>/quilibet, quaelibet, quodlibet</td>
+					<td colspan="5">jeder (beliebige)</td>
+				</tr>
+				<tr>
+					<th></th>
+					<td colspan="5">quidam, quaedam, quoddam</td>
+					<td colspan="5">ein gewisser / ein bestimmter</td>
+				</tr>
+				<tr>
+					<th></th>
+					<td colspan="5">nullus, a, um</td>
+					<td colspan="5">keiner</td>
+				</tr>
+				<tr>
+					<th></th>
+					<td colspan="10" class="orange">Demonstrativpronomen</td>
+				</tr>
+				<tr>
+					<th></th>
+					<td colspan="5">
+						is, ea, id<br>
+						hic, haec, hoc<br>
+						ille, illa, illud<br>
+						iste, ista, istud<br>
+						ipse, ipsa, ipsum<br>
+						idem, eadem, idem
+					</td>
+					<td colspan="5">
+						dieser, diese, dieses<br>
+						dieser, diese, dieses<br>
+						jener, jene, jenes; auch: jener bekannte/berühmte<br>
+						dieser da, diese da, dieses da<br>
+						er selbst, sie selbst, es selbst<br>
+						derselbe, dieselbe, dasselbe
+					</td>
+				</tr>
+				<tr>
+					<th></th>
+					<td colspan="10" class="orange">Ablative</td>
+				</tr>
+				<tr>
+					<th></th>
+					<td colspan="5">
 						instrumenti<br>
 						temporis<br>
 						loci<br>
@@ -880,7 +1127,7 @@
 						sociativus<br>
 						causae
 					</td>
-					<td colspan="6">
+					<td colspan="5">
 						Womit? Wodurch?<br>
 						Wann?<br>
 						Wo? Wohin?<br>
@@ -901,7 +1148,7 @@
 					<th></th>
 					<th>Stamm</th>
 					<th>Singular (= Stamm)</th>
-					<th>Plural (Stamm + te)</th>
+					<th>Plural (= Stamm + te)</th>
 				</tr>
 				<tr>
 					<th>A</th>
@@ -916,22 +1163,38 @@
 					<td>videte! <i>Seht!</i></td>
 				</tr>
 				<tr>
-					<th>Kons.</th>
-					<td>lud | ere</td>
-					<td>lude! <i>Spiel!</i> &rarr; Stamm + e</td>
-					<td>lud<u>ite</u>! <i>Spielt!</i> &rarr; Stamm + ite (statt ete)</td>
-				</tr>
-				<tr>
 					<th>I</th>
 					<td>audi | re</td>
 					<td>audi! <i>Hör (zu)!</i></td>
 					<td>audite! <i>Hört (zu)!</i></td>
 				</tr>
 				<tr>
-					<th>KV</th>
+					<th>Kons.</th>
+					<td>lud | ere</td>
+					<td>lude! <i>Spiel!</i><br>&rarr; Stamm + e</td>
+					<td>ludite! <i>Spielt!</i><br>&rarr; Stamm + ite</td>
+				</tr>
+				<tr>
+					<th rowspan="2">KV</th>
 					<td>fac | ere</td>
-					<td>face! <i>Mach!</i> &rarr; Stamm + e</td>
-					<td>fac<u>ite</u>! <i>Macht!</i> &rarr; Stamm + ite (statt ete)</td>
+					<td>fac! <i>Mach!</i><br>&rarr; nur Stamm</td>
+					<td>facite! <i>Macht!</i><br>&rarr; Stamm + ite</td>
+				</tr>
+				<tr>
+					<td>cup | ere</td>
+					<td>cupe! <i>Wünsch (dir)!</i><br>&rarr; Stamm + e</td>
+					<td>cupite! <i>Wünscht (euch)!</i><br>&rarr; Stamm + ite</td>
+				</tr>
+				<tr>
+					<th></th>
+					<td>esse</td>
+					<td>es! <i>Sei (...)!</i></td>
+					<td>este! <i>Seid (...)!</i></td>
+				</tr>
+					<th></th>
+					<td>ire</td>
+					<td>i! <i>Geh!</i></td>
+					<td>ite! <i>Geht!</i></td>
 				</tr>
 			</table>
 		</details>
@@ -959,10 +1222,10 @@
 			<summary>Grammatik</summary>
 			<table>
 				<tr>
-					<th>Dativus possessivus</th>
+					<th>Dativus Possessivus</th>
 					<td>Dativ&nbsp;+&nbsp;esse:<br>"hat" statt "ist"</td>
 					<td>
-						<b class="highlighted">Lucio villa magna est:</b><br>
+						<b class="orange">Lucio villa magna est:</b><br>
 						<s>Das große Landhaus ist dem Lucius</s><br>
 						Lucius hat ein großes Landhaus
 					</td>
@@ -973,18 +1236,26 @@
 				</tr>
 				<tr>
 					<th>Ablativus Loci bei a&zwj;-&zwj;Dekl.</th>
-					<td colspan="2">Langer Vokal, idr. mit Präposition: (in) aul<b class="highlighted">â</b> / vi<b class="highlighted">â</b> &rarr; Ablativ!</td>
+					<td colspan="2">Langer Vokal: aul<b class="orange">â</b> / vi<b class="orange">â</b> &rarr; Ablativ!</td>
 				</tr>
 				<tr>
-					<th rowspan="3">AcI</th>
+					<th>AcI</th>
 					<td colspan="2">
-						<b class="neutrum">Hauptsatz:</b> <b class="highlighted">Nebensatz</b><br>
-						<b class="neutrum">Julia dicit:</b> <b class="highlighted">Marcus mercatorem bonum est</b><br>
+						(<b class="gold">Hauptsatz:</b> <b class="orange">Nebensatz</b>)<br>
+						<b class="gold">Julia dicit:</b> <b class="orange">Marcus mercatorem bonum est</b><br>
 						Julia sagt: Marcus ist ein guter Kaufmann<br>
 						<i>Nebensatz Subjekt (Marcus) &rarr; Akkusativ (Marcum)<br>
 						Nebensatz Prädikat (est) &rarr; Infinitiv (esse)</i><br>
-						<b class="neutrum">Julia dicit</b> <b class="highlighted">Marcum mercatorem bonum esse</b><br>
+						<b class="gold">Julia dicit</b> <b class="orange">Marcum mercatorem bonum esse</b><br>
 						Julia sagt, dass Marcus ein guter Kaufmann ist
+					</td>
+				</tr>
+				<tr>
+					<th>Relativsätze</th>
+					<td colspan="2">
+						(<b class="gold">Hauptsatz,</b> <b class="orange">Relativsatz,</b> <b class="green">Relativpronomen</b>)<br>
+						<b class="gold">Duo gladiatores,</b> <b class="orange"><b class="green">quibus</b> mortifera arma sunt,</b> <b class="gold">primi in arena pugnant: Thrax et Retiarius</b></b><br>
+						Zwei Gladiatoren, die tödliche Waffen haben, kämpfen zuerst in der Arena: Thrax und Retiarius<br>
 					</td>
 				</tr>
 			</table>
