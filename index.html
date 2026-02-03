@@ -379,10 +379,13 @@
 				["reduitus, ūs", "Rückkehr"],
 				["multīs diēbus post", "viele Tage später", "multis diebus post"],
 				["iter facere", "marschieren, reisen<br><i>wie \"Weg/Meter machen\" = viel marschieren</i>"],
+			],
+			[ // Lektion 10
+				["Arbeite dran", "Arbeite dran"],
 			]
 		];
 	</script>
-	<title>5 Pecunia</title>
+	<title>V Pecunia</title>
 	<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍷</text></svg>">
 	<meta name="robots" content="noindex">
 	<meta charset="utf-8">
@@ -396,12 +399,10 @@
 		#quiz-wrap {
 			height: fit-content;
 		}
-		#quiz,
-		* {
+		#quiz, * {
 			user-select: none;
 		}
-		#quiz,
-		label {
+		#quiz, label {
 			position: relative;
 		}
 		#options,
@@ -455,20 +456,30 @@
 			top: 5px;
 			right: 5px;
 		}
+		#skip {
+			position: absolute;
+			top: 5px;
+			left: 5px;
+		}
+		#skip:hover {
+			cursor: pointer;
+		}
 		#vokabel {
+			min-height: 48px;
 			font-size: 20px;
 			color: #808;
 			font-weight: 700;
-			margin: 25px 0;
+			margin: 40px 0 25px;
 			padding: 0 20px;
 		}
 		#translation {
 			font-size: 16px;
 			padding: 0 20px;
-			min-height: 45px;
+			min-height: 58px;
 		}
 		i {
 			color: #aa2068;
+			font-style: normal;
 		}
 		i:before {
 			content: "« ";
@@ -512,14 +523,14 @@
 		}
 		#search input {
 			background-color: #222;
-			width: 140px;
+			width: 350px;
 			height: 30px;
-			margin: 10px 0 20px;
-			padding: 0 10px;
-			border-radius: 30px;
+			margin: 20px 0;
+			padding: 16px 8px;
 			outline: none;
 			font-weight: bold;
-			border: 3px solid #aa2068;
+			border: none;
+			border-bottom: 3px solid #aa2068;
 			color: #fff;
 		}
 		#search input:hover {
@@ -529,17 +540,20 @@
 			text-align: left;
 		}
 		#notes {
-			width: 650px;
+			width: 800px;
 			max-width: 100%;
-			font-size: 12px;
+			font-size: 14px;
 			padding: 0 8px;
 		}
 		details {
 			margin-top: 10px;
 			text-align: left;
+			padding: 12px;
+			background-color: #151515;
+			border: 1px solid #666;
 		}
-		summary {
-			margin-bottom: 10px;
+		details > table {
+			margin-top: 12px;
 		}
 		summary:hover {
 			cursor: pointer;
@@ -551,16 +565,20 @@
 			width: 100%;
 			border-collapse: collapse;
 		}
-		th, td {
-			padding: 5px 2px;
-		}
-		th {
-			font-weight: bold;
-			color: #de6f3d;
-			border-right:1px solid #fff;
+		.tlf {
+			table-layout: fixed;
 		}
 		td {
-			border: 1px solid #fff;
+			padding: 6px;
+			border: 1px solid #666;
+		}
+		th:empty, td:empty {
+			border: none;
+		}
+		th {
+			padding: 6px;
+			font-weight: bold;
+			color: #de6f3d;
 		}
 		.purple,
 		.orange,
@@ -579,9 +597,6 @@
 		}
 		.green {
 			color: #50a613;
-		}
-		#timer {
-			text-align: left;
 		}
 		#lektionen {
 			margin-top: 20px;
@@ -651,6 +666,7 @@
 	<div id="quiz-wrap">
 		<div id="quiz">
 			<div id="counter"></div>
+			<div id="skip" class="hidden" onclick="skip()">Überspringen</div>
 			<div id="vokabel"></div>
 			<div id="translation"></div>
 
@@ -667,7 +683,7 @@
 	</div>
 
 	<div id="search">
-		<input type="text" placeholder="Vokabel suchen" onkeyup="search(this.value)">
+		<input type="text" placeholder="&raquo; Vokabel suchen" onkeyup="search(this.value)">
 		<div id="results"></div>
 	</div>
 
@@ -733,11 +749,8 @@
 					<td>iunt</td>
 				</tr>
 				<tr>
-					<th></th>
-					<td colspan="10" class="orange">Perfekt</td>
-				</tr>
-				<tr>
-					<th colspan="2"></th>
+					<th>Perfekt</th>
+					<td></td>
 					<td>-i</td>
 					<td>-isti</td>
 					<td>-it</td>
@@ -747,25 +760,43 @@
 				</tr>
 				<tr>
 					<th></th>
-					<td colspan="7">
+					<td></td>
+					<td colspan="6">
 						<b class="green">v-Perfekt:</b> a-Konjugation und i-Konjugation (idr.)<br>
 						<i>&rarr; bsp.: audire, audiv-</i><br>
 						<b class="green">u-Perfekt:</b> e-Konjugation (idr.)<br>
 						<i>&rarr; bsp.: debēre, debu-</i><br>
 						<b class="green">Stammperfekt:</b> Ausnahmen, siehe Vokabeln<br>
 						<i>&rarr; bsp.: defendere, defend-</i><br>
-						<b class="green">Infinitiv:</b> Perfektstamm + isse (z.B. audivisse)<br>
-						&rarr; drückt  im AcI Handlung aus, die zeitlich vor übergeordneter Handlung stattgefunden hat<br>
-						Übergeordnetes Verb im Präsens: Perfekt/Präteritum<br>
-						Übergeordnetes Verb im Perfekt: Plusquamperfekt 
+						<b class="green">Infinitiv:</b> Perfektstamm + isse<br>
+						<i>&rarr; bsp.: audire, audivisse</i>
 					</td>
 				</tr>
 				<tr>
-					<th></th>
-					<td colspan="10" class="orange">Unregelmäßige</td>
+					<th>Imperfekt</th>
+					<td></td>
+					<td>-bam</td>
+					<td>-bas</td>
+					<td>-bat</td>
+					<td>-bamus</td>
+					<td>-batis</td>
+					<td>-bant</td>
 				</tr>
 				<tr>
 					<th></th>
+					<td></td>
+					<td colspan="6">
+						<b class="green">kein Bindevokal:</b> a-/e-Konj. &rarr; <b class="gold">lauda-ba-mus</b><br>
+						<b class="green">i/e/u Bindevokal:</b> kons./kv./i-Konj. &rarr; <b class="gold">defend-e-ba-mus</b><br>
+
+					</td>
+				</tr>
+				<tr>
+					<th>Kurzvokalische</th>
+					<td colspan="7">capere, facere, cupere</td>
+				</tr>
+				<tr>
+					<th>Unregelmäßige</th>
 					<td>esse</td>
 					<td>sum</td>
 					<td>es</td>
@@ -783,14 +814,6 @@
 					<td>imus</td>
 					<td>itis</td>
 					<td>eunt</td>
-				</tr>
-				<tr>
-					<th></th>
-					<td colspan="10"><b class="orange">Kurzvokalische</td>
-				</tr>
-				<tr>
-					<th></th>
-					<td colspan="7">capere, facere, cupere</td>
 				</tr>
 			</table>
 		</details>
@@ -818,7 +841,8 @@
 						<b class="purple">Wen/Was?</b>
 					</th>
 					<th colspan="2">
-						Ablativ
+						Ablativ<br>
+						&nbsp;
 					</th>
 				</tr>
 				<tr>
@@ -1050,7 +1074,8 @@
 						separativus<br>
 						modi<br>
 						sociativus<br>
-						causae
+						causae <br>
+						mensuare<br>
 					</td>
 					<td colspan="5">
 						Womit? Wodurch?<br>
@@ -1059,7 +1084,8 @@
 						Woher? Wovon?<br>
 						Auf welche Weise?<br>
 						Mit wem?<br>
-						Warum? Weshalb?
+						Warum? Weshalb?<br>
+						Um wie viel?
 					</td>
 				</tr>
 			</table>
@@ -1094,11 +1120,20 @@
 					<td>audite! <i>Hört (zu)!</i></td>
 				</tr>
 				<tr>
-					<th>Kons.</th>
-					<td>lud | ere</td>
-					<td>lude! <i>Spiel!</i><br>&rarr; Stamm + e</td>
+					<th>Kons.&nbsp;&&nbsp;KV</th>
+					<td>
+						lud | ere<br>
+						cup | ere<br>
+						&nbsp;
+					</td>
+					<td>
+						lude! <i>Spiel!</i><br>
+						cupe! <i>Wünsch (dir)!</i><br>
+						&rarr; Stamm + e
+					</td>
 					<td>
 						ludite! <i>Spielt!</i><br>
+						cupite! <i>Wünscht!</i><br>
 						&rarr; Stamm + ite
 					</td>
 				</tr>
@@ -1110,7 +1145,8 @@
 					<td>
 						dic | ere<br>
 						duc | ere<br>
-						fac | ere
+						fac | ere<br>
+						&nbsp;
 					</td>
 					<td>dic! <i>Sag!</i><br>
 						duc! <i>Führe!</i><br>
@@ -1118,24 +1154,16 @@
 						&rarr; Stamm ohne e
 					</td>
 					<td>
-						dicite! <i>Sagt!</i><br>
-						ducite! <i>Führt!</i><br>
-						facite! <i>Macht (...)!</i><br>
-						&rarr; Stamm + ite
+						wie Kons.
 					</td>
 				</tr>
 				<tr>
-					<th>KV<br>&rarr; wie Kons.</th>
-					<td>cup | ere</td>
-					<td>cupe! <i>Wünsch (dir)!</i><br>&rarr; Stamm + e</td>
-					<td>cupite! <i>Wünscht (euch)!</i><br>&rarr; Stamm + ite</td>
-				</tr>
-				<tr>
-					<th></th>
+					<th>Unregelmäßige</th>
 					<td>esse</td>
 					<td>es! <i>Sei (...)!</i></td>
 					<td>este! <i>Seid (...)!</i></td>
 				</tr>
+				<tr>
 					<th></th>
 					<td>ire</td>
 					<td>i! <i>Geh!</i></td>
@@ -1147,7 +1175,7 @@
 		<!-- Vocativ -->
 		<details>
 			<summary>Vocativ (Anredeform o-Dekl.)</summary>
-			<table>
+			<table class="tlf">
 				<tr>
 					<th>-us &rarr; e</th>
 					<td>Marc | us<br>Tit | us</td>
@@ -1155,8 +1183,8 @@
 				</tr>
 				<tr>
 					<th>-ius &rarr; i</th>
-					<td>Luc | ius<br>Fil | ius</td>
-					<td>Luci<br>Fili</td>
+					<td>Luc | ius<br>Fil | ius<br>Ga | ius</td>
+					<td>Luci<br>Fili<br>Gai</td>
 				</tr>
 			</table>
 			<i>Oro te, Juli, veni mecum!<br>Ich bitte dich, Julius, komm mit mir!</i>
@@ -1167,7 +1195,7 @@
 			<summary>Grammatik</summary>
 			<table>
 				<tr>
-					<th>Dativus Possessivus</th>
+					<th>Dativus Possessivus (Besitz)</th>
 					<td>Dativ&nbsp;+&nbsp;esse:<br>"hat" statt "ist"</td>
 					<td>
 						<b class="orange">Lucio villa magna est:</b><br>
@@ -1176,23 +1204,34 @@
 					</td>
 				</tr>
 				<tr>
-					<th>Akk. von Städten ohne "in"</th>
+					<th>Akk. von Städten<br>ohne "in"</th>
 					<td colspan="2">Romam &rarr; nach Rom (kein "in" Romam für "nach" notwendig)</td>
 				</tr>
 				<tr>
-					<th>Ablativus Loci bei a&zwj;-&zwj;Dekl.</th>
+					<th>Abl. Loci bei<br>a&zwj;-&zwj;Dekl.</th>
 					<td colspan="2">Langer Vokal: aul<b class="orange">ā</b> / vi<b class="orange">ā</b> &rarr; Ablativ!</td>
 				</tr>
 				<tr>
 					<th>AcI</th>
 					<td colspan="2">
 						(<b class="gold">Hauptsatz:</b> <b class="orange">Nebensatz</b>)<br>
+						<br>
 						<b class="gold">Julia dicit:</b> <b class="orange">Marcus mercatorem bonum est</b><br>
 						Julia sagt: Marcus ist ein guter Kaufmann<br>
-						<i>Nebensatz Subjekt (Marcus) &rarr; Akkusativ (Marcum)<br>
-						Nebensatz Prädikat (est) &rarr; Infinitiv (esse)</i><br>
+						<b class="purple">Nebensatz Subjekt (Marcus) &rarr; Akkusativ (Marcum)<br>
+						Nebensatz Prädikat (est) &rarr; Infinitiv (esse)</b><br>
 						<b class="gold">Julia dicit</b> <b class="orange">Marcum mercatorem bonum esse</b><br>
-						Julia sagt, dass Marcus ein guter Kaufmann ist
+						Julia sagt, dass Marcus ein guter Kaufmann ist<br>
+						<br>
+						<b class="green">Infinitiv Perfekt im AcI:</b><br>
+						Drückt Handlung aus, die zeitlich vor übergeordneter Handlung stattgefunden hat<br>
+						<b class="purple">Präsens &rarr; Perfekt/Präteritum<br>
+						Perfekt &rarr; Plusquamperfekt</b><br>
+						<b class="gold">Julia vocat</b> <b class="orange">Marcum abiisse</b><br>
+						Julia ruft, dass Marcus fortgegangen ist/fort ging<br>
+						<b class="gold">Julia vocavit</b> <b class="orange">Marcum abiisse</b><br>
+						Julia rief, dass Marcus fortgegangen ist (Präteritum &rarr; Perfekt)<br>
+						Julia hat gerufen, dass Marcus fortgegangen sei (Perfekt &rarr; PQP)
 					</td>
 				</tr>
 				<tr>
@@ -1205,18 +1244,9 @@
 				</tr>
 			</table>
 		</details>
-		<div id="timer" class="left green"></div>
 	</div>
 	
 	<script>
-		/*
-
-		Todos:
-		- neues Layout/mobile (ohne die tables)
-		- tables -> tablet width, nur quiz bleibt mobile
-
-		*/
-
 		var id = (n) => document.getElementById(n);
 
 		var vokabel = id("vokabel");
@@ -1225,8 +1255,7 @@
 		var repeat = id("repeat");
 		var next = id("next");
 		var results = id("results");
-
-		var timer = id("timer");
+		var _skip = id("skip");
 
 		var quiz_pool = [];
 		var repeat_pool = [];
@@ -1275,12 +1304,13 @@
 				if (done) {
 					counter.innerHTML = "";
 					vokabel.innerHTML = "";
-					translation.innerHTML = "Fertig &hearts;";
+					translation.innerHTML = "Fertig &hearts;<br><button class='button' onclick='location.reload(true);'>Neu&nbsp;anfangen</a>";
 
 					repeat.disabled = true;
 					next.disabled = true;
 					repeat.classList.add("hidden");
 					next.classList.add("hidden");
+					_skip.classList.add("hidden");
 				}
 
 				else {
@@ -1295,10 +1325,27 @@
 					translation.innerHTML = "";
 
 					repeat.disabled = true;
+
+					if (repeat_pool.length > 0) _skip.classList.remove("hidden");
 				}
 			}
 			
 			check = !check;
+		}
+
+		function skip() {
+			if (repeat_pool.length > 0) {
+				quiz_pool = [];
+				quiz_pool = repeat_pool.slice();
+				repeat_pool = [];
+
+				initial_max = quiz_pool.length;
+				count = 0;
+				check = false;
+				is_repetition = true;
+				
+				quiz();
+			}
 		}
 
 		function start() {
@@ -1404,33 +1451,6 @@
 				lektionen_wrapper.appendChild(checkbox_wrapper);
 			}
 		}
-
-
-		// 1838066400 Abi mündliche Prüfungen Ende
-
-		function startCooldown(target) {
-			const intervalId = setInterval(() => {
-				const now = Math.floor(Date.now() / 1000);
-				const remaining = target - now;
-
-				var start = 1755468000;
-    			const percent = ((now - start) / (target - start)) * 100;
-
-				if (remaining <= 0) {
-				clearInterval(intervalId);
-				console.log("Countdown finished!");
-				} else {
-				const days = Math.floor(remaining / (3600 * 24));
-				const hours = Math.floor((remaining % (3600 * 24)) / 3600);
-				const minutes = Math.floor((remaining % 3600) / 60);
-				const seconds = remaining % 60;
-
-				timer.innerHTML = `Abiturprüfungen vorbei in:<br>${days} Tage<br>${hours} Stunden<br>${minutes} Minuten<br>${seconds} Sekunden<br>${percent.toFixed(2)}%`;
-				}
-			}, 1000);
-		}
-
-		startCooldown("1838066400");
 
 		window.addEventListener('load', create_lection_toggles());
 	</script>
