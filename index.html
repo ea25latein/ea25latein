@@ -468,10 +468,6 @@
 		* {
 			box-sizing: border-box;
 		}
-		label {
-			top: -3px;
-			left: 5px;
-		}
 		body {
 			margin: 0;
 			background-color: #222;
@@ -663,7 +659,7 @@
 			height: 20px;
 			margin: 0;
 			position: relative;
-			width: 30px;
+			width: 45px;
 		}
 		.checkbox-wrapper .ikxBAC::before {
 			bottom: -6px;
@@ -687,6 +683,11 @@
 			top: 3px;
 			width: 14px;
 		}
+		label {
+			top: -4px;
+			left: -25px;
+			font-weight: bold;
+		}
 		.checkbox-wrapper input[type="checkbox"] {
 			cursor: default;
 		}
@@ -700,7 +701,10 @@
 		}
 		.checkbox-wrapper .ikxBAC:checked::after {
 			background-color: #fff;
-			left: 13px;
+			left: 28px;
+		}
+		.checkbox-wrapper .ikxBAC:checked ~ label {
+			left: -40px;
 		}
 		.checkbox-wrapper :focus:not(.focus-visible) {
 			outline: 0;
