@@ -479,7 +479,7 @@
 			]
 		];
 	</script>
-	<title>V Pecunia</title>
+	<title>In vino veritas</title>
 	<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍷</text></svg>">
 	<meta name="robots" content="noindex">
 	<meta charset="utf-8">
@@ -499,7 +499,7 @@
 		#quiz, label {
 			position: relative;
 		}
-		#options,
+		.options,
 		#quiz,
 		body {
 			display: flex;
@@ -549,7 +549,6 @@
 		#skip {
 			position: absolute;
 			top: 5px;
-			left: 5px;
 		}
 		#skip:hover {
 			cursor: pointer;
@@ -577,12 +576,12 @@
 		i:after {
 			content: " »";
 		}
-		#options {
+		.options {
 			width: 100%;
 			min-height: 25px;
 			justify-content: center;
 		}
-		#options > .button {
+		.options > .button {
 			margin-bottom: 15px;
 		}
 		.button {
@@ -676,6 +675,9 @@
 		.green {
 			font-weight: bold;
 		}
+		span {
+			font-weight: normal !important;
+		}
 		.purple {
 			color: #aa2068;
 		}
@@ -688,6 +690,14 @@
 		.green {
 			color: #50a613;
 		}
+		#fav {
+			position: absolute;
+			top: 5px;
+			left: 5px;
+		}
+		#fav:hover {
+			cursor: pointer;
+		}
 		#lektionen {
 			margin-top: 20px;
 			width: 350px;
@@ -696,7 +706,8 @@
 		}
 		.checkbox-wrapper {
 			text-align: left;
-			width: 70px;
+			width: 50px;
+			position: relative;
 		}
 		.checkbox-wrapper .ikxBAC {
 			appearance: none;
@@ -732,9 +743,14 @@
 			width: 14px;
 		}
 		label {
-			top: -4px;
-			left: -25px;
+			position: absolute;
+			left: 19px;
 			font-weight: bold;
+			color: #fff;
+			pointer-events: none;
+		}
+		.label_icon {
+			top: -2px;
 		}
 		.checkbox-wrapper input[type="checkbox"] {
 			cursor: default;
@@ -752,7 +768,7 @@
 			left: 28px;
 		}
 		.checkbox-wrapper .ikxBAC:checked ~ label {
-			left: -40px;
+			left: 5px;
 		}
 		.checkbox-wrapper :focus:not(.focus-visible) {
 			outline: 0;
@@ -785,20 +801,26 @@
 	<div id="quiz-wrap">
 		<div id="quiz">
 			<div id="counter"></div>
-			<div id="skip" class="hidden" onclick="skip()">Überspringen</div>
+			<div id="fav" onclick="save()"></div>
 			<div id="vokabel"></div>
 			<div id="translation"></div>
 
-			<div id="options">
+			<div class="options">
 				<button class="button" onclick="quiz(true)" id="repeat" disabled>Wiederholen</button>
 				<button class="button" onclick="quiz()" id="next">Weiter</button>
 			</div>
+			
+			<div id="skip" class="purple hidden" onclick="if (confirm('Zu Wiederholungen springen?')) skip()">⏩</div>
 		</div>
 	</div>
 
 	<div id="menu" class="showme">
 		<div id="lektionen"></div>
-		<button class="button" onclick="start()">Start</button>
+		
+		<div class="options">
+			<button class="button" onclick="start()">Start</button>
+			<button id="clear_cache_btn" class="button hidden" onclick='if (confirm("Gemerkte Vokabeln leeren?")) clear_cache()'>Cache leeren</button>
+		</div>
 	</div>
 
 	<div id="search">
@@ -820,52 +842,52 @@
 				<tr>
 					<th>A (-are)</th>
 					<td>intra | re</td>
-					<td>o (❗-a)</td>
-					<td>s</td>
-					<td>t</td>
-					<td>mus</td>
-					<td>tis</td>
-					<td>nt</td>
+					<td>intr<b>o</b> (❗-a)</td>
+					<td>intra<b>s</b></td>
+					<td>intra<b>t</b></td>
+					<td>intra<b>mus</b></td>
+					<td>intra<b>tis</b></td>
+					<td>intra<b>nt</b></td>
 				</tr>
 				<tr>
 					<th>E (-ēre)</th>
 					<td>vidē | re</td>
-					<td>o</td>
-					<td>s</td>
-					<td>t</td>
-					<td>mus</td>
-					<td>tis</td>
-					<td>nt</td>
+					<td>vidē<b>o</b></td>
+					<td>vidē<b>s</b></td>
+					<td>vidē<b>t</b></td>
+					<td>vidē<b>mus</b></td>
+					<td>vidē<b>tis</b></td>
+					<td>vidē<b>nt</b></td>
 				</tr>
 				<tr>
 					<th>Kons. (-ere)</th>
 					<td>lud | ere</td>
-					<td>o</td>
-					<td>is</td>
-					<td>it</td>
-					<td>imus</td>
-					<td>itis</td>
-					<td>unt</td>
+					<td>lud<b>o</b></td>
+					<td>lud<b>is</b></td>
+					<td>lud<b>ludit</b></td>
+					<td>lud<b>imus</b></td>
+					<td>lud<b>itis</b></td>
+					<td>lud<b>unt</b></td>
 				</tr>
 				<tr>
 					<th>I (-ire)</th>
 					<td>audi | re</td>
-					<td>o</td>
-					<td>s</td>
-					<td>t</td>
-					<td>mus</td>
-					<td>tis</td>
-					<td>unt</td>
+					<td>audi<b>o</b></td>
+					<td>audi<b>s</b></td>
+					<td>audi<b>t</b></td>
+					<td>audi<b>mus</b></td>
+					<td>audi<b>tis</b></td>
+					<td>audi<b>unt</b></td>
 				</tr>
 				<tr>
 					<th>KV (-ere & -io)</th>
 					<td>cap | ere</td>
-					<td>io</td>
-					<td>is</td>
-					<td>it</td>
-					<td>imus</td>
-					<td>itis</td>
-					<td>iunt</td>
+					<td>cap<b>io</b></td>
+					<td>cap<b>is</b></td>
+					<td>cap<b>it</b></td>
+					<td>cap<b>imus</b></td>
+					<td>cap<b>itis</b></b></td>
+					<td>cap<b>iunt</b></b></td>
 				</tr>
 				<tr>
 					<td colspan="8"></td>
@@ -975,55 +997,57 @@
 				</tr>
 				<tr>
 					<th>A</th>
-					<td>a</td>
-					<td>ae</td>
-					<td class="green">ae</td>
-					<td>arum</td>
-					<td>ae</td>
-					<td>is</td>
-					<td>am</td>
-					<td>as</td>
-					<td>a</td>
-					<td>is</td>
+					<td>amic<b>a</b></td>
+					<td>amic<b>ae</b></td>
+					<td>amic<b class="green">ae</b></td>
+					<td>amic<b>arum</b></td>
+					<td>amic<b>ae</b></td>
+					<td>amic<b>is</b></td>
+					<td>amic<b>am</b></td>
+					<td>amic<b>as</b></td>
+					<td>amic<b>a</b></td>
+					<td>amic<b>is</b></td>
 				</tr>
 				<tr>
 					<th>O</th>
-					<td>us <b class="gold">/&zwj;um</b></td>
-					<td>i <b class="gold">/&zwj;a</b></td>
-					<td class="green">i</td>
-					<td>orum</td>
-					<td>o</td>
-					<td>is</td>
-					<td>um <b class="gold">/&zwj;um</b></td>
-					<td>os <b class="gold">/&zwj;a</b></td>
-					<td>o</td>
-					<td>is</td>
+					<td>amic<b>us</b><br><span class="gold">templum</span></td>
+					<td>amic<b>i</b><br><span class="gold">templa</span></td>
+					<td>amic<b class="green">i</b><br>&nbsp;</td>
+					<td>amic<b>orum</b><br>&nbsp;</td>
+					<td>amic<b>o</b><br>&nbsp;</td>
+					<td>amic<b>is</b><br>&nbsp;</td>
+					<td>amic<b>um</b><br><span class="gold">templum</span></td>
+					<td>amic<b>os</b><br><span class="gold">templa</span></td>
+					<td>amic<b>o</b><br>&nbsp;</td>
+					<td>amic<b>is</b><br>&nbsp;</td>
 				</tr>
 				<tr>
 					<th>K</th>
-					<td>- <b class="gold">/&zwj;us,&nbsp;en</b></td>
-					<td>es <b class="gold">/&zwj;a</b></td>
-					<td class="green">is</td>
-					<td>um</td>
-					<td>i</td>
-					<td>ibus</td>
-					<td>em <b class="gold">/&zwj;us,&nbsp;en</b></td>
-					<td>es <b class="gold">/&zwj;a</b></td>
-					<td>e</td>
-					<td>ibus</td>
+					<td>victor<br><span class="gold">tempus<br>nomen</span></td>
+					<td>victor<b>es</b><br><span class="gold">tempora<br>nomina</span></td>
+					<td>victor<b class="green">is</b><br>&nbsp;<br>&nbsp;</td>
+					<td>victor<b>um</b><br>&nbsp;<br>&nbsp;</td>
+					<td>victor<b>i</b><br>&nbsp;<br>&nbsp;</td>
+					<td>victor<b>ibus</b><br>&nbsp;<br>&nbsp;</td>
+					<td>victor<b>em</b><br><span class="gold">tempus<br>nomen</span></td>
+					<td>victor<b>es</b><br><span class="gold">tempora<br>nomina</span></td>
+					<td>victor<b>e</b><br>&nbsp;<br>&nbsp;</td>
+					<td>victor<b>ibus</b><br>&nbsp;<br>&nbsp;</td>
 				</tr>
 				<tr>
 					<th>E</th>
-					<td>es</td>
-					<td>es</td>
-					<td class="green">ei</td>
-					<td>erum</td>
-					<td>ei</td>
-					<td>ebus</td>
-					<td>em</td>
-					<td>es</td>
-					<td>e</td>
-					<td>ebus</td>
+					<td>di<b>es</b></td>
+					<td>di<b>es</b></td>
+					<td>di<b class="green">ei</b></td>
+					<td>di<b>erum</b></td>
+					<td>di<b>ei</b></td>
+					<td>di<b>ebus</b></td>
+					<td>di<b>em</td>
+					<td>di<b>es</b></b></td>
+					<td>di<b>e</b></td>
+					<td>di<b>ebus</b></td>
+				</tr>
+				<tr>
 				</tr>
 				<tr>
 					<td colspan="8"></td>
@@ -1382,6 +1406,14 @@
 						Zwei Gladiatoren, die tödliche Waffen haben, kämpfen zuerst in der Arena: Thrax und Retiarius<br>
 					</td>
 				</tr>
+				<tr>
+					<th>Rom/Römer</th>
+					<td colspan="2">
+						Roma<b class="gold">N</b>us, Roma<b class="gold">N</b>a, Roma<b class="gold">N</b>um &rarr; <b class="green">römisch, Römer</b><br>
+						Roma (ohne N) &rarr; <b class="green">die Stadt Rom</b><br>
+						<i>Roma, Romae, Romarum, Romam, Romis</i>
+					</td>
+				</tr>
 			</table>
 		</details>
 	</div>
@@ -1399,10 +1431,15 @@
 		var results = id("results");
 		var _skip = id("skip");
 		var _timer = id("timer");
+		var _fav = id("fav");
+		var clear_cache_btn = id("clear_cache_btn");
 
 		var quiz_pool = [];
 		var repeat_pool = [];
 		var search_pool = [];
+		
+		var cache = JSON.parse(localStorage.getItem("cache") || "[]");
+
 		var check = false;
 		var pair = 0;
 		var max = 0;
@@ -1463,6 +1500,8 @@
 
 					max = quiz_pool.length;
 					pair = Math.floor(Math.random() * max);
+					
+					update_save_icon();
 
 					vokabel.innerHTML = quiz_pool[pair][0];
 					translation.innerHTML = "";
@@ -1487,6 +1526,8 @@
 				check = false;
 				is_repetition = true;
 				
+				_skip.classList.add("hidden");
+				
 				quiz();
 			}
 		}
@@ -1506,7 +1547,15 @@
 					}
 				}
 			}
-
+			
+			if (id("checkbox_cache")) {
+				var checkbox_cache = id("checkbox_cache");
+				if  (checkbox_cache.checked) {
+					for (let j = 0; j < cache.length; j++) {
+						quiz_pool.push(cache[j]);
+					}
+				}			
+			}
 			max = quiz_pool.length;
 			initial_max = quiz_pool.length;
 			counter.innerHTML = count + "/" + initial_max;
@@ -1565,6 +1614,41 @@
 			results.innerHTML = queries;
 		}
 
+		function update_save_icon() {
+			if (cache.includes(quiz_pool[pair])) _fav.innerHTML = "💾✔️";
+			else _fav.innerHTML = "💾❌";
+			
+			if (cache.length > 0) clear_cache_btn.classList.remove("hidden");
+			else clear_cache_btn.classList.add("hidden");
+		}
+
+		function save() {
+			if (cache.includes(quiz_pool[pair])) {
+				let p_i = cache.indexOf(quiz_pool[pair]);
+				cache.splice(p_i);
+			}
+			else cache.push(quiz_pool[pair]);
+			update_save_icon();
+			localStorage.setItem('cache', JSON.stringify(cache));
+		}
+		
+		function clear_cache() {
+			localStorage.removeItem('cache');
+			location.reload(true);
+		}
+		
+		function toggle_lections() {
+			if (id("checkbox_cache")) {
+				// checkbox_cache checked?
+				let ccc = id("checkbox_cache").checked;
+				for (let i = 0; i < lektionen.length; i++) {
+					var checkbox = document.getElementById(`lektion${i+1}`);
+					if (ccc) checkbox.checked = false;
+					else checkbox.checked = true;
+				}
+			}
+		}
+
 		function init() {
 			// CREATE LECTURE TOGGLES
 			for (let i = 0; i < lektionen.length; i++) {
@@ -1575,25 +1659,44 @@
 
 			var lektionen_wrapper = document.getElementById("lektionen");
 
-			for (let i = 0; i < lektionen.length; i++) {
+			for (let i = 0; i < lektionen.length + 1; i++) {
+				if (i == lektionen.length && cache.length == 0) continue;
+				else search_pool.push(cache);
+				
 				let checkbox_wrapper = document.createElement("div");
 				checkbox_wrapper.classList.add("checkbox-wrapper");
 				
 				let checkbox = document.createElement("input");
 				checkbox.setAttribute("type", "checkbox");
-				checkbox.setAttribute("checked", "checked");
 				checkbox.classList.add("sc-gJwTLC");
 				checkbox.classList.add("ikxBAC");
-				checkbox.id = `lektion${i+1}`;
 
 				let label = document.createElement("label");
-				label.innerHTML = `${i+1}`;
+				
+				if (i == lektionen.length && cache.length > 0) {
+					checkbox.id = "checkbox_cache";
+					checkbox.removeAttribute("checked");
+					checkbox.setAttribute("onclick", "toggle_lections()");
+				
+					label.innerHTML = "💾";
+					label.classList.add("label_icon");
+				}
+				
+				else {
+					checkbox.setAttribute("checked", "checked");
+					checkbox.id = `lektion${i+1}`;
+					label.innerHTML = `${i+1}`;
+				}
+				
 				label.setAttribute("for", `lektion${i+1}`);
 
 				checkbox_wrapper.appendChild(checkbox);
 				checkbox_wrapper.appendChild(label);
 				lektionen_wrapper.appendChild(checkbox_wrapper);
 			}
+			
+			if (cache.length > 0) clear_cache_btn.classList.remove("hidden");
+			else clear_cache_btn.classList.add("hidden");
 
 			// DISPLAY TIMER
 			const now = Date.now() / 1000;
