@@ -947,23 +947,23 @@
 				</tr>
 				<tr>
 					<th>Unregelmäßige</th>
-					<td>esse</td>
-					<td>sum</td>
-					<td>es</td>
-					<td>est</td>
-					<td>sumus</td>
-					<td>estis</td>
-					<td>sunt</td>
+					<td>esse<br><span class="gold">fuisse<br>&nbsp;</span></td>
+					<td>sum<br><span class="gold">fui<br>eram</span></td>
+					<td>es<br><span class="gold">fuisti<br>eras</span></td>
+					<td>est<br><span class="gold">fuit<br>erat</span></td>
+					<td>sumus<br><span class="gold">fuimus<br>eramus</span></td>
+					<td>estis<br><span class="gold">fuistis<br>eratis</span></td>
+					<td>sunt<br><span class="gold">fuerunt<br>erant</span></td>
 				</tr>
 				<tr>
 					<th></th>
-					<td>ire</td>
-					<td>eo</td>
-					<td>is</td>
-					<td>it</td>
-					<td>imus</td>
-					<td>itis</td>
-					<td>eunt</td>
+					<td>ire<br><span class="gold">iisse<br>&nbsp;</span></td>
+					<td>eo<br><span class="gold">ii<br>ibam</span></td>
+					<td>is<br><span class="gold">iisti<br>ibas</span></td>
+					<td>it<br><span class="gold">iit<br>ibat</span></td>
+					<td>imus<br><span class="gold">iimus<br>ibamus</span></td>
+					<td>itis<br><span class="gold">iistis<br>ibatis</span></td>
+					<td>eunt<br><span class="gold">ierunt<br>ibant</span></td>
 				</tr>
 			</table>
 		</details>
@@ -1012,27 +1012,27 @@
 					<th>O</th>
 					<td>amic<b>us</b><br><span class="gold">templum</span></td>
 					<td>amic<b>i</b><br><span class="gold">templa</span></td>
-					<td>amic<b class="green">i</b><br>&nbsp;</td>
-					<td>amic<b>orum</b><br>&nbsp;</td>
-					<td>amic<b>o</b><br>&nbsp;</td>
-					<td>amic<b>is</b><br>&nbsp;</td>
+					<td>amic<b class="green">i</b><br><span class="gold">templi</span></td>
+					<td>amic<b>orum</b><br><span class="gold">templorum</span></td>
+					<td>amic<b>o</b><br><span class="gold">templo</span></td>
+					<td>amic<b>is</b><br><span class="gold">templis</span></td>
 					<td>amic<b>um</b><br><span class="gold">templum</span></td>
 					<td>amic<b>os</b><br><span class="gold">templa</span></td>
-					<td>amic<b>o</b><br>&nbsp;</td>
-					<td>amic<b>is</b><br>&nbsp;</td>
+					<td>amic<b>o</b><br><span class="gold">templo</span></td>
+					<td>amic<b>is</b><br><span class="gold">templis</span></td>
 				</tr>
 				<tr>
 					<th>K</th>
 					<td>victor<br><span class="gold">tempus<br>nomen</span></td>
 					<td>victor<b>es</b><br><span class="gold">tempora<br>nomina</span></td>
-					<td>victor<b class="green">is</b><br>&nbsp;<br>&nbsp;</td>
-					<td>victor<b>um</b><br>&nbsp;<br>&nbsp;</td>
-					<td>victor<b>i</b><br>&nbsp;<br>&nbsp;</td>
-					<td>victor<b>ibus</b><br>&nbsp;<br>&nbsp;</td>
+					<td>victor<b class="green">is</b><br><span class="gold">temporis<br>nominis</span></td>
+					<td>victor<b>um</b><br><span class="gold">temporum<br>nominum</span></td>
+					<td>victor<b>i</b><br><span class="gold">tempori<br>nomini</span></td>
+					<td>victor<b>ibus</b><br><span class="gold">temporibus<br>nominibus</span></td>
 					<td>victor<b>em</b><br><span class="gold">tempus<br>nomen</span></td>
 					<td>victor<b>es</b><br><span class="gold">tempora<br>nomina</span></td>
-					<td>victor<b>e</b><br>&nbsp;<br>&nbsp;</td>
-					<td>victor<b>ibus</b><br>&nbsp;<br>&nbsp;</td>
+					<td>victor<b>e</b><br><span class="gold">tempore<br>nomine</span></td>
+					<td>victor<b>ibus</b><br><span class="gold">temporibus<br>nominibus</span></td>
 				</tr>
 				<tr>
 					<th>E</th>
@@ -1410,7 +1410,7 @@
 					<th>Rom/Römer</th>
 					<td colspan="2">
 						Roma<b class="gold">N</b>us, Roma<b class="gold">N</b>a, Roma<b class="gold">N</b>um &rarr; <b class="green">römisch, Römer</b><br>
-						Roma (ohne N) &rarr; <b class="green">die Stadt Rom</b><br>
+						Roma (ohne <b class="gold">N</b>) &rarr; <b class="green">die Stadt Rom</b><br>
 						<i>Roma, Romae, Romarum, Romam, Romis</i>
 					</td>
 				</tr>
@@ -1500,11 +1500,11 @@
 
 					max = quiz_pool.length;
 					pair = Math.floor(Math.random() * max);
-					
-					update_save_icon();
 
 					vokabel.innerHTML = quiz_pool[pair][0];
 					translation.innerHTML = "";
+					
+					update_save_icon();
 
 					repeat.disabled = true;
 
@@ -1615,7 +1615,7 @@
 		}
 
 		function update_save_icon() {
-			if (cache.includes(quiz_pool[pair])) _fav.innerHTML = "💾✔️";
+			if (cache.toString().includes(quiz_pool[pair].toString())) _fav.innerHTML = "💾✔️";
 			else _fav.innerHTML = "💾❌";
 			
 			if (cache.length > 0) clear_cache_btn.classList.remove("hidden");
@@ -1623,9 +1623,9 @@
 		}
 
 		function save() {
-			if (cache.includes(quiz_pool[pair])) {
+			if (cache.toString().includes(quiz_pool[pair].toString())) {
 				let p_i = cache.indexOf(quiz_pool[pair]);
-				cache.splice(p_i);
+				cache.splice(p_i, 1);
 			}
 			else cache.push(quiz_pool[pair]);
 			update_save_icon();
@@ -1661,7 +1661,6 @@
 
 			for (let i = 0; i < lektionen.length + 1; i++) {
 				if (i == lektionen.length && cache.length == 0) continue;
-				else search_pool.push(cache);
 				
 				let checkbox_wrapper = document.createElement("div");
 				checkbox_wrapper.classList.add("checkbox-wrapper");
