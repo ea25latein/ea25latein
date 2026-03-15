@@ -225,7 +225,7 @@
 				["statua", "Standbild"],
 				["timor, timōris", "Furcht", "timor, timoris"],
 				["timidus, a, um", "ängstlich (Adj.)"],
-				["scīre", "wissen", "scire"],
+				["scīre, scīo, scīvī", "wissen", "scire, scio, scivi"],
 				["nescīre", "nicht wissen", "nescire"],
 				["fidēs, eī (3)", "Vertrauen, Treue, Glaube (christlich)", "fides, ei"],
 				["fīdus, a, um", "treu", "fidus, a, um"],
@@ -479,8 +479,53 @@
 				["pilā lūdere", "Ball spielen", "pila ludere"],
 				["nihil malī", "nichts Böses", "nihil mali"],
 				["prō rē habēre<br>rērum locō habere", "als Sache ansehen", "pro re habere, rerum loco habere"],
+			],
+			[
+				["nātus, a, um", "geboren", "natus, a, um"],
+				["post (ante) Chrīstum nātum", "nach (vor) Christi Geburt<br><i>abgekürzt: p./a. Chr. n.</i>", "post (ante) christum natum"],
+				["nātiō, iōnis (2)", "Volk, Volksstamm<br><i>Genus F</i>", "natio, ionis"],
+				["saeculum, ī (2)", "Jahrhundert, Zeitalter<br><i>Genus N</i>"],
+				["ut", "wie"],
+				["colere, colō, coluī (2)", "verehren, (einen Acker) bebauen", "colere, colo, colui"],
+				["cultus, ūs (2)", "Pflege, Verehrung<br><i>Genus M</i>", "cultus, ūs"],
+				["cultūra (2)", "Bearbeitung, Pflege", "cultura"],
+				["pārēre", "gehorchen", "parere"],
+				["negāre (3)", "sich weigern, verneinen,<br>'sagen, dass ... nicht'", "negare"],
+				["legere (2)", "lesen, sammeln"],
+				["dūcere", "führen", "ducere"],
+				["dūc!", "führe!", "duc!"],
+				["condūctere (2)", "zusammenführen, mieten", "conductere"],
+				["dēdūctere", "wegführen", "deductere"],
+				["ēdūcere", "herausführen", "educere"],
+				["indūcere", "(hin)einführen", "inducere"],
+				["prōdūcere (2)", "vorwärts führen, vorbringen", "producere"],
+				["redūcere (2)", "zurückführen, hinbringen", "reducere"],
+				["trādūcere", "hinüberführen", "traducere"],
+				["terrēre (2)", "in Schrecken versetzen, einschüchtern<br><i>Terror/terrorisieren</i>", "terrere"],
+				["sacerdōs, sacerdōtis", "Priester(in)<br><i>Genus M oder F</i>", "sacerdos, sacerdotis"],
+				["religiō, religiōnis (2)", "Religion, Gottesfurcht<br><i>Genus F</i>", "religio, religionis"],
+				["vidērī (2)", "scheinen, Passiv zu vidēre<br><i>die Sonne scheint &rarr; mit Videri</i>", "videri"],
+				["senex, senis (2)", "alter Mann (über 45), alt (als Adj.)"],
+				["verbum, ī", "Wort<br><i>Genus N</i>"],
+				["tuus, a, um", "dein"],
+				["nisī (2)", "wenn nicht, außer (nach Verneinung)", "nisi"],
+				["caelum, ī", "Himmel<br><i>Genus N</i>"],
+				["caelī, caelōrum", "Himmel (als Sitz Gottes, oft in christl. Kontext)<br><i>Genus M</i>", "caeli, caelorum"],
+				["cōgere (2)", "zwingen, versammeln", "cogere"],
+				["fīnīre", "beenden<br><i>siehe 'finis'/engl. 'finish'</i>", "finire"],
+				["stultus, a, um", "dumm, töricht"],
+				["vester, vestra, vestrum", "euer"],
+				["īgnōscere, īgnōscō, īgnōvī", "verzeihen", "ignoscere, ignosco, ignovi"],
+				["mēns, mentis (2)", "Verstand, Gesinnung (Gen. Pl. -ium)<br><i>Genus F<br>engl. 'mental'</i>", "mens, mentis"],
+				["iūrāre (per)", "schwören (bei)", "iurare"],
+				["nūllus, a, um (2)", "kein, keiner", "nullus, a, um"],
+				["movēre (2)", "bewegen, beeindrucken<br><i>engl. 'how moving!'</i>", "movere"],
+				["oculus, ī", "Auge<br><i>Genus M</i>", "oculus, i"],
+				["potest", "er (sie, es) kann"],
+				["aeternus, a, um", "ewig"]
 			]
 		];
+		// ū ī ē ō ā
 	</script>
 	<title>In vino veritas</title>
 	<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍷</text></svg>">
@@ -550,11 +595,14 @@
 			right: 5px;
 		}
 		#vokabel {
-			min-height: 48px;
+			min-height: 60px;
 			font-size: 20px;
 			color: #808;
 			font-weight: 700;
-			margin: 30px 35px;
+			margin: 10%;
+			width: 80%;
+			border-bottom: 2px solid;
+			padding-bottom: 10px;
 		}
 		#translation {
 			font-size: 16px;
@@ -678,13 +726,22 @@
 			color: #aa2068;
 		}
 		.orange {
-			color: #de6f3d;
+			color: #e34600;
 		}
 		.gold {
 			color: #f09f33;
 		}
 		.green {
 			color: #50a613;
+		}
+		.red {
+			color: #cc3f47;
+		}
+		.blue {
+			color: #3467eb;
+		}
+		.pink {
+			color: #f2139d;
 		}
 		.lection_id {
 			position: absolute;
@@ -694,29 +751,17 @@
 			text-align: right;
 			width: 20px;
 		}
-		.search_save_btn {
-			position: absolute;
-			right: -40px;
-		}
-		.search_save_btn:hover {
-			cursor: pointer;
-		}
 		#fav {
 			position: absolute;
 			top: 5px;
 			left: 5px;
 		}
-		#back_btn {
+		#skip {
 			position: absolute;
 			top: 30px;
 			left: 5px;
 		}
-		#skip {
-			position: absolute;
-			top: 55px;
-			left: 5px;
-		}
-		#fav:hover, #skip:hover, #back_btn:hover {
+		#fav:hover, #skip:hover {
 			cursor: pointer;
 		}
 		#lektionen {
@@ -815,9 +860,6 @@
 			th, td {
 				padding: 2px;
 			}
-			#search, #search input {
-				width: 300px;
-			}
 		}
 	</style>
 </head>
@@ -826,7 +868,6 @@
 		<div id="quiz">
 			<div id="counter"></div>
 			<div id="fav" onclick="save()"></div>
-			<div id="back_btn" onclick="back()">🔙</div>
 			<div id="vokabel"></div>
 			<div id="translation"></div>
 
@@ -859,7 +900,7 @@
 			<summary>Konjugationen (Verben)</summary>
 			<table>
 				<tr>
-					<th></th>
+					<th class="green">Aktiv</th>
 					<th>Infinitiv</th>
 					<th colspan="3">Singular</th>
 					<th colspan="3">Plural</th>
@@ -913,6 +954,34 @@
 					<td>cap<b>imus</b></td>
 					<td>cap<b>itis</b></b></td>
 					<td>cap<b>iunt</b></b></td>
+				</tr>
+				<tr>
+					<td colspan="8"></td>
+				</tr>
+				<tr>
+					<th class="green">Passiv</th>
+					<td></td>
+					<td>audī<b>(o)r</b></td>
+					<td>audī<b>ris</b></td>
+					<td>audī<b>tur</b></td>
+					<td>audī<b>mur</b></td>
+					<td>audī<b>mini</b></td>
+					<td>audī<b>ntur</b></td>
+				</tr>
+				<tr>
+					<th></th>
+					<td></td>
+					<td colspan="6">
+						<span class="gold">Ich lese das Buch.</span> &rarr; <span class="purple">aktiv:</span> "Ich" als Subjekt<br>
+						<span class="gold">Das Buch wird von mir gelesen.</span> &rarr; <span class="purple">passiv:</span> "Buch" als Subjekt<br>
+						<br>
+						<b class="green">Infinitiv a-/e-/i-Konj.:</b> Stamm + rī<br>
+						<i>&rarr; bsp.: audire, audirī</i><br>
+						<b class="green">Infinitiv kons./kv. Konj.:</b> Stamm + ī<br>
+						<i>&rarr; bsp.: ludere, ludī / capere, capī</i><br>
+						<br>
+						(Beispiele für AcI im Passiv unter <span class="red">"Grammatik"</span>)
+					</td>
 				</tr>
 				<tr>
 					<td colspan="8"></td>
@@ -1404,23 +1473,31 @@
 					<th>AcI</th>
 					<td colspan="2">
 						(<b class="gold">Hauptsatz:</b> <b class="orange">Nebensatz</b>)<br>
-						<br>
 						<b class="gold">Julia dicit:</b> <b class="orange">Marcus mercatorem bonum est</b><br>
 						Julia sagt: Marcus ist ein guter Kaufmann<br>
-						<b class="purple">Nebensatz Subjekt (Marcus) &rarr; Akkusativ (Marcum)<br>
-						Nebensatz Prädikat (est) &rarr; Infinitiv (esse)</b><br>
+						<span class="purple">Nebensatz Subjekt</span> (Marcus) &rarr; <span class="pink">Akkusativ</span> (Marcum)<br>
+						<span class="purple">Nebensatz Prädikat</span> (est) &rarr; <span class="pink">Infinitiv</span> (esse)<br>
 						<b class="gold">Julia dicit</b> <b class="orange">Marcum mercatorem bonum esse</b><br>
 						Julia sagt, dass Marcus ein guter Kaufmann ist<br>
-						<br>
-						<b class="green">Infinitiv Perfekt im AcI:</b><br>
+						<hr>
+						<b class="blue">Infinitiv Perfekt im AcI:</b><br>
 						Drückt Handlung aus, die zeitlich vor übergeordneter Handlung stattgefunden hat<br>
-						<b class="purple">Präsens &rarr; Perfekt/Präteritum<br>
-						Perfekt &rarr; Plusquamperfekt</b><br>
+						<span class="purple">Präsens</span> &rarr; <span class="pink">Perfekt/Präteritum</span><br>
+						<span class="purple">Perfekt</span> &rarr; <span class="pink">Plusquamperfekt</span><br>
 						<b class="gold">Julia vocat</b> <b class="orange">Marcum abiisse</b><br>
 						Julia ruft, dass Marcus fortgegangen ist/fort ging<br>
 						<b class="gold">Julia vocavit</b> <b class="orange">Marcum abiisse</b><br>
 						Julia rief, dass Marcus fortgegangen ist (Präteritum &rarr; Perfekt)<br>
-						Julia hat gerufen, dass Marcus fortgegangen sei (Perfekt &rarr; PQP)
+						Julia hat gerufen, dass Marcus fortgegangen sei (Perfekt &rarr; PQP)<br>
+						<hr>
+						<b class="blue">AcI im Passiv:</b><br>
+						<span class="red">Marcus</span> saepe <span class="pink">sē</span> <span class="gold">a hoste</span> <span class="green">opprimī</span> <span class="red">dicit</span><br>
+						<span class="red">Marcus sagt,</span> dass <span class="pink">er</span> oft <span class="gold">von Feinden</span> <span class="green">überfallen wird.</span><br>
+						<br>
+						<span class="red">Marcus dicit</span> &rarr; Subjekt des Hauptsatzes<br>
+						<span class="pink">sē</span> &rarr; Akkusativsubjekt des AcI<br>
+						<span class="gold">a hoste</span> &rarr; Der Handelnde steht im Ablativ mit a/ab<br>
+						<span class="green">opprimī</span> &rarr; Infinitiv Präsens Passiv
 					</td>
 				</tr>
 				<tr>
@@ -1458,7 +1535,6 @@
 		var _timer = id("timer");
 		var _fav = id("fav");
 		var clear_cache_btn = id("clear_cache_btn");
-		var _back_btn = id("back_btn");
 
 		var quiz_pool = [];
 		var repeat_pool = [];
@@ -1509,14 +1585,13 @@
 
 				if (done) {
 					counter.innerHTML = "";
-					vokabel.innerHTML = "";
-					translation.innerHTML = "Fertig &hearts;<br><button class='button' onclick='location.reload(true);'>Neu&nbsp;anfangen</a>";
+					vokabel.innerHTML = "Fertig &hearts;";
+					translation.innerHTML = "<button class='button' onclick='location.reload(true);'>Neu&nbsp;anfangen</a>";
 
 					repeat.disabled = true;
 					next.disabled = true;
 					repeat.classList.add("hidden");
 					next.classList.add("hidden");
-					_back_btn.classList.add("hidden");
 					_skip.classList.add("hidden");
 					_fav.classList.add("hidden");
 				}
@@ -1555,10 +1630,6 @@
 				quiz();
 			}
 			else alert("Noch keine Wiederholungen gespeichert");
-		}
-
-		function back() {
-			alert("Noch im Aufbau :)");
 		}
 
 		function start() {
@@ -1641,7 +1712,7 @@
 
 				for (let i = 0; i < matches.length; i++) {
 					let m = matches[i];
-					queries += "<sup class='lection_id'>" + m[m.length - 1] + "</sup><b>" + m[0] + "</b> " + m[1] + "<sup class='search_save_btn' onclick='save(`test`)'>💾❌</sup><hr>";
+					queries += "<sup class='lection_id'>" + (m[m.length - 1] + 1) + "</sup><b>" + m[0] + "</b> " + m[1] + "<hr>";
 				}
 			}
 
@@ -1656,17 +1727,14 @@
 			else clear_cache_btn.classList.add("hidden");
 		}
 
-		function save(_pair="") {
-			if (_pair == "") {
-				if (cache.toString().includes(quiz_pool[pair].toString())) {
-					let p_i = cache.indexOf(quiz_pool[pair]);
-					cache.splice(p_i, 1);
-				}
-				else cache.push(quiz_pool[pair]);
-				update_save_icon();
-				localStorage.setItem('cache', JSON.stringify(cache));
+		function save() {
+			if (cache.toString().includes(quiz_pool[pair].toString())) {
+				let p_i = cache.indexOf(quiz_pool[pair]);
+				cache.splice(p_i, 1);
 			}
-			else alert("Noch im Aufbau :)");
+			else cache.push(quiz_pool[pair]);
+			update_save_icon();
+			localStorage.setItem('cache', JSON.stringify(cache));
 		}
 		
 		function clear_cache() {
