@@ -387,7 +387,6 @@
 				["appetere (2)", "begehren, angreifen"],
 				["repetere", "wiederholen"],
 				["perpetuus, a, um", "ununterbrochen"],
-				["respondēre, respondeō, respondī", "antworten"],
 				["cīvitās, cīvitātis (2)", "Staat, Bürgerschaft (f)"],
 				["regere (2)", "regieren, lenken"],
 				["urbs, urbis", "Stadt (f)<br><i>Gen. Pl. -ium</i>"],
@@ -440,7 +439,7 @@
 				["quamquam (als Konj.)", "obwohl"],
 				["ibi", "dort (Adv.)"],
 				["faber, fabrī", "Handwerker<br><i>Genus M</i>"],
-				["quod (2) (als Konj.)", "da, weil<br><i>Verwechslungsgefahr mit quod &rarr; das/welches<br>(Pronomen Neutra)</i>"],
+				["quod (2) (als Konj.)", "da, weil<br><i>Verwechslungsgefahr mit quod &rarr;&nbsp;das/&zwj;welches (Pronomen Neutra)</i>"],
 				["cōnsuētūdō, cōnsuētūdinis (2)", "Gewohnheit, Gewöhnung<br><i>Genus F</i>"],
 				["cōnsuēscere", "sich (an etw.) gewöhnen"],
 				["cōnsuēvī (2)", "ich bin gewöhnt, ich pflege<br><i>1. Sg. Perfekt</i>"],
@@ -575,11 +574,26 @@
 		];
 	</script>
 	<title>In vino veritas</title>
+	<link href='https://fonts.googleapis.com/css?family=Noto Color Emoji' rel='stylesheet'>
 	<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍷</text></svg>">
 	<meta name="robots" content="noindex">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<style>
+		:root {
+			--primary: #222;
+			--secondary: #eee;
+			--tertiary: #444;
+			--quaternary: #666;
+			--sec01: #808;
+			--sec02: #aa2068;
+			--sec03: #cc3f47;
+			--sec04: #de6f3d;
+			--sec05: #f09f33;
+		}
+		#quiz-wrap {
+			margin-top: 10px;
+		}
 		#menu,
 		#quiz-wrap {
 			display: none;
@@ -600,15 +614,15 @@
 		#menu > button {
 			margin-top: 10px;
 		}
-		.options,
+		#options,
 		#quiz,
 		body {
 			display: flex;
 		}
 		#quiz-wrap,
 		.button {
-			background: linear-gradient(15deg, #808, #aa2068, #cc3f47, #de6f3d, #f09f33, #de6f3d, #cc3f47, #aa2068, #808)
-				no-repeat;
+			background: linear-gradient(15deg, var(--sec01), var(--sec02), var(--sec03), var(--sec04), var(--sec05), var(--sec04), var(--sec03), var(--sec02), var(--sec01)) no-repeat;
+			border-radius: 10px;
 		}
 		.button,
 		body {
@@ -619,12 +633,15 @@
 		}
 		body {
 			margin: 0;
-			background-color: #222;
-			color: #eee;
+			background-color: var(--primary);
+			color: var(--secondary);
 			font-family: Tahoma, sans-serif;
 			justify-content: center;
 			align-items: center;
 			flex-direction: column;
+		}
+		.emoji {
+			font-family: 'Noto Color Emoji';
 		}
 		.showme {
 			display: block !important;
@@ -636,26 +653,29 @@
 			width: 350px;
 		}
 		#quiz {
-			width: 344px;
-			background: #222;
-			margin: 3px;
+			width: 346px;
+			background: var(--primary);
+			margin: 2px;
 			align-items: center;
 			flex-direction: column;
+			border-radius: 9px;
 		}
 		#counter {
 			position: absolute;
 			top: 5px;
 			right: 5px;
+			background-color: var(--tertiary);
+			padding: 2px 6px;
+			border-radius: 20px;
+			font-size: 13px;
 		}
 		#vokabel {
-			min-height: 60px;
-			font-size: 20px;
-			color: #808;
+			color: var(--sec01);
+			font-size: 18px;
 			font-weight: 700;
-			margin: 10%;
-			width: 80%;
-			border-bottom: 2px solid;
-			padding-bottom: 10px;
+			padding: 10% 10% 10px 10%;
+			width: 100%;
+			min-height: 94px;
 		}
 		#translation {
 			font-size: 16px;
@@ -666,17 +686,22 @@
 			color: #aa2068;
 			font-style: normal;
 		}
-		i:before {
+		/*i:before {
 			content: "« ";
 		}
 		i:after {
 			content: " »";
-		}
-		.options {
+		}*/
+		#options {
 			width: 100%;
 			min-height: 25px;
-			margin: 10px 0px;
-			justify-content: space-evenly;
+			padding: 10px;
+			justify-content: space-between;
+			gap: 10px;
+		}
+		#options button {
+			width: 100%;
+			border-radius: 10px;
 		}
 		.button {
 			width: 140px;
@@ -704,7 +729,7 @@
 			color: #cc3f47;
 		}
 		#search input {
-			background-color: #222;
+			background-color: var(--primary);
 			width: 350px;
 			height: 30px;
 			margin: 20px 0;
@@ -712,7 +737,6 @@
 			outline: none;
 			font-weight: bold;
 			border: none;
-			border-bottom: 3px solid #aa2068;
 			color: #fff;
 		}
 		#search input:hover {
@@ -722,6 +746,9 @@
 			text-align: left;
 			position: relative;
 		}
+		.results_spacer {
+			height: 25px;
+		}
 		#notes {
 			width: 800px;
 			max-width: 100%;
@@ -729,14 +756,16 @@
 			padding: 0 8px;
 		}
 		details {
-			margin-top: 10px;
 			text-align: left;
 			padding: 12px;
 			background-color: #151515;
-			border: 1px solid #666;
+			border: 1px solid var(--quaternary);
 		}
 		details > table {
 			margin-top: 12px;
+		}
+		details:not(:first-of-type) {
+			margin-top: 10px;
 		}
 		summary:hover {
 			cursor: pointer;
@@ -753,7 +782,7 @@
 		}
 		td {
 			padding: 6px;
-			border: 1px solid #666;
+			border: 1px solid var(--quaternary);
 		}
 		th:empty, td:empty, .noborder {
 			border: none;
@@ -791,7 +820,7 @@
 			position: absolute;
 			left: -25px;
 			font-size: 10px;
-			color: #666;
+			color: var(--quaternary);
 			text-align: right;
 			width: 20px;
 		}
@@ -805,7 +834,12 @@
 			top: 30px;
 			left: 5px;
 		}
-		#fav:hover, #skip:hover {
+		#back {
+			position: absolute;
+			top: 55px;
+			left: 5px;			
+		}
+		#fav:hover, #skip:hover, #back:hover {
 			cursor: pointer;
 		}
 		#lektionen {
@@ -860,7 +894,8 @@
 			pointer-events: none;
 		}
 		.label_icon {
-			top: -2px;
+			top: 1px;
+  			font-size: 15px;
 		}
 		.checkbox-wrapper input[type="checkbox"] {
 			cursor: default;
@@ -911,24 +946,24 @@
 	<div id="quiz-wrap">
 		<div id="quiz">
 			<div id="counter"></div>
-			<div id="fav" onclick="save()"></div>
+			<div id="fav" class="emoji" onclick="save()"></div>
+			<div id="skip" class="emoji" onclick="if (confirm('Zu Wiederholungen springen?')) skip()">⏩</div>
+			<div id="back" class="emoji" onclick="if (confirm('Zurück zur Übersicht?')) location.reload(true);">🔙</div>
 			<div id="vokabel"></div>
 			<div id="translation"></div>
 
-			<div class="options">
+			<div id="options">
 				<button class="button" onclick="quiz(true)" id="repeat" disabled>Wiederholen</button>
 				<button class="button" onclick="quiz()" id="next">Weiter</button>
 			</div>
-			
-			<div id="skip" onclick="if (confirm('Zu Wiederholungen springen?')) skip()">⏩</div>
 		</div>
 	</div>
 
 	<div id="menu" class="showme">
 		<div id="lektionen"></div>
 		<button class="button" onclick="start()">Start</button>
-		<button id="clear_cache_btn" class="button hidden" onclick='if (confirm("Gemerkte Vokabeln leeren?")) clear_cache()'>Cache leeren</button>
 		<button class="button" onclick="start(true)">Stammformen</button>
+		<button id="clear_cache_btn" class="button hidden" onclick='if (confirm("Gemerkte Vokabeln leeren?")) clear_cache()'>Cache leeren</button>
 	</div>
 
 	<div id="search">
@@ -1714,6 +1749,7 @@
 		var repeat = id("repeat");
 		var next = id("next");
 		var results = id("results");
+		var options = id("options");
 		var _skip = id("skip");
 		var _timer = id("timer");
 		var _fav = id("fav");
@@ -1769,11 +1805,13 @@
 				if (done) {
 					counter.innerHTML = "";
 					vokabel.innerHTML = "Fertig &hearts;";
-					translation.innerHTML = "<button class='button' onclick='location.reload(true);'>Neu&nbsp;anfangen</a>";
+					translation.innerHTML = "";
+					options.innerHTML = "<button class='button' onclick='location.reload(true);'>Neu&nbsp;anfangen</a>";
 
 					repeat.disabled = true;
 					next.disabled = true;
 					repeat.classList.add("hidden");
+					counter.classList.add("hidden");
 					next.classList.add("hidden");
 					_skip.classList.add("hidden");
 					_fav.classList.add("hidden");
@@ -1929,7 +1967,10 @@
 
 				for (let i = 0; i < matches.length; i++) {
 					let m = matches[i];
-					queries += "<sup class='lection_id'>" + (m[m.length - 1] + 1) + "</sup><b>" + m[0] + "</b> " + m[1] + "<hr>";
+					if (i == matches.length - 1) 
+						queries += "<sup class='lection_id'>" + (m[m.length - 1] + 1) + "</sup><b>" + m[0] + "</b> " + m[1] + "<div class='results_spacer'></div>";
+					else
+						queries += "<sup class='lection_id'>" + (m[m.length - 1] + 1) + "</sup><b>" + m[0] + "</b> " + m[1] + "<hr>";
 				}
 			}
 
@@ -2001,6 +2042,7 @@
 				
 					label.innerHTML = "💾";
 					label.classList.add("label_icon");
+					label.classList.add("emoji");
 				}
 				
 				else {
