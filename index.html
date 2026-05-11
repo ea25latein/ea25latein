@@ -1409,9 +1409,6 @@
                 border: none;
                 color: #fff;
             }
-            #searchbar:hover {
-                cursor: pointer;
-            }
             #results {
                 text-align: left;
                 position: relative;
@@ -1447,7 +1444,9 @@
             }
             #fav:hover,
             #skip:hover,
-            #back:hover {
+            #back:hover,
+            #searchbar:hover,
+            .link:hover {
                 cursor: pointer;
             }
             #clear_cache_btn {
@@ -1468,6 +1467,72 @@
             .label_icon {
                 top: 1px;
                 font-size: 15px;
+            }
+            #toggle_notes {
+                margin-top: 6px;
+            }
+            #notes {
+                font-size: 12px;
+                width: 350px;
+                padding: 2px;
+                margin-top: 10px;
+                border-radius: 6px;
+                background: linear-gradient(15deg,#808,#b0216b,#cc3f47,#de6f3d,#f09f33,#de6f3d,#cc3f47,#b0216b,#808) no-repeat;
+            }
+            .notes_menu {
+                display: flex;
+                background-color: #222;
+                border-radius: 6px;;
+            }
+            .notes_menu:has(> .selected) {
+                border-radius: 6px 6px 0 0;
+                border-bottom: 2px solid #666;
+            }
+            .link {
+                flex: 1;
+                padding: 10px;
+            }
+            .selected {
+                font-weight: bold;
+                background: linear-gradient(15deg,#808,#b0216b,#cc3f47,#de6f3d,#f09f33) no-repeat;
+                background: -webkit-linear-gradient(15deg,#808,#b0216b,#cc3f47,#de6f3d,#f09f33) no-repeat;
+                background-clip: text;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+            .tab {
+                border-radius: 0 0 6px 6px;
+                background-color: #222;
+            }
+            .tab:not(:has(.tab)) {
+                padding: 10px;
+            }
+            table {
+                width: 100%;
+                border-spacing: collapse;
+                table-layout: fixed;
+            }
+            td, th {
+                text-align: left;
+                padding: 2px;
+            }
+            td > b,
+            th > b {
+                font-weight: normal;
+                color: rgb(22, 107, 192);
+            }
+            td {
+                font-size: 16px;
+            }
+            td:not(:last-of-type) {
+                padding-right: 12px;
+            }
+            th {
+                color: #b0216b;
+            }
+            b.genitiv {
+                font-weight: bold;
+                color: rgb(225, 0, 255);
             }
             .checkbox_wrapper {
                 width: 50px;
@@ -1528,68 +1593,6 @@
                 background-color: #b1373d;
                 cursor: pointer;
             }
-
-
-            /*---------------------*/
-
-
-            #notes {
-                width: 350px;
-                border-radius: 6px;
-                padding: 2px;
-                margin-top: 10px;
-                background: linear-gradient(
-                    15deg,
-                    #808,
-                    #b0216b,
-                    #cc3f47,
-                    #de6f3d,
-                    #f09f33,
-                    #de6f3d,
-                    #cc3f47,
-                    #b0216b,
-                    #808
-                )
-                no-repeat;
-            }
-            #notes > * {
-                padding: 3px;
-            }
-            .notes_menu > div {
-                flex: 1;
-                padding: 2px 6px;
-            }
-            .notes_menu {
-                display: flex;
-                background-color: #222;
-                border-radius: 6px;
-            }
-            .notes_menu:has(> .selected) {
-                border-radius: 6px 6px 0 0;
-                padding-bottom: 0 !important;
-            }
-            .tab {
-                background-color: #222;
-                border-radius: 0 0 6px 6px;
-            }
-            .selected {
-                background-color: #555;
-                border-radius: 6px;
-            }
-            #toggle_notes {
-                margin-top: 6px;
-            }
-
-
-            /*---------------------*/
-
-
-            td {
-                text-align: left;
-            }
-            td:not(:last-of-type) {
-                padding-right: 12px;
-            }
         </style>
     </head>
     <body>
@@ -1622,12 +1625,10 @@
             </button>
         </div>
 
-        <div id="notes" class="hidden">
+        <div id="notes"> <!-- class="hidden" -->
             <div class="notes_menu">
-                <div class="link" onclick="switch_tab('dekl', this)">Dekl.</div>
-                <div class="link" onclick="switch_tab('konj', this)">Konj.</div>
-                <div class="link" onclick="switch_tab('imperativ', this)">Imperativ</div>
-                <div class="link" onclick="switch_tab('vocativ', this)">Vocativ</div>
+                <div class="link" onclick="switch_tab('dekl', this)">Deklinationen</div>
+                <div class="link" onclick="switch_tab('konj', this)">Konjunktionen</div>
                 <div class="link" onclick="switch_tab('grammatik', this)">Grammatik</div>
             </div>
 
@@ -1644,129 +1645,191 @@
                 <div class="tab" id="odekl">
                     <table>
                         <tr>
-                            <td>amicus</td>
-                            <td>amici</td>
+                            <th></th>
+                            <th>Singular</th>
+                            <th>Plural</th>
                         </tr>
                         <tr>
-                            <td>amici</td>
-                            <td>amicorum</td>
+                            <th>Nominativ</th>
+                            <td>amic<b>us</b></td>
+                            <td>amic<b>i</b></td>
                         </tr>
                         <tr>
-                            <td>amico</td>
-                            <td>amicis</td>
+                            <th>Genitiv</th>
+                            <td>amic<b class="genitiv">i</b></td>
+                            <td>amic<b>orum</b></td>
                         </tr>
                         <tr>
-                            <td>amicum</td>
-                            <td>amicos</td>
+                            <th>Dativ</th>
+                            <td>amic<b>o</b></td>
+                            <td>amic<b>is</b></td>
                         </tr>
                         <tr>
-                            <td>amico</td>
-                            <td>amicis</td>
+                            <th>Akkusativ</th>
+                            <td>amic<b>um</b></td>
+                            <td>amic<b>os</b></td>
+                        </tr>
+                        <tr>
+                            <th>Ablativ</th>
+                            <td>amic<b>o</b></td>
+                            <td>amic<b>is</b></td>
                         </tr>
                     </table>
+                    <br>
+                    (+Vocativ, Neutrum usw.)
                 </div>
                 <div class="tab" id="adekl">
                     <table>
                         <tr>
-                            <td>amica</td>
-                            <td>amicae</td>
+                            <th></th>
+                            <th>Singular</th>
+                            <th>Plural</th>
                         </tr>
                         <tr>
-                            <td>amicae</td>
-                            <td>amicarum</td>
+                            <th>Nominativ</th>
+                            <td>amic<b>a</b></td>
+                            <td>amic<b>ae</b></td>
                         </tr>
                         <tr>
-                            <td>amicae</td>
-                            <td>amicis</td>
+                            <th>Genitiv</th>
+                            <td>amic<b class="genitiv">ae</b></td>
+                            <td>amic<b>arum</b></td>
                         </tr>
                         <tr>
-                            <td>amicam</td>
-                            <td>amicas</td>
+                            <th>Dativ</th>
+                            <td>amic<b>ae</b></td>
+                            <td>amic<b>is</b></td>
                         </tr>
                         <tr>
-                            <td>amica</td>
-                            <td>amicis</td>
+                            <th>Akkusativ</th>
+                            <td>amic<b>am</b></td>
+                            <td>amic<b>as</b></td>
+                        </tr>
+                        <tr>
+                            <th>Ablativ</th>
+                            <td>amic<b>a</b></td>
+                            <td>amic<b>is</b></td>
                         </tr>
                     </table>
                 </div>
                 <div class="tab" id="kdekl">
                     <table>
                         <tr>
+                            <th></th>
+                            <th>Singular</th>
+                            <th>Plural</th>
+                        </tr>
+                        <tr>
+                            <th>Nominativ</th>
                             <td>victor</td>
-                            <td>victores</td>
+                            <td>victor<b>es</b></td>
                         </tr>
                         <tr>
-                            <td>victoris</td>
-                            <td>victorum</td>
+                            <th>Genitiv</th>
+                            <td>victor<b class="genitiv">is</b></td>
+                            <td>victor<b>um</b></td>
                         </tr>
                         <tr>
-                            <td>victori</td>
-                            <td>victoribus</td>
+                            <th>Dativ</th>
+                            <td>victor<b>i</b></td>
+                            <td>victor<b>ibus</b></td>
                         </tr>
                         <tr>
-                            <td>victorem</td>
-                            <td>victores</td>
+                            <th>Akkusativ</th>
+                            <td>victor<b>em</b></td>
+                            <td>victor<b>es</b></td>
                         </tr>
                         <tr>
-                            <td>victore</td>
-                            <td>victoribus</td>
+                            <th>Ablativ</th>
+                            <td>victor<b>e</b></td>
+                            <td>victor<b>ibus</b></td>
                         </tr>
                     </table>
                 </div>
                 <div class="tab" id="edekl">
                     <table>
                         <tr>
-                            <td>dies</td>
-                            <td>dies</td>
+                            <th></th>
+                            <th>Singular</th>
+                            <th>Plural</th>
                         </tr>
                         <tr>
-                            <td>diei</td>
-                            <td>dierum</td>
+                            <th>Nominativ</th>
+                            <td>di<b>es</b></td>
+                            <td>di<b>es</b></td>
                         </tr>
                         <tr>
-                            <td>diei</td>
-                            <td>diebus</td>
+                            <th>Genitiv</th>
+                            <td>di<b class="genitiv">ei</b></td>
+                            <td>di<b>erum</b></td>
                         </tr>
                         <tr>
-                            <td>diem</td>
-                            <td>dies</td>
+                            <th>Dativ</th>
+                            <td>di<b>ei</b></td>
+                            <td>di<b>ebus</b></td>
                         </tr>
                         <tr>
-                            <td>die</td>
-                            <td>diebus</td>
+                            <th>Akkusativ</th>
+                            <td>di<b>em</b></td>
+                            <td>di<b>es</b></td>
+                        </tr>
+                        <tr>
+                            <th>Ablativ</th>
+                            <td>di<b>e</b></td>
+                            <td>di<b>ebus</b></td>
                         </tr>
                     </table>
                 </div>
                 <div class="tab" id="udekl">
                     <table>
                         <tr>
-                            <td>cultus</td>
-                            <td>cultus</td>
+                            <th></th>
+                            <th>Singular</th>
+                            <th>Plural</th>
                         </tr>
                         <tr>
-                            <td>cultus</td>
-                            <td>cultuum</td>
+                            <th>Nominativ</th>
+                            <td>cult<b>us</b></td>
+                            <td>cult<b>us</b></td>
                         </tr>
                         <tr>
-                            <td>cultui</td>
-                            <td>cultibus</td>
+                            <th>Genitiv</th>
+                            <td>cult<b class="genitiv">us</b></td>
+                            <td>cult<b>uum</b></td>
                         </tr>
                         <tr>
-                            <td>cultum</td>
-                            <td>cultus</td>
+                            <th>Dativ</th>
+                            <td>cult<b>ui</b></td>
+                            <td>cult<b>ibus</b></td>
                         </tr>
                         <tr>
-                            <td>cultu</td>
-                            <td>cultibus</td>
+                            <th>Akkusativ</th>
+                            <td>cult<b>um</b></td>
+                            <td>cult<b>us</b></td>
+                        </tr>
+                        <tr>
+                            <th>Ablativ</th>
+                            <td>cult<b>u</b></td>
+                            <td>cult<b>ibus</b></td>
                         </tr>
                     </table>
                 </div>
                 <div class="tab" id="pronomen">Kommt bald :)</div>
             </div>
-            <div class="tab" id="konj">Kommt bald :)</div>
-            <div class="tab" id="imperativ">Kommt bald :)</div>
-            <div class="tab" id="vocativ">Kommt bald :)</div>
-            <div class="tab" id="grammatik">Kommt bald :)</div>
+
+            <div class="tab" id="konj">Kommt bald :) (+Imperativ)</div>
+
+            <div class="tab" id="grammatik">
+                <div class="notes_menu">
+                    <div class="link" onclick="switch_tab('aci', this)">AcI</div>
+                    <div class="link" onclick="switch_tab('ppp', this)">PPP</div>
+                    <div class="link" onclick="switch_tab('allgemein', this)">Allgemein</div>
+                </div>
+
+                <div class="tab" id="aci">AcI</div>
+                <div class="tab" id="ppp">PPP</div>
+                <div class="tab" id="allgemein">Allgemein</div>
+            </div>
         </div>
 
         <div id="search">
