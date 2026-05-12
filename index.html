@@ -1468,9 +1468,6 @@
                 top: 1px;
                 font-size: 15px;
             }
-            #toggle_notes {
-                margin-top: 6px;
-            }
             #notes {
                 font-size: 12px;
                 width: 350px;
@@ -1509,29 +1506,35 @@
             }
             table {
                 width: 100%;
-                border-spacing: collapse;
                 table-layout: fixed;
+                border-collapse: separate;
+            }
+            .tla {
+                table-layout: auto;
+            }
+            table:not(:first-child) {
+                margin-top: 10px;
+                padding-top: 10px;
+                border-top: 2px solid #666;
+            }
+            tr:nth-of-type(even) {
+                background-color: #2b2b2b;
             }
             td, th {
                 text-align: left;
-                padding: 2px;
+                padding: 0;
             }
             td > b,
             th > b {
-                font-weight: normal;
                 color: rgb(22, 107, 192);
-            }
-            td {
-                font-size: 16px;
-            }
-            td:not(:last-of-type) {
-                padding-right: 12px;
             }
             th {
                 color: #b0216b;
             }
+            .green {
+                color: #afff00;
+            }
             b.genitiv {
-                font-weight: bold;
                 color: rgb(225, 0, 255);
             }
             .checkbox_wrapper {
@@ -1625,7 +1628,7 @@
             </button>
         </div>
 
-        <div id="notes" class="hidden"> <!-- class="hidden" -->
+        <div id="notes"> <!-- class="hidden" -->
             <div class="notes_menu">
                 <div class="link" onclick="switch_tab('dekl', this)">Deklinationen</div>
                 <div class="link" onclick="switch_tab('konj', this)">Konjunktionen</div>
@@ -1675,8 +1678,70 @@
                             <td>amic<b>is</b></td>
                         </tr>
                     </table>
-                    <br>
-                    (+Vocativ, Neutrum usw.)
+                    <table>
+                        <tr>
+                            <th class="green">Neutrum</th>
+                            <th>Singular</th>
+                            <th>Plural</th>
+                        </tr>
+                        <tr>
+                            <th>Nominativ</th>
+                            <td>templ<b>um</b></td>
+                            <td>templ<b>a</b></td>
+                        </tr>
+                        <tr>
+                            <th>Genitiv</th>
+                            <td>templ<b class="genitiv">i</b></td>
+                            <td>templ<b>orum</b></td>
+                        </tr>
+                        <tr>
+                            <th>Dativ</th>
+                            <td>templ<b>o</b></td>
+                            <td>templ<b>is</b></td>
+                        </tr>
+                        <tr>
+                            <th>Akkusativ</th>
+                            <td>templ<b>um</b></td>
+                            <td>templ<b>a</b></td>
+                        </tr>
+                        <tr>
+                            <th>Ablativ</th>
+                            <td>templ<b>o</b></td>
+                            <td>templ<b>is</b></td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <th class="green">Vocativ</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <th>us &rarr; e</th>
+                            <td>Marc<b>us</b></td>
+                            <td>Marc<b>e</b></td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td>Tit<b>us</b></td>
+                            <td>Tit<b>e</b></td>
+                        </tr>
+                        <tr>
+                            <th>ius &rarr; i</th>
+                            <td>Luc<b>ius</b></td>
+                            <td>Luc<b>i</b></td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td>Fil<b>ius</b></td>
+                            <td>Fil<b>i</b></td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td>Ga<b>ius</b></td>
+                            <td>Ga<b>i</b></td>
+                        </tr>
+                    </table>
                 </div>
                 <div class="tab" id="adekl">
                     <table>
@@ -1743,6 +1808,70 @@
                             <th>Ablativ</th>
                             <td>victor<b>e</b></td>
                             <td>victor<b>ibus</b></td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <th class="green">Neutrum</th>
+                            <th>Singular</th>
+                            <th>Plural</th>
+                        </tr>
+                        <tr>
+                            <th>Nominativ</th>
+                            <td>tempus</td>
+                            <td>tempor<b>a</b></td>
+                        </tr>
+                        <tr>
+                            <th>Genitiv</th>
+                            <td>tempor<b class="genitiv">is</b></td>
+                            <td>tempor<b>um</b></td>
+                        </tr>
+                        <tr>
+                            <th>Dativ</th>
+                            <td>tempor<b>i</b></td>
+                            <td>tempor<b>ibus</b></td>
+                        </tr>
+                        <tr>
+                            <th>Akkusativ</th>
+                            <td>tempus</td>
+                            <td>tempor<b>a</b></td>
+                        </tr>
+                        <tr>
+                            <th>Ablativ</th>
+                            <td>tempor<b>e</b></td>
+                            <td>tempor<b>ibus</b></td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <th class="green">Neutrum</th>
+                            <th>Singular</th>
+                            <th>Plural</th>
+                        </tr>
+                        <tr>
+                            <th>Nominativ</th>
+                            <td>nomen</td>
+                            <td>nomin<b>a</b></td>
+                        </tr>
+                        <tr>
+                            <th>Genitiv</th>
+                            <td>nomin<b class="genitiv">is</b></td>
+                            <td>nomin<b>um</b></td>
+                        </tr>
+                        <tr>
+                            <th>Dativ</th>
+                            <td>nomin<b>i</b></td>
+                            <td>nomin<b>ibus</b></td>
+                        </tr>
+                        <tr>
+                            <th>Akkusativ</th>
+                            <td>nomen</td>
+                            <td>nomin<b>a</b></td>
+                        </tr>
+                        <tr>
+                            <th>Ablativ</th>
+                            <td>nomin<b>e</b></td>
+                            <td>nomin<b>ibus</b></td>
                         </tr>
                     </table>
                 </div>
@@ -1814,10 +1943,549 @@
                         </tr>
                     </table>
                 </div>
-                <div class="tab" id="pronomen">Kommt bald :)</div>
+                <div class="tab" id="pronomen">
+                    <table>
+                        <tr>
+                            <th colspan="5" class="green">Personalpronomen</th>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <th>1. Sg.</th>
+                            <th>2. Sg.</th>
+                            <th>1. Pl.</th>
+                            <th>2. Pl.</th>
+                        </tr>
+                        <tr>
+                            <th>Nom.</th>
+                            <td>ego</td>
+                            <td>tu</td>
+                            <td>nos</td>
+                            <td>vos</td>
+                        </tr>
+                        <tr>
+                            <th>Gen.</th>
+                            <td>meus<br>mea<br>meum</td>
+                            <td>tuus<br>tua<br>tuum</td>
+                            <td>noster<br>nostra<br>nostrum</td>
+                            <td>vester<br>vestra<br>vestrum</td>
+                        </tr>
+                        <tr>
+                            <th>Dat.</th>
+                            <td>mihi</td>
+                            <td>tibi</td>
+                            <td>nobis</td>
+                            <td>vobis</td>
+                        </tr>
+                        <tr>
+                            <th>Akk.</th>
+                            <td>me</td>
+                            <td>te</td>
+                            <td>nos</td>
+                            <td>vos</td>
+                        </tr>
+                        <tr>
+                            <th>Abl.</th>
+                            <td>mecum<br>a me</td>
+                            <td>tecum<br>a te</td>
+                            <td>nobiscum<br>a nobis</td>
+                            <td>vobiscum<br>a vobis</td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <th colspan="4" class="green">Relativpronomen</th>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <th>M</th>
+                            <th>F</th>
+                            <th>N</th>
+                        </tr>
+                        <tr>
+                            <th>Nom. Sg.</th>
+                            <td>qui</td>
+                            <td>quae</td>
+                            <td>quod</td>
+                        </tr>
+                        <tr>
+                            <th>Nom. Pl.</th>
+                            <td>qui</td>
+                            <td>quae</td>
+                            <td>quae</td>
+                        </tr>
+                        <tr>
+                            <th>Gen. Sg.</th>
+                            <td>cuius</td>
+                            <td>cuius</td>
+                            <td>cuius</td>
+                        </tr>
+                        <tr>
+                            <th>Gen. Pl.</th>
+                            <td>quorum</td>
+                            <td>quarum</td>
+                            <td>quorum</td>
+                        </tr>
+                        <tr>
+                            <th>Dat. Sg.</th>
+                            <td>cui</td>
+                            <td>cui</td>
+                            <td>cui</td>
+                        </tr>
+                        <tr>
+                            <th>Dat. Pl.</th>
+                            <td>quibus</td>
+                            <td>quibus</td>
+                            <td>quibus</td>
+                        </tr>
+                        <tr>
+                            <th>Akk. Sg.</th>
+                            <td>quem</td>
+                            <td>quam</td>
+                            <td>quod</td>
+                        </tr>
+                        <tr>
+                            <th>Akk. Pl.</th>
+                            <td>quos</td>
+                            <td>quas</td>
+                            <td>quae</td>
+                        </tr>
+                        <tr>
+                            <th>Abl. Sg.</th>
+                            <td>quo</td>
+                            <td>quo</td>
+                            <td>quo</td>
+                        </tr>
+                        <tr>
+                            <th>Abl. Pl.</th>
+                            <td>quibus</td>
+                            <td>quibus</td>
+                            <td>quibus</td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <th colspan="3" class="green">Interrogativpronomen</th>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <th>M/F</th>
+                            <th>N</th>
+                        </tr>
+                        <tr>
+                            <th>Nom.</th>
+                            <td>quis?</td>
+                            <td>quid?</td>
+                        </tr>
+                        <tr>
+                            <th>Gen.</th>
+                            <td>cuius?</td>
+                            <td>cuius?</td>
+                        </tr>
+                        <tr>
+                            <th>Dat.</th>
+                            <td>cui?</td>
+                            <td>cui?</td>
+                        </tr>
+                        <tr>
+                            <th>Akk.</th>
+                            <td>quem?</td>
+                            <td>quid?</td>
+                        </tr>
+                        <tr>
+                            <th>Abl.</th>
+                            <td>a quo?<br>quocum?</td>
+                            <td>quo?</td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <th colspan="4" class="green">Demonstrativpronomen</th>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <th>M</th>
+                            <th>F</th>
+                            <th>N</th>
+                        </tr>
+                        <tr>
+                            <th>Nom. Sg.</th>
+                            <td>is</td>
+                            <td>ea</td>
+                            <td>id</td>
+                        </tr>
+                        <tr>
+                            <th>Nom. Pl.</th>
+                            <td>ii</td>
+                            <td>eae</td>
+                            <td>ea</td>
+                        </tr>
+                        <tr>
+                            <th>Gen. Sg.</th>
+                            <td>eius</td>
+                            <td>eius</td>
+                            <td>eius</td>
+                        </tr>
+                        <tr>
+                            <th>Gen. Pl.</th>
+                            <td>eorum</td>
+                            <td>eorum</td>
+                            <td>eorum</td>
+                        </tr>
+                        <tr>
+                            <th>Dat. Sg.</th>
+                            <td>ei</td>
+                            <td>ei</td>
+                            <td>ei</td>
+                        </tr>
+                        <tr>
+                            <th>Dat. Pl.</th>
+                            <td>iis (eis)</td>
+                            <td>iis (eis)</td>
+                            <td>iis (eis)</td>
+                        </tr>
+                        <tr>
+                            <th>Akk. Sg.</th>
+                            <td>eum</td>
+                            <td>eam</td>
+                            <td>id</td>
+                        </tr>
+                        <tr>
+                            <th>Akk. Pl.</th>
+                            <td>eos</td>
+                            <td>eas</td>
+                            <td>ea</td>
+                        </tr>
+                        <tr>
+                            <th>Abl. Sg.</th>
+                            <td>eo</td>
+                            <td>ea</td>
+                            <td>eo</td>
+                        </tr>
+                        <tr>
+                            <th>Abl. Pl.</th>
+                            <td>iis (eis)</td>
+                            <td>iis (eis)</td>
+                            <td>iis (eis)</td>
+                        </tr>
+                    </table>
+                </div>
             </div>
 
-            <div class="tab" id="konj">Kommt bald :) (+Imperativ)</div>
+            <div class="tab" id="konj">
+                <div class="notes_menu">
+                    <div class="link" onclick="switch_tab('akonj', this)">A</div>
+                    <div class="link" onclick="switch_tab('ekonj', this)">E</div>
+                    <div class="link" onclick="switch_tab('kkonj', this)">K</div>
+                    <div class="link" onclick="switch_tab('ikonj', this)">I</div>
+                    <div class="link" onclick="switch_tab('kvkonj', this)">KV</div>
+                    <div class="link" onclick="switch_tab('passiv', this)">Passiv</div>
+                    <div class="link" onclick="switch_tab('tempi', this)">Tempi</div>
+                    <div class="link" onclick="switch_tab('unregelmaessige', this)">Unregelmäßige</div>
+                </div>
+
+                <div class="tab" id="akonj">
+                    <table>
+                        <tr>
+                            <th class="green">intra|re</th>
+                            <th>Singular</th>
+                            <th>Plural</th>
+                        </tr>
+                        <tr>
+                            <th>1.</th>
+                            <td>intr<b>o</b> (ohne a)</td>
+                            <td>intra<b>mus</b></td>
+                        </tr>
+                        <tr>
+                            <th>2.</th>
+                            <td>intra<b>s</b></td>
+                            <td>intra<b>tis</b></td>
+                        </tr>
+                        <tr>
+                            <th>3.</th>
+                            <td>intra<b>t</b></td>
+                            <td>intra<b>nt</b></td>
+                        </tr>
+                        <tr>
+                            <th>Imperativ</th>
+                            <td>intra!</td>
+                            <td>intra<b>te</b>!</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="tab" id="ekonj">
+                    <b>NOCH NICHT FERTIG!</b><br>
+                    <table>
+                        <tr>
+                            <th class="green">intra|re</th>
+                            <th>Singular</th>
+                            <th>Plural</th>
+                        </tr>
+                        <tr>
+                            <th>1.</th>
+                            <td>intr<b>o</b> (ohne a)</td>
+                            <td>intra<b>mus</b></td>
+                        </tr>
+                        <tr>
+                            <th>2.</th>
+                            <td>intra<b>s</b></td>
+                            <td>intra<b>tis</b></td>
+                        </tr>
+                        <tr>
+                            <th>3.</th>
+                            <td>intra<b>t</b></td>
+                            <td>intra<b>nt</b></td>
+                        </tr>
+                        <tr>
+                            <th>Imperativ</th>
+                            <td>intra!</td>
+                            <td>intra<b>te</b>!</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="tab" id="kkonj">
+                    <table>
+                        <tr>
+                            <th class="green">lud|ere</th>
+                            <th>Singular</th>
+                            <th>Plural</th>
+                        </tr>
+                        <tr>
+                            <th>1.</th>
+                            <td>lud<b>o</b></td>
+                            <td>lud<b>imus</b></td>
+                        </tr>
+                        <tr>
+                            <th>2.</th>
+                            <td>lud<b>is</b></td>
+                            <td>lud<b>itis</b></td>
+                        </tr>
+                        <tr>
+                            <th>3.</th>
+                            <td>lud<b>it</b></td>
+                            <td>lud<b>unt</b></td>
+                        </tr>
+                        <tr>
+                            <th>Imperativ</th>
+                            <td>lud<b>e</b>!</td>
+                            <td>lud<b>ite</b>!</td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <th colspan="3" class="green">Ausnahmen</th>
+                        </tr>
+                        <tr>
+                            <th>dic|ere</th>
+                            <td colspan="2">dic!</td>
+                        </tr>
+                        <tr>
+                            <th>duc|ere</th>
+                            <td colspan="2">duc!</td>
+                        </tr>
+                        <tr>
+                            <th>fac|ere</th>
+                            <td colspan="2">fac!</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="tab" id="ikonj">
+                    <b>NOCH NICHT FERTIG!</b><br>
+                    <table>
+                        <tr>
+                            <th class="green">intra|re</th>
+                            <th>Singular</th>
+                            <th>Plural</th>
+                        </tr>
+                        <tr>
+                            <th>1.</th>
+                            <td>intr<b>o</b> (ohne a)</td>
+                            <td>intra<b>mus</b></td>
+                        </tr>
+                        <tr>
+                            <th>2.</th>
+                            <td>intra<b>s</b></td>
+                            <td>intra<b>tis</b></td>
+                        </tr>
+                        <tr>
+                            <th>3.</th>
+                            <td>intra<b>t</b></td>
+                            <td>intra<b>nt</b></td>
+                        </tr>
+                        <tr>
+                            <th>Imperativ</th>
+                            <td>intra!</td>
+                            <td>intra<b>te</b>!</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="tab" id="kvkonj">
+                    <b>NOCH NICHT FERTIG!</b><br>
+                    <table>
+                        <tr>
+                            <th class="green">intra|re</th>
+                            <th>Singular</th>
+                            <th>Plural</th>
+                        </tr>
+                        <tr>
+                            <th>1.</th>
+                            <td>intr<b>o</b> (ohne a)</td>
+                            <td>intra<b>mus</b></td>
+                        </tr>
+                        <tr>
+                            <th>2.</th>
+                            <td>intra<b>s</b></td>
+                            <td>intra<b>tis</b></td>
+                        </tr>
+                        <tr>
+                            <th>3.</th>
+                            <td>intra<b>t</b></td>
+                            <td>intra<b>nt</b></td>
+                        </tr>
+                        <tr>
+                            <th>Imperativ</th>
+                            <td>intra!</td>
+                            <td>intra<b>te</b>!</td>
+                        </tr>
+                    </table>
+                    <br>
+                    capere, cupere, facere
+                </div>
+                <div class="tab" id="passiv">
+                    <table class="tla">
+                        <tr>
+                            <th class="green">audi|re</th>
+                            <th>Singular</th>
+                            <th>Plural</th>
+                        </tr>
+                        <tr>
+                            <th>1.</th>
+                            <td>audi<b>(o)r</b></td>
+                            <td>audi<b>mur</b></td>
+                        </tr>
+                        <tr>
+                            <th>2.</th>
+                            <td>audi<b>ris</b></td>
+                            <td>audi<b>mini</b></td>
+                        </tr>
+                        <tr>
+                            <th>3.</th>
+                            <td>audi<b>tur</b></td>
+                            <td>audi<b>ntur</b></td>
+                        </tr>
+                        <tr>
+                            <th class="green" colspan="3">Infinitiv</th>
+                        </tr>
+                        <tr>
+                            <th>a-/e-/i-Konj.</th>
+                            <td colspan="2">intra<b>ri</b>, vide<b>ri</b>, audi<b>ri</b></td>
+                        </tr>
+                        <tr>
+                            <th>k-/kv.-Konj.</th>
+                            <td colspan="2">lud<b>i</b>, cap<b>i</b></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="tab" id="tempi">
+                    <b>NOCH NICHT FERTIG!</b><br>
+                    <table>
+                        <tr>
+                            <th class="green">Perfekt</th>
+                            <th>Singular</th>
+                            <th>Plural</th>
+                        </tr>
+                        <tr>
+                            <th>1.</th>
+                            <td>-i</td>
+                            <td>-imus</td>
+                        </tr>
+                        <tr>
+                            <th>2.</th>
+                            <td>-isti</td>
+                            <td>-istis</td>
+                        </tr>
+                        <tr>
+                            <th>3.</th>
+                            <td>-it</td>
+                            <td>-erunt</td>
+                        </tr>
+                    </table>
+                    <br>
+                    v-Perfekt, u-Perfekt, Stammperfekt, Infinitiv...
+                    <br>
+                    <table>
+                        <tr>
+                            <th class="green">Imperfekt</th>
+                            <th>Singular</th>
+                            <th>Plural</th>
+                        </tr>
+                        <tr>
+                            <th>1.</th>
+                            <td>-bam</td>
+                            <td>-bamus</td>
+                        </tr>
+                        <tr>
+                            <th>2.</th>
+                            <td>-bas</td>
+                            <td>-batis</td>
+                        </tr>
+                        <tr>
+                            <th>3.</th>
+                            <td>-bat</td>
+                            <td>-bant</td>
+                        </tr>
+                    </table>
+                    <br>
+                    kein Bindevokal, i/e/u Bindevokal...
+                    <br>
+                </div>
+                <div class="tab" id="unregelmaessige">
+                    <b>NOCH NICHT FERTIG!</b><br>
+                    <table>
+                        <tr>
+                            <th class="green">esse</th>
+                            <th>Singular</th>
+                            <th>Plural</th>
+                        </tr>
+                        <tr>
+                            <th>1.</th>
+                            <td>sum</td>
+                            <td>sumus</td>
+                        </tr>
+                        <tr>
+                            <th>2.</th>
+                            <td>es</td>
+                            <td>estis</td>
+                        </tr>
+                        <tr>
+                            <th>3.</th>
+                            <td>est</td>
+                            <td>sunt</td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <th class="green">ire</th>
+                            <th>Singular</th>
+                            <th>Plural</th>
+                        </tr>
+                        <tr>
+                            <th>1.</th>
+                            <td>sum</td>
+                            <td>sumus</td>
+                        </tr>
+                        <tr>
+                            <th>2.</th>
+                            <td>es</td>
+                            <td>estis</td>
+                        </tr>
+                        <tr>
+                            <th>3.</th>
+                            <td>est</td>
+                            <td>sunt</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
 
             <div class="tab" id="grammatik">
                 <div class="notes_menu">
@@ -1828,7 +2496,40 @@
 
                 <div class="tab" id="aci">AcI</div>
                 <div class="tab" id="ppp">PPP</div>
-                <div class="tab" id="allgemein">Allgemein</div>
+                <div class="tab" id="allgemein">
+                    <b>NOCH NICHT FERTIG!</b><br>
+                    <table>
+                        <tr>
+                            <th>Dativus Possessivus</th>
+                            <td colspan="3">Dativ + esse = "hat" statt "ist" ...</td>
+                        </tr>
+                        <tr>
+                            <th>Akk. von Städten</th>
+                            <td colspan="3">...</td>
+                        </tr>
+                        <tr>
+                            <th>Abl. Loci bei a-Dekl.</th>
+                            <td colspan="3">...</td>
+                        </tr>
+                        <tr>
+                            <th>Unpersönl. Aktiv</th>
+                            <td colspan="3">...</td>
+                        </tr>
+                        <tr>
+                            <th>Relativsätze</th>
+                            <td colspan="3">...</td>
+                        </tr>
+                        <tr>
+                            <th>Rom/Römer</th>
+                            <td colspan="3">Roma<b>n</b>us, a, um: römisch, Römer<br>Roma (ohne n): die Stadt Rom<br>(Roma, Romae, Romarum, Romam, Romis)</td>
+                        </tr>
+                        <tr>
+                            <th>Ablative</th>
+                            <td>instrumenti<br>temporis</td>
+                            <td colspan="2">Womit? Wodurch?<br>Wann? ......</td>
+                        </tr>
+                    </table>
+                </div>
             </div>
         </div>
 
@@ -1836,9 +2537,6 @@
             <div id="search_flexbox">
                 <input id="searchbar" onkeyup="search(this.value)" placeholder="🔎 Vokabel suchen" />
                 <div id="timer"></div>
-                <div class="checkbox_wrapper">
-                    <input id="toggle_notes" type="checkbox" class="cw_input" onclick="toggle_notes(this)">
-                </div>
             </div>
             <div id="results"></div>
         </div>
@@ -2032,10 +2730,6 @@
                     }
                 }
             }
-            function toggle_notes(s) {
-                if (s.checked) notes.classList.remove("hidden");
-                else notes.classList.add("hidden");
-            }
             function switch_tab(_id, _link) {
                 let el = id(_id);
                 let isnt_selected = el.classList.contains("hidden");
@@ -2089,7 +2783,6 @@
                 for (i = 0; i < tabs.length; i++) {
                     tabs[i].classList.add("hidden");
                 }
-                id("toggle_notes").checked = false;
                 cache.length > 0 ? clear_cache_btn.classList.remove("hidden") : clear_cache_btn.classList.add("hidden");
                 const t = 1755468e3,
                     n = ((Date.now() / 1e3 - t) / 82598400) * 100;
